@@ -15,6 +15,11 @@ class PostsViewController: UIViewController {
     
     var viewModel: PostsViewModel?
     
+    private let loadingViewController: LoadingViewController = {
+        let viewController = LoadingViewController()
+        return viewController
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCell()
@@ -48,6 +53,20 @@ class PostsViewController: UIViewController {
         viewModel?.error.observe(on: self, observerBlock: { message in
             self.title = message
         })
+        viewModel?.loadingType.observe(on: self, observerBlock: { loadingType in
+            switch loadingType {
+            case .fullScreen: self.showLoadingView()
+            case .none: self.dismissLoadingView()
+            }
+        })
+    }
+    
+    private func showLoadingView() {
+        addChildVC(asChildViewController: loadingViewController, to: view)
+    }
+    
+    private func dismissLoadingView() {
+        loadingViewController.remove()
     }
     
 }
@@ -78,14 +97,14 @@ extension PostsViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let post = viewModel?.items.value[indexPath.row] else { return }
-        showPostDetail(post: post)
+        guard let id = viewModel?.items.value[indexPath.row].id else { return }
+        showPostDetail(postId: id)
     }
     
-    private func showPostDetail(post: Post) {
+    private func showPostDetail(postId: Int) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let viewController = storyboard.instantiateViewController(identifier: PostDetailViewController.storybordId) as! PostDetailViewController
-        viewController.post = post
+        viewController.postId = postId
         navigationController?.pushViewController(viewController, animated: true)
     }
     

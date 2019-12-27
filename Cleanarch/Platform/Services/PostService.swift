@@ -15,6 +15,8 @@ protocol PostService {
 
 class PostServiceImpl: PostService {
     
+    public init() { }
+    
     func fetchPosts(completion: @escaping ((Result<[Post], Error>) -> Void)) {
         let urlString = "https://jsonplaceholder.typicode.com/posts/"
         let url = URL(string: urlString)

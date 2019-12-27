@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Post: Codable {
+class Post: Codable {
     var userId: Int?
     var id: Int?
     var title: String?
@@ -20,11 +20,6 @@ struct Post: Codable {
         case title = "title"
         case body = "body"
     }
+    
 }
 
-extension Post {
-    
-    init(data: Data) throws {
-        self = try newJSONDecoder().decode(Post.self, from: data)
-    }
-}

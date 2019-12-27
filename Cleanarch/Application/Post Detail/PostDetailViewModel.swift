@@ -16,6 +16,12 @@ class PostDetailViewModel: PostDetailViewModelOutput {
     
     var post: Observable<Post> = Observable(Post())
     var error: Observable<String> = Observable("")
+    var loadingType: Observable<PostDetailViewModelLoadingType> = Observable(.none)
+    
+    enum PostDetailViewModelLoadingType {
+        case none
+        case fullScreen
+    }
     
     private var showPostUseCase: ShowPostUseCase
     
@@ -24,6 +30,8 @@ class PostDetailViewModel: PostDetailViewModelOutput {
     }
     
     func loadPost(id: Int) {
+        loadingType.value = .fullScreen
+        
         showPostUseCase.execute(id: id) { result in
             switch result {
             case .success(let post):
@@ -31,6 +39,8 @@ class PostDetailViewModel: PostDetailViewModelOutput {
             case .failure(let error):
                 self.error.value = error.localizedDescription
             }
+            
+            self.loadingType.value = .none
         }
     }
     
