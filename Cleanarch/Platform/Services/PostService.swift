@@ -28,7 +28,7 @@ class PostServiceImpl: PostService {
             guard let data = data else { return }
             
             do {
-                let posts = try newJSONDecoder().decode([Post].self, from: data)
+                let posts = try JSON().newJSONDecoder().decode([Post].self, from: data)
                 completion(.success(posts))
             } catch(let error) {
                 completion(.failure(error))
@@ -47,7 +47,7 @@ class PostServiceImpl: PostService {
             guard let data = data else { return }
             
             do {
-                let posts = try newJSONDecoder().decode(Post.self, from: data)
+                let posts = try JSON().newJSONDecoder().decode(Post.self, from: data)
                 completion(.success(posts))
             } catch(let error) {
                 completion(.failure(error))
