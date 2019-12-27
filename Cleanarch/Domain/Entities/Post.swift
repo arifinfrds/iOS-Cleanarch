@@ -9,10 +9,10 @@
 import Foundation
 
 struct Post: Codable {
-    let userId: Int?
-    let id: Int?
-    let title: String?
-    let body: String?
+    var userId: Int?
+    var id: Int?
+    var title: String?
+    var body: String?
     
     enum CodingKeys: String, CodingKey {
         case userId = "userId"
@@ -23,6 +23,7 @@ struct Post: Codable {
 }
 
 extension Post {
+    
     init(data: Data) throws {
         self = try newJSONDecoder().decode(Post.self, from: data)
     }

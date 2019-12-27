@@ -10,6 +10,7 @@ import Foundation
 
 protocol PostRepository {
     func fetchPosts(completion: @escaping ((Result<[Post], Error>) -> Void))
+    func fetchPost(id: Int, completion: @escaping ((Result<Post, Error>) -> Void))
 }
 
 class PostRepositoryImpl: PostRepository {
@@ -25,6 +26,17 @@ class PostRepositoryImpl: PostRepository {
             switch result {
             case .success(let posts):
                 completion(.success(posts))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func fetchPost(id: Int, completion: @escaping ((Result<Post, Error>) -> Void)) {
+        postService.fetchPost(id: id) { result in
+            switch result {
+            case .success(let post):
+                completion(.success(post))
             case .failure(let error):
                 completion(.failure(error))
             }

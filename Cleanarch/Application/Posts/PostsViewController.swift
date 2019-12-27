@@ -77,4 +77,16 @@ extension PostsViewController: UITableViewDelegate {
         return UITableView.automaticDimension
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let post = viewModel?.items.value[indexPath.row] else { return }
+        showPostDetail(post: post)
+    }
+    
+    private func showPostDetail(post: Post) {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let viewController = storyboard.instantiateViewController(identifier: PostDetailViewController.storybordId) as! PostDetailViewController
+        viewController.post = post
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
 }

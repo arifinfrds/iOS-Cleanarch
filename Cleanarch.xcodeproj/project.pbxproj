@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		923CFF8F23B5ADB10015C63B /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923CFF8E23B5ADB10015C63B /* PostDetailViewController.swift */; };
+		923CFF9123B5AE270015C63B /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923CFF9023B5AE270015C63B /* PostDetailViewModel.swift */; };
 		929319A423B4CB5100DFBD27 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929319A323B4CB5100DFBD27 /* PostsViewController.swift */; };
 		92F18D0323B4C613005893C7 /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F18D0223B4C613005893C7 /* PostRepository.swift */; };
 		92F411D423B4BA1F00069FF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F411D323B4BA1F00069FF0 /* AppDelegate.swift */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		923CFF8E23B5ADB10015C63B /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		923CFF9023B5AE270015C63B /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
 		929319A323B4CB5100DFBD27 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		92F18D0223B4C613005893C7 /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
 		92F411D023B4BA1F00069FF0 /* Cleanarch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cleanarch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +78,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		923CFF8D23B5AC4D0015C63B /* Post Detail */ = {
+			isa = PBXGroup;
+			children = (
+				923CFF9023B5AE270015C63B /* PostDetailViewModel.swift */,
+				923CFF8E23B5ADB10015C63B /* PostDetailViewController.swift */,
+			);
+			path = "Post Detail";
+			sourceTree = "<group>";
+		};
 		929319A523B4CEF700DFBD27 /* CoreDelegates */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,7 +135,7 @@
 			children = (
 				92F4120123B4BFF900069FF0 /* Helpers */,
 				92F411F523B4BB7C00069FF0 /* Domain */,
-				92F411FE23B4BDF100069FF0 /* Plataform */,
+				92F411FE23B4BDF100069FF0 /* Platform */,
 				92F4120823B4C14000069FF0 /* Application */,
 				92F411E123B4BA1F00069FF0 /* Info.plist */,
 			);
@@ -165,13 +178,13 @@
 			path = UseCases;
 			sourceTree = "<group>";
 		};
-		92F411FE23B4BDF100069FF0 /* Plataform */ = {
+		92F411FE23B4BDF100069FF0 /* Platform */ = {
 			isa = PBXGroup;
 			children = (
-				92F18D0523B4C638005893C7 /* Repositories */,
 				92F18D0423B4C62D005893C7 /* Services */,
+				92F18D0523B4C638005893C7 /* Repositories */,
 			);
-			path = Plataform;
+			path = Platform;
 			sourceTree = "<group>";
 		};
 		92F4120123B4BFF900069FF0 /* Helpers */ = {
@@ -187,6 +200,7 @@
 			children = (
 				929319A523B4CEF700DFBD27 /* CoreDelegates */,
 				92F4120B23B4C17700069FF0 /* Posts */,
+				923CFF8D23B5AC4D0015C63B /* Post Detail */,
 				92F411D923B4BA1F00069FF0 /* Main.storyboard */,
 				92F411DC23B4BA1F00069FF0 /* Assets.xcassets */,
 				92F411DE23B4BA1F00069FF0 /* LaunchScreen.storyboard */,
@@ -305,8 +319,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				929319A423B4CB5100DFBD27 /* PostsViewController.swift in Sources */,
+				923CFF8F23B5ADB10015C63B /* PostDetailViewController.swift in Sources */,
 				92F4120323B4C00600069FF0 /* Observable.swift in Sources */,
 				92F18D0323B4C613005893C7 /* PostRepository.swift in Sources */,
+				923CFF9123B5AE270015C63B /* PostDetailViewModel.swift in Sources */,
 				92F411D423B4BA1F00069FF0 /* AppDelegate.swift in Sources */,
 				92F4120023B4BDFD00069FF0 /* PostService.swift in Sources */,
 				92F411D623B4BA1F00069FF0 /* SceneDelegate.swift in Sources */,

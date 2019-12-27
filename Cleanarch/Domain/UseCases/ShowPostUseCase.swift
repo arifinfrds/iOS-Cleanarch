@@ -8,9 +8,8 @@
 
 import Foundation
 
-// TODO: - Next
 protocol ShowPostUseCase {
-    func execute(completion: ((Result<Post, Error>) -> Void))
+    func execute(id: Int, completion: @escaping ((Result<Post, Error>) -> Void))
 }
 
 class ShowPostUseCaseImpl: ShowPostUseCase {
@@ -21,7 +20,14 @@ class ShowPostUseCaseImpl: ShowPostUseCase {
         self.postRepository = postRepository
     }
     
-    func execute(completion: ((Result<Post, Error>) -> Void)) {
-       
+    func execute(id: Int, completion: @escaping ((Result<Post, Error>) -> Void)) {
+        postRepository.fetchPost(id: id) { result in
+            switch result {
+            case .success(let post):
+                completion(.success(post))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }
