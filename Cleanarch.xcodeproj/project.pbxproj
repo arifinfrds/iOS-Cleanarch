@@ -12,8 +12,8 @@
 		9220B6DF23B5D6FD00578465 /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923CFF9023B5AE270015C63B /* PostDetailViewModel.swift */; };
 		9220B6E023B5D6FD00578465 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923CFF8E23B5ADB10015C63B /* PostDetailViewController.swift */; };
 		9220B6E123B5D70300578465 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92F411D923B4BA1F00069FF0 /* Main.storyboard */; };
-		9220B6E823B5D92A00578465 /* UIViewController+LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9220B6E723B5D92A00578465 /* UIViewController+LoadingView.swift */; };
 		9220B6EB23B5D98A00578465 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9220B6EA23B5D98A00578465 /* LoadingViewController.swift */; };
+		9233DAC823B601E400D1BC47 /* UIViewController+Child.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9233DAC723B601E400D1BC47 /* UIViewController+Child.swift */; };
 		92BFE45723B5F07E00ACDF38 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BFE45623B5F07E00ACDF38 /* JSON.swift */; };
 		92F18D0323B4C613005893C7 /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F18D0223B4C613005893C7 /* PostRepository.swift */; };
 		92F411D423B4BA1F00069FF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F411D323B4BA1F00069FF0 /* AppDelegate.swift */; };
@@ -39,8 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9220B6E723B5D92A00578465 /* UIViewController+LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+LoadingView.swift"; sourceTree = "<group>"; };
 		9220B6EA23B5D98A00578465 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		9233DAC723B601E400D1BC47 /* UIViewController+Child.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Child.swift"; sourceTree = "<group>"; };
 		923CFF8E23B5ADB10015C63B /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		923CFF9023B5AE270015C63B /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
 		929319A323B4CB5100DFBD27 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
@@ -85,8 +85,8 @@
 		9220B6E923B5D94800578465 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
-				9220B6E723B5D92A00578465 /* UIViewController+LoadingView.swift */,
 				9220B6EA23B5D98A00578465 /* LoadingViewController.swift */,
+				9233DAC723B601E400D1BC47 /* UIViewController+Child.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -178,7 +178,6 @@
 			isa = PBXGroup;
 			children = (
 				92F411F623B4BB8D00069FF0 /* Post.swift */,
-				92BFE45623B5F07E00ACDF38 /* JSON.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -204,6 +203,7 @@
 		92F4120123B4BFF900069FF0 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				92BFE45623B5F07E00ACDF38 /* JSON.swift */,
 				92F4120223B4C00600069FF0 /* Observable.swift */,
 			);
 			path = Helpers;
@@ -335,6 +335,7 @@
 				92F4120323B4C00600069FF0 /* Observable.swift in Sources */,
 				92F18D0323B4C613005893C7 /* PostRepository.swift in Sources */,
 				9220B6EB23B5D98A00578465 /* LoadingViewController.swift in Sources */,
+				9233DAC823B601E400D1BC47 /* UIViewController+Child.swift in Sources */,
 				92F411D423B4BA1F00069FF0 /* AppDelegate.swift in Sources */,
 				92F4120023B4BDFD00069FF0 /* PostService.swift in Sources */,
 				9220B6E023B5D6FD00578465 /* PostDetailViewController.swift in Sources */,
@@ -345,7 +346,6 @@
 				92F4120723B4C06E00069FF0 /* ShowPostUseCase.swift in Sources */,
 				9220B6DD23B5D6F500578465 /* PostsViewModel.swift in Sources */,
 				92F411FD23B4BC2700069FF0 /* ShowPostsUseCase.swift in Sources */,
-				9220B6E823B5D92A00578465 /* UIViewController+LoadingView.swift in Sources */,
 				92F411F723B4BB8D00069FF0 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

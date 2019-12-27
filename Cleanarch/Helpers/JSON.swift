@@ -8,17 +8,7 @@
 
 import Foundation
 
-class JSON<T> where T : Codable {
-    
-    private var codable: T?
-    
-    func getCodable() -> T? {
-        return codable
-    }
-    
-    init(data: Data) throws {
-        self.codable = try newJSONDecoder().decode(T.Type, from: data)
-    }
+class JSON {
     
     func newJSONDecoder() -> JSONDecoder {
         let decoder = JSONDecoder()
@@ -35,4 +25,5 @@ class JSON<T> where T : Codable {
         }
         return encoder
     }
+    
 }

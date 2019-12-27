@@ -15,7 +15,7 @@ protocol PostService {
 
 class PostServiceImpl: PostService {
     
-    public init() { }
+    init() { }
     
     func fetchPosts(completion: @escaping ((Result<[Post], Error>) -> Void)) {
         let urlString = "https://jsonplaceholder.typicode.com/posts/"
@@ -47,8 +47,8 @@ class PostServiceImpl: PostService {
             guard let data = data else { return }
             
             do {
-                let posts = try JSON().newJSONDecoder().decode(Post.self, from: data)
-                completion(.success(posts))
+                let post = try JSON().newJSONDecoder().decode(Post.self, from: data)
+                completion(.success(post))
             } catch(let error) {
                 completion(.failure(error))
             }

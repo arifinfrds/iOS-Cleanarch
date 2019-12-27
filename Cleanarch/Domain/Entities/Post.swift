@@ -14,16 +14,7 @@ struct Post: Codable {
     var id: Int?
     var title: String?
     var body: String?
-    
-    var json: JSON<Post>?
-    
-    init(data: Data) throws {
-        json = try JSON(data: data)
-        
-        guard let codable = json?.getCodable() else { return }
-        self = codable
-    }
-    
+ 
     enum CodingKeys: String, CodingKey {
         case userId = "userId"
         case id = "id"
@@ -32,3 +23,4 @@ struct Post: Codable {
     }
   
 }
+

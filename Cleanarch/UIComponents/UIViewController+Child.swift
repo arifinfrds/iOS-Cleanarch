@@ -1,5 +1,5 @@
 //
-//  UIViewController+LoadingView.swift
+//  UIViewController+Child.swift
 //  Cleanarch
 //
 //  Created by Arifin Firdaus on 12/27/19.
@@ -8,18 +8,6 @@
 
 import UIKit
 
-//
-//extension UIViewController {
-//    
-//    func showLoadingView() {
-//        let viewController = LoadingViewController()
-//        addChildVC(asChildViewController: viewController, to: view)
-//    }
-//    func dismissLoadingView() {
-//        view.removeFromSuperview()
-//    }
-//}
-//
 extension UIViewController {
     
     func addChildVC(asChildViewController viewController: UIViewController, to containerView: UIView) {

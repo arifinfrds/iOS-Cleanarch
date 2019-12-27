@@ -10,6 +10,11 @@ import UIKit
 
 class PostsViewController: UIViewController {
     
+    private let loadingView: LoadingViewController = {
+        let viewController = LoadingViewController()
+        return viewController
+    }()
+        
     @IBOutlet var tableView: UITableView!
     let cellId = "PostsCellId"
     
