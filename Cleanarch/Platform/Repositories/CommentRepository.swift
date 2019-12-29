@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CommentRepository {
-    func fetchComments(postId: Int, completion: ((Result<[Comment], Error>) -> Void))
+    func fetchComments(postId: Int, completion: @escaping ((Result<[Comment], Error>) -> Void))
 }
 
 class CommentRepositoryImpl: CommentRepository {
@@ -20,7 +20,7 @@ class CommentRepositoryImpl: CommentRepository {
         self.service = service
     }
     
-    func fetchComments(postId: Int, completion: ((Result<[Comment], Error>) -> Void)) {
+    func fetchComments(postId: Int, completion: @escaping ((Result<[Comment], Error>) -> Void)) {
         service?.fetchComments(postId: postId, completion: { result in
             switch result {
             case .success(let comments):
