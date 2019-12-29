@@ -11,3 +11,23 @@ import Foundation
 protocol CommentRepository {
     func fetchComments(postId: Int, completion: ((Result<[Comment], Error>) -> Void))
 }
+
+class CommentRepositoryImpl: CommentRepository {
+    
+    private var service: CommentService?
+    
+    init(service: CommentService) {
+        self.service = service
+    }
+    
+    func fetchComments(postId: Int, completion: ((Result<[Comment], Error>) -> Void)) {
+        service?.fetchComments(postId: postId, completion: { result in
+            switch result {
+            case .success(let comments):
+                completion(.success(comments))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        })
+    }
+}

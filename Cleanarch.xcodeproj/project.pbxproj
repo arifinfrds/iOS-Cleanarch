@@ -17,6 +17,7 @@
 		92B925EB23B8CF1C006B27DF /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B925EA23B8CF1C006B27DF /* Comment.swift */; };
 		92B925ED23B8CF83006B27DF /* ShowCommentsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B925EC23B8CF83006B27DF /* ShowCommentsUseCase.swift */; };
 		92B925EF23B8D0CE006B27DF /* CommentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B925EE23B8D0CE006B27DF /* CommentRepository.swift */; };
+		92B925F123B8D19F006B27DF /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B925F023B8D19F006B27DF /* CommentService.swift */; };
 		92BFE45723B5F07E00ACDF38 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BFE45623B5F07E00ACDF38 /* JSON.swift */; };
 		92F18D0323B4C613005893C7 /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F18D0223B4C613005893C7 /* PostRepository.swift */; };
 		92F411D423B4BA1F00069FF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F411D323B4BA1F00069FF0 /* AppDelegate.swift */; };
@@ -50,6 +51,7 @@
 		92B925EA23B8CF1C006B27DF /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		92B925EC23B8CF83006B27DF /* ShowCommentsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCommentsUseCase.swift; sourceTree = "<group>"; };
 		92B925EE23B8D0CE006B27DF /* CommentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRepository.swift; sourceTree = "<group>"; };
+		92B925F023B8D19F006B27DF /* CommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
 		92BFE45623B5F07E00ACDF38 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		92F18D0223B4C613005893C7 /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
 		92F411D023B4BA1F00069FF0 /* Cleanarch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cleanarch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				92F411FF23B4BDFD00069FF0 /* PostService.swift */,
+				92B925F023B8D19F006B27DF /* CommentService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				92F4120723B4C06E00069FF0 /* ShowPostUseCase.swift in Sources */,
 				9220B6DD23B5D6F500578465 /* PostsViewModel.swift in Sources */,
 				92F411FD23B4BC2700069FF0 /* ShowPostsUseCase.swift in Sources */,
+				92B925F123B8D19F006B27DF /* CommentService.swift in Sources */,
 				92F411F723B4BB8D00069FF0 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
