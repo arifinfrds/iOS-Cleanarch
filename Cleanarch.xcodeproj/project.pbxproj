@@ -14,6 +14,7 @@
 		9220B6E123B5D70300578465 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92F411D923B4BA1F00069FF0 /* Main.storyboard */; };
 		9220B6EB23B5D98A00578465 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9220B6EA23B5D98A00578465 /* LoadingViewController.swift */; };
 		9233DAC823B601E400D1BC47 /* UIViewController+Child.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9233DAC723B601E400D1BC47 /* UIViewController+Child.swift */; };
+		92B925EB23B8CF1C006B27DF /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B925EA23B8CF1C006B27DF /* Comment.swift */; };
 		92BFE45723B5F07E00ACDF38 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BFE45623B5F07E00ACDF38 /* JSON.swift */; };
 		92F18D0323B4C613005893C7 /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F18D0223B4C613005893C7 /* PostRepository.swift */; };
 		92F411D423B4BA1F00069FF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F411D323B4BA1F00069FF0 /* AppDelegate.swift */; };
@@ -44,6 +45,7 @@
 		923CFF8E23B5ADB10015C63B /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		923CFF9023B5AE270015C63B /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
 		929319A323B4CB5100DFBD27 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
+		92B925EA23B8CF1C006B27DF /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		92BFE45623B5F07E00ACDF38 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		92F18D0223B4C613005893C7 /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
 		92F411D023B4BA1F00069FF0 /* Cleanarch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cleanarch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				92F411F623B4BB8D00069FF0 /* Post.swift */,
+				92B925EA23B8CF1C006B27DF /* Comment.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				92F411D623B4BA1F00069FF0 /* SceneDelegate.swift in Sources */,
 				9220B6DF23B5D6FD00578465 /* PostDetailViewModel.swift in Sources */,
 				9220B6DE23B5D6F800578465 /* PostsViewController.swift in Sources */,
+				92B925EB23B8CF1C006B27DF /* Comment.swift in Sources */,
 				92F4120723B4C06E00069FF0 /* ShowPostUseCase.swift in Sources */,
 				9220B6DD23B5D6F500578465 /* PostsViewModel.swift in Sources */,
 				92F411FD23B4BC2700069FF0 /* ShowPostsUseCase.swift in Sources */,
