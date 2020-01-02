@@ -15,6 +15,8 @@ protocol PostsViewModelOutput {
 
 class PostsViewModel: PostsViewModelOutput {
     
+    
+    
     // MARK: - Outupt
     var items: Observable<[Post]> = Observable([Post]())
     var error: Observable<String> = Observable("")
@@ -26,7 +28,7 @@ class PostsViewModel: PostsViewModelOutput {
         case none
         case fullScreen
     }
-    
+
     init(useCase: ShowPostsUseCase) {
         self.showPostsUseCase = useCase
     }
