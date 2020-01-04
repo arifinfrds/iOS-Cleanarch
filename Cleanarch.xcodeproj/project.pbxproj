@@ -144,6 +144,15 @@
 			path = UseCaseImplementations;
 			sourceTree = "<group>";
 		};
+		9273F54823C0851B005059EF /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				92F4120B23B4C17700069FF0 /* Posts */,
+				923CFF8D23B5AC4D0015C63B /* Post Detail */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
 		927D65E523B9075C005C939F /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,10 +288,9 @@
 		92F4120823B4C14000069FF0 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				92F4120B23B4C17700069FF0 /* Posts */,
-				923CFF8D23B5AC4D0015C63B /* Post Detail */,
-				92F411D923B4BA1F00069FF0 /* Main.storyboard */,
 				929319A523B4CEF700DFBD27 /* CoreDelegates */,
+				9273F54823C0851B005059EF /* Scenes */,
+				92F411D923B4BA1F00069FF0 /* Main.storyboard */,
 				92F411DC23B4BA1F00069FF0 /* Assets.xcassets */,
 				92F411DE23B4BA1F00069FF0 /* LaunchScreen.storyboard */,
 			);
