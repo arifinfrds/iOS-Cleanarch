@@ -12,6 +12,9 @@
 		9220B6DF23B5D6FD00578465 /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923CFF9023B5AE270015C63B /* PostDetailViewModel.swift */; };
 		9220B6E023B5D6FD00578465 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923CFF8E23B5ADB10015C63B /* PostDetailViewController.swift */; };
 		9220B6E123B5D70300578465 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92F411D923B4BA1F00069FF0 /* Main.storyboard */; };
+		9273F54323C08484005059EF /* ShowPostsUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9273F54223C08484005059EF /* ShowPostsUseCaseImpl.swift */; };
+		9273F54523C084B7005059EF /* ShowPostUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9273F54423C084B7005059EF /* ShowPostUseCaseImpl.swift */; };
+		9273F54723C084CA005059EF /* ShowCommentsUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9273F54623C084CA005059EF /* ShowCommentsUseCaseImpl.swift */; };
 		927D65EF23B90770005C939F /* CleanarchUIComponents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927D65EE23B90770005C939F /* CleanarchUIComponents.framework */; };
 		927D65F023B90770005C939F /* CleanarchUIComponents.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 927D65EE23B90770005C939F /* CleanarchUIComponents.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		92B925EB23B8CF1C006B27DF /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B925EA23B8CF1C006B27DF /* Comment.swift */; };
@@ -73,6 +76,9 @@
 /* Begin PBXFileReference section */
 		923CFF8E23B5ADB10015C63B /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		923CFF9023B5AE270015C63B /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
+		9273F54223C08484005059EF /* ShowPostsUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPostsUseCaseImpl.swift; sourceTree = "<group>"; };
+		9273F54423C084B7005059EF /* ShowPostUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPostUseCaseImpl.swift; sourceTree = "<group>"; };
+		9273F54623C084CA005059EF /* ShowCommentsUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCommentsUseCaseImpl.swift; sourceTree = "<group>"; };
 		927D65E423B9075C005C939F /* CleanarchUIComponents.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CleanarchUIComponents.xcodeproj; path = ../CleanarchUIComponents/CleanarchUIComponents.xcodeproj; sourceTree = "<group>"; };
 		927D65EE23B90770005C939F /* CleanarchUIComponents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CleanarchUIComponents.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CleanarchUIComponents-fvomfypcdcyfwygiqicjmusuyhpe/Build/Products/Debug-iphonesimulator/CleanarchUIComponents.framework"; sourceTree = "<group>"; };
 		929319A323B4CB5100DFBD27 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +132,16 @@
 				923CFF8E23B5ADB10015C63B /* PostDetailViewController.swift */,
 			);
 			path = "Post Detail";
+			sourceTree = "<group>";
+		};
+		9273F53F23C08454005059EF /* UseCaseImplementations */ = {
+			isa = PBXGroup;
+			children = (
+				9273F54223C08484005059EF /* ShowPostsUseCaseImpl.swift */,
+				9273F54423C084B7005059EF /* ShowPostUseCaseImpl.swift */,
+				9273F54623C084CA005059EF /* ShowCommentsUseCaseImpl.swift */,
+			);
+			path = UseCaseImplementations;
 			sourceTree = "<group>";
 		};
 		927D65E523B9075C005C939F /* Products */ = {
@@ -244,6 +260,7 @@
 		92F411FE23B4BDF100069FF0 /* Platform */ = {
 			isa = PBXGroup;
 			children = (
+				9273F53F23C08454005059EF /* UseCaseImplementations */,
 				92F18D0423B4C62D005893C7 /* Services */,
 				92F18D0523B4C638005893C7 /* Repositories */,
 			);
@@ -408,14 +425,17 @@
 			files = (
 				92F4120323B4C00600069FF0 /* Observable.swift in Sources */,
 				92F18D0323B4C613005893C7 /* PostRepository.swift in Sources */,
+				9273F54323C08484005059EF /* ShowPostsUseCaseImpl.swift in Sources */,
 				92B925ED23B8CF83006B27DF /* ShowCommentsUseCase.swift in Sources */,
 				92F411D423B4BA1F00069FF0 /* AppDelegate.swift in Sources */,
 				92F4120023B4BDFD00069FF0 /* PostService.swift in Sources */,
+				9273F54723C084CA005059EF /* ShowCommentsUseCaseImpl.swift in Sources */,
 				9220B6E023B5D6FD00578465 /* PostDetailViewController.swift in Sources */,
 				92BFE45723B5F07E00ACDF38 /* JSON.swift in Sources */,
 				92F411D623B4BA1F00069FF0 /* SceneDelegate.swift in Sources */,
 				9220B6DF23B5D6FD00578465 /* PostDetailViewModel.swift in Sources */,
 				92B925EF23B8D0CE006B27DF /* CommentRepository.swift in Sources */,
+				9273F54523C084B7005059EF /* ShowPostUseCaseImpl.swift in Sources */,
 				9220B6DE23B5D6F800578465 /* PostsViewController.swift in Sources */,
 				92B925EB23B8CF1C006B27DF /* Comment.swift in Sources */,
 				92F4120723B4C06E00069FF0 /* ShowPostUseCase.swift in Sources */,

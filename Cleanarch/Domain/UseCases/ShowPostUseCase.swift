@@ -11,23 +11,3 @@ import Foundation
 protocol ShowPostUseCase {
     func execute(id: Int, completion: @escaping ((Result<Post, Error>) -> Void))
 }
-
-class ShowPostUseCaseImpl: ShowPostUseCase {
-    
-    private let postRepository: PostRepository
-    
-    init(postRepository: PostRepository) {
-        self.postRepository = postRepository
-    }
-    
-    func execute(id: Int, completion: @escaping ((Result<Post, Error>) -> Void)) {
-        postRepository.fetchPost(id: id) { result in
-            switch result {
-            case .success(let post):
-                completion(.success(post))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
-}
