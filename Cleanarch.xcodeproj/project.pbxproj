@@ -33,6 +33,7 @@
 		92F4120023B4BDFD00069FF0 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F411FF23B4BDFD00069FF0 /* PostService.swift */; };
 		92F4120323B4C00600069FF0 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F4120223B4C00600069FF0 /* Observable.swift */; };
 		92F4120723B4C06E00069FF0 /* ShowPostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F4120623B4C06E00069FF0 /* ShowPostUseCase.swift */; };
+		92FAA6AF23C1C051009D0176 /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FAA6AE23C1C051009D0176 /* CommentsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		92F4120223B4C00600069FF0 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		92F4120623B4C06E00069FF0 /* ShowPostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPostUseCase.swift; sourceTree = "<group>"; };
 		92F4120923B4C17100069FF0 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
+		92FAA6AE23C1C051009D0176 /* CommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,6 +312,7 @@
 		92FAA6AB23C1C02F009D0176 /* Comments */ = {
 			isa = PBXGroup;
 			children = (
+				92FAA6AE23C1C051009D0176 /* CommentsViewModel.swift */,
 			);
 			path = Comments;
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 				92F411D623B4BA1F00069FF0 /* SceneDelegate.swift in Sources */,
 				9220B6DF23B5D6FD00578465 /* PostDetailViewModel.swift in Sources */,
 				92B925EF23B8D0CE006B27DF /* CommentRepository.swift in Sources */,
+				92FAA6AF23C1C051009D0176 /* CommentsViewModel.swift in Sources */,
 				9273F54523C084B7005059EF /* ShowPostUseCaseImpl.swift in Sources */,
 				9220B6DE23B5D6F800578465 /* PostsViewController.swift in Sources */,
 				92B925EB23B8CF1C006B27DF /* Comment.swift in Sources */,
