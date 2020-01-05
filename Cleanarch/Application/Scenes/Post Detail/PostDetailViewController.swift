@@ -24,7 +24,7 @@ class PostDetailViewController: UIViewController {
     @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var bodyLabel: UILabel!
     @IBOutlet weak private var commentsLabel: UILabel!
-    @IBOutlet weak private var tableView: UITableView!
+    @IBOutlet weak private var containerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,9 +40,6 @@ class PostDetailViewController: UIViewController {
         
         setupTitleLabel()
         setupBodyLabel()
-        
-        setupTableView()
-        setupTableViewCell()
     }
     
     private func observe() {
@@ -88,44 +85,6 @@ class PostDetailViewController: UIViewController {
     
     private func setupBodyLabel() {
         bodyLabel.textColor = .secondaryLabel
-    }
-    
-    private func setupTableView() {
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.tableFooterView = UIView()
-    }
-    
-    private func setupTableViewCell() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
-    }
-    
-    
-}
-
-
-// MARK: - UITableViewDataSource
-
-extension PostDetailViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
-        return cell
-    }
-    
-}
-
-
-// MARK: - UITableViewDelegate
-
-extension PostDetailViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
     }
     
 }

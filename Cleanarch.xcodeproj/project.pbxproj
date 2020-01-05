@@ -34,6 +34,7 @@
 		92F4120323B4C00600069FF0 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F4120223B4C00600069FF0 /* Observable.swift */; };
 		92F4120723B4C06E00069FF0 /* ShowPostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F4120623B4C06E00069FF0 /* ShowPostUseCase.swift */; };
 		92FAA6AF23C1C051009D0176 /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FAA6AE23C1C051009D0176 /* CommentsViewModel.swift */; };
+		92FAA6B123C1C177009D0176 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FAA6B023C1C177009D0176 /* CommentsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		92F4120623B4C06E00069FF0 /* ShowPostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPostUseCase.swift; sourceTree = "<group>"; };
 		92F4120923B4C17100069FF0 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
 		92FAA6AE23C1C051009D0176 /* CommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
+		92FAA6B023C1C177009D0176 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				92FAA6AE23C1C051009D0176 /* CommentsViewModel.swift */,
+				92FAA6B023C1C177009D0176 /* CommentsViewController.swift */,
 			);
 			path = Comments;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 			files = (
 				92F4120323B4C00600069FF0 /* Observable.swift in Sources */,
 				92F18D0323B4C613005893C7 /* PostRepository.swift in Sources */,
+				92FAA6B123C1C177009D0176 /* CommentsViewController.swift in Sources */,
 				9273F54323C08484005059EF /* ShowPostsUseCaseImpl.swift in Sources */,
 				92B925ED23B8CF83006B27DF /* ShowCommentsUseCase.swift in Sources */,
 				92F411D423B4BA1F00069FF0 /* AppDelegate.swift in Sources */,
