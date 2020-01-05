@@ -40,6 +40,8 @@ class PostDetailViewController: UIViewController {
         
         setupTitleLabel()
         setupBodyLabel()
+        
+        setupContainerView()
     }
     
     private func observe() {
@@ -85,6 +87,21 @@ class PostDetailViewController: UIViewController {
     
     private func setupBodyLabel() {
         bodyLabel.textColor = .secondaryLabel
+    }
+    
+    private func setupContainerView() {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let viewController = storyboard.instantiateViewController(identifier: "CommentsViewController") as! CommentsViewController
+        guard let id = postId else { return }
+        
+        let service: CommentService = CommentServiceImpl()
+        let repository: CommentRepository = CommentRepositoryImpl(service: service)
+        let useCase: ShowCommentsUseCase = ShowCommentsUseCaseImpl(repository: repository)
+        let viewModel = CommentsViewModel(useCase: useCase)
+        
+        viewController.inject(viewModel: viewModel, postId: id)
+        
+        addChildVC(asChildViewController: viewController, to: containerView)
     }
     
 }

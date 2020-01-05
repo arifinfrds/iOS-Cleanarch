@@ -18,6 +18,8 @@ class CommentsViewModel: CommentsViewModelOutput {
     var error: Observable<String> = Observable("")
     var loadingType: Observable<CommentsLoadingType> = Observable(.none)
     
+    var postId: Observable<Int> = Observable(0)
+    
     enum CommentsLoadingType {
         case none
         case fullScreen
@@ -30,7 +32,7 @@ class CommentsViewModel: CommentsViewModelOutput {
     }
     
     func fetchComments(postId: Int) {
-        loadingType.value = .none
+        loadingType.value = .fullScreen
         
         useCase.execute(postId: postId) { result in
             switch result {

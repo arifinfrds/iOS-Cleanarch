@@ -21,25 +21,28 @@ class CommentsViewController: UIViewController {
     
     private var viewModel: CommentsViewModel?
     
-    init(viewModel: CommentsViewModel) {
+    init(viewModel: CommentsViewModel, postId: Int) {
         super.init(nibName: nil, bundle: nil)
         self.viewModel = viewModel
+        self.viewModel?.postId.value = postId
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
+    func inject(viewModel: CommentsViewModel, postId: Int) {
+        self.viewModel = viewModel
+        self.viewModel?.postId.value = postId
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         
-        let service: CommentService = CommentServiceImpl()
-        let repository: CommentRepository = CommentRepositoryImpl(service: service)
-        let useCase: ShowCommentsUseCase = ShowCommentsUseCaseImpl(repository: repository)
-        self.viewModel = CommentsViewModel(useCase: useCase)
+        guard let id = viewModel?.postId.value else { return }
+        viewModel?.fetchComments(postId: id)
         
-        viewModel?.fetchComments(postId: 1)
         observe()
     }
     
@@ -88,8 +91,13 @@ extension CommentsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         let comment = viewModel?.comments.value[indexPath.row]
+        
         cell.textLabel?.text = comment?.name
         cell.detailTextLabel?.text = comment?.body
+        
+        cell.textLabel?.textColor = .label
+        cell.detailTextLabel?.textColor = .secondaryLabel
+        
         return cell
     }
     
