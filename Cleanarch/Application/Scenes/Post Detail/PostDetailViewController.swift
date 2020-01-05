@@ -36,6 +36,9 @@ class PostDetailViewController: UIViewController {
         guard let id = postId else { return }
         viewModel?.loadPost(id: id)
         observe()
+        
+        setupTitleLabel()
+        setupBodyLabel()
     }
     
     private func observe() {
@@ -61,6 +64,14 @@ class PostDetailViewController: UIViewController {
     
     private func dismissLoadingView() {
         loadingViewController.remove()
+    }
+    
+    private func setupTitleLabel() {
+        titleLabel.textColor = .label
+    }
+    
+    private func setupBodyLabel() {
+        bodyLabel.textColor = .secondaryLabel
     }
     
 }
