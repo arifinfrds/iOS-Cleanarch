@@ -147,6 +147,7 @@
 		9273F54823C0851B005059EF /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				92FAA6AB23C1C02F009D0176 /* Comments */,
 				92F4120B23B4C17700069FF0 /* Posts */,
 				923CFF8D23B5AC4D0015C63B /* Post Detail */,
 			);
@@ -304,6 +305,13 @@
 				929319A323B4CB5100DFBD27 /* PostsViewController.swift */,
 			);
 			path = Posts;
+			sourceTree = "<group>";
+		};
+		92FAA6AB23C1C02F009D0176 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Comments;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

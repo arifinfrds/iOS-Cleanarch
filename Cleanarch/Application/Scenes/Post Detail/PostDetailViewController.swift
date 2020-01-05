@@ -12,10 +12,6 @@ import CleanarchUIComponents
 class PostDetailViewController: UIViewController {
     
     static let storybordId = "PostDetailViewController"
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var bodyLabel: UILabel!
-    
     var postId: Int?
     
     private var viewModel: PostDetailViewModel?
@@ -24,6 +20,11 @@ class PostDetailViewController: UIViewController {
         let viewController = LoadingViewController()
         return viewController
     }()
+    
+    @IBOutlet weak private var titleLabel: UILabel!
+    @IBOutlet weak private var bodyLabel: UILabel!
+    @IBOutlet weak private var commentsLabel: UILabel!
+    @IBOutlet weak private var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,17 +40,32 @@ class PostDetailViewController: UIViewController {
         
         setupTitleLabel()
         setupBodyLabel()
+        
+        setupTableView()
+        setupTableViewCell()
     }
     
     private func observe() {
+        observePost()
+        observeError()
+        observeLoadingType()
+    }
+    
+    private func observePost() {
         viewModel?.post.observe(on: self, observerBlock: { post in
             self.title = post.title
             self.titleLabel.text = post.title
             self.bodyLabel.text = post.body
         })
+    }
+    
+    private func observeError() {
         viewModel?.error.observe(on: self, observerBlock: { message in
             self.titleLabel.text = message
         })
+    }
+    
+    private func observeLoadingType() {
         viewModel?.loadingType.observe(on: self, observerBlock: { loadingType in
             switch loadingType {
             case .fullScreen: self.showLoadingView()
@@ -72,6 +88,44 @@ class PostDetailViewController: UIViewController {
     
     private func setupBodyLabel() {
         bodyLabel.textColor = .secondaryLabel
+    }
+    
+    private func setupTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.tableFooterView = UIView()
+    }
+    
+    private func setupTableViewCell() {
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
+    }
+    
+    
+}
+
+
+// MARK: - UITableViewDataSource
+
+extension PostDetailViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 15
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
+        return cell
+    }
+    
+}
+
+
+// MARK: - UITableViewDelegate
+
+extension PostDetailViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
     
 }

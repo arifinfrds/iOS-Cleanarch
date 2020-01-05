@@ -45,13 +45,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="smH-ml-Hxm">
+                                <rect key="frame" x="20" y="170.5" width="374" height="692.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aih-na-sDq">
+                                <rect key="frame" x="20" y="149" width="374" height="14.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="NuO-hn-xTl" firstAttribute="trailing" secondItem="smH-ml-Hxm" secondAttribute="trailing" constant="20" id="3gU-yj-sA4"/>
+                            <constraint firstItem="NuO-hn-xTl" firstAttribute="trailing" secondItem="aih-na-sDq" secondAttribute="trailing" constant="20" id="3sk-Rl-uFJ"/>
+                            <constraint firstItem="smH-ml-Hxm" firstAttribute="leading" secondItem="NuO-hn-xTl" secondAttribute="leading" constant="20" id="7QB-UT-A6t"/>
                             <constraint firstItem="xtx-6m-xB4" firstAttribute="top" secondItem="NuO-hn-xTl" secondAttribute="top" constant="20" id="GSH-cH-TL7"/>
+                            <constraint firstItem="smH-ml-Hxm" firstAttribute="firstBaseline" secondItem="aih-na-sDq" secondAttribute="baseline" constant="10" symbolType="layoutAnchor" id="JMw-ml-UTh"/>
+                            <constraint firstItem="aih-na-sDq" firstAttribute="top" secondItem="iv3-m3-8IT" secondAttribute="bottom" constant="20" id="bVv-Pv-u6j"/>
                             <constraint firstItem="NuO-hn-xTl" firstAttribute="trailing" secondItem="iv3-m3-8IT" secondAttribute="trailing" constant="20" id="bpj-H6-1GE"/>
                             <constraint firstItem="NuO-hn-xTl" firstAttribute="trailing" secondItem="xtx-6m-xB4" secondAttribute="trailing" constant="20" id="ccJ-1I-CjJ"/>
                             <constraint firstItem="iv3-m3-8IT" firstAttribute="leading" secondItem="NuO-hn-xTl" secondAttribute="leading" constant="20" id="eTs-CK-yWW"/>
+                            <constraint firstItem="smH-ml-Hxm" firstAttribute="bottom" secondItem="NuO-hn-xTl" secondAttribute="bottom" constant="1" id="geD-d6-fre"/>
+                            <constraint firstItem="aih-na-sDq" firstAttribute="leading" secondItem="NuO-hn-xTl" secondAttribute="leading" constant="20" id="ghl-K3-BOg"/>
                             <constraint firstItem="xtx-6m-xB4" firstAttribute="leading" secondItem="NuO-hn-xTl" secondAttribute="leading" constant="20" id="vHz-bN-Prl"/>
                             <constraint firstItem="iv3-m3-8IT" firstAttribute="top" secondItem="xtx-6m-xB4" secondAttribute="bottom" constant="8" id="xEL-QS-ptt"/>
                         </constraints>
@@ -59,6 +76,8 @@
                     </view>
                     <connections>
                         <outlet property="bodyLabel" destination="iv3-m3-8IT" id="k95-Je-8qq"/>
+                        <outlet property="commentsLabel" destination="aih-na-sDq" id="fLh-hB-fgT"/>
+                        <outlet property="tableView" destination="smH-ml-Hxm" id="E3j-32-6a0"/>
                         <outlet property="titleLabel" destination="xtx-6m-xB4" id="xVw-oH-FW6"/>
                     </connections>
                 </viewController>
