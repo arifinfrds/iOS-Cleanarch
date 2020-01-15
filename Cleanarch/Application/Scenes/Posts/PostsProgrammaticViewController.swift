@@ -1,35 +1,42 @@
 //
-//  PostsViewController.swift
+//  PostsProgrammaticViewController.swift
 //  Cleanarch
 //
-//  Created by Arifin Firdaus on 12/26/19.
-//  Copyright © 2019 arifinfrds. All rights reserved.
+//  Created by Arifin Firdaus on 1/15/20.
+//  Copyright © 2020 arifinfrds. All rights reserved.
 //
 
 import UIKit
 import CleanarchUIComponents
 
-class PostsViewController: UIViewController {
+class PostsProgrammaticViewController: UIViewController {
     
-    private let loadingView: LoadingViewController = {
-        let viewController = LoadingViewController()
-        return viewController
+    private let tableView: UITableView = {
+        let tableView = UITableView(frame: .zero)
+        return tableView
     }()
-        
-    @IBOutlet var tableView: UITableView!
-    let cellId = "PostsCellId"
-    
-    var viewModel: PostsViewModel?
     
     private let loadingViewController: LoadingViewController = {
         let viewController = LoadingViewController()
         return viewController
     }()
     
+    private let cellId = "cellId"
+    
+    private var viewModel: PostsViewModel?
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCell()
         setupTableView()
+        setupCell()
         
         // Setup Injection
         let postService: PostService = PostServiceImpl()
@@ -40,28 +47,18 @@ class PostsViewController: UIViewController {
         
         viewModel.loadPosts()
         observe()
-        
-        setupNavBarItem()
-    }
-    
-    private func setupNavBarItem() {
-        let item = UIBarButtonItem(title: "navigate", style: .plain, target: self, action: #selector(navigate))
-        navigationItem.rightBarButtonItem = item
-    }
-    
-    @objc private func navigate() {
-        let viewController = PostsProgrammaticViewController()
-        navigationController?.pushViewController(viewController, animated: true)
-    }
-    
-    private func setupCell() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
     }
     
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
+        view.addSubview(tableView)
+        tableView.frame = view.frame
+    }
+    
+    private func setupCell() {
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
     }
     
     private func observe() {
@@ -86,12 +83,12 @@ class PostsViewController: UIViewController {
     private func dismissLoadingView() {
         loadingViewController.remove()
     }
-    
 }
+
 
 // MARK: - UITableViewDataSource
 
-extension PostsViewController: UITableViewDataSource {
+extension PostsProgrammaticViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.items.value.count ?? 0
@@ -99,31 +96,21 @@ extension PostsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-        let post = viewModel?.items.value[indexPath.row]
-        cell.textLabel?.text = post?.title
+        if let post = viewModel?.items.value[indexPath.row] {
+            cell.textLabel?.text = post.title
+        }
         return cell
     }
     
 }
 
+
 // MARK: - UITableViewDelegate
 
-extension PostsViewController: UITableViewDelegate {
+extension PostsProgrammaticViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let id = viewModel?.items.value[indexPath.row].id else { return }
-        showPostDetail(postId: id)
-    }
-    
-    private func showPostDetail(postId: Int) {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let viewController = storyboard.instantiateViewController(identifier: PostDetailViewController.storybordId) as! PostDetailViewController
-        viewController.postId = postId
-        navigationController?.pushViewController(viewController, animated: true)
     }
     
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9217219F23CE2E2500E5C91E /* PostsProgrammaticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9217219E23CE2E2500E5C91E /* PostsProgrammaticViewController.swift */; };
 		9220B6DD23B5D6F500578465 /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F4120923B4C17100069FF0 /* PostsViewModel.swift */; };
 		9220B6DE23B5D6F800578465 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929319A323B4CB5100DFBD27 /* PostsViewController.swift */; };
 		9220B6DF23B5D6FD00578465 /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923CFF9023B5AE270015C63B /* PostDetailViewModel.swift */; };
@@ -76,6 +77,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9217219E23CE2E2500E5C91E /* PostsProgrammaticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsProgrammaticViewController.swift; sourceTree = "<group>"; };
 		923CFF8E23B5ADB10015C63B /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		923CFF9023B5AE270015C63B /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
 		9273F54223C08484005059EF /* ShowPostsUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPostsUseCaseImpl.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 			children = (
 				92F4120923B4C17100069FF0 /* PostsViewModel.swift */,
 				929319A323B4CB5100DFBD27 /* PostsViewController.swift */,
+				9217219E23CE2E2500E5C91E /* PostsProgrammaticViewController.swift */,
 			);
 			path = Posts;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				92F4120723B4C06E00069FF0 /* ShowPostUseCase.swift in Sources */,
 				9220B6DD23B5D6F500578465 /* PostsViewModel.swift in Sources */,
 				92F411FD23B4BC2700069FF0 /* ShowPostsUseCase.swift in Sources */,
+				9217219F23CE2E2500E5C91E /* PostsProgrammaticViewController.swift in Sources */,
 				92B925F123B8D19F006B27DF /* CommentService.swift in Sources */,
 				92F411F723B4BB8D00069FF0 /* Post.swift in Sources */,
 			);
