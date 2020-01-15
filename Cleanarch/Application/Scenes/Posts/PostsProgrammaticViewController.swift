@@ -10,7 +10,6 @@ import UIKit
 import CleanarchUIComponents
 
 class PostsProgrammaticViewController: UIViewController {
-    
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         return tableView
@@ -23,7 +22,8 @@ class PostsProgrammaticViewController: UIViewController {
     
     private let cellId = "cellId"
     
-    private var viewModel: PostsViewModel?
+    private(set) var viewModel: PostsProgrammaticViewModel!
+    
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -37,16 +37,18 @@ class PostsProgrammaticViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         setupCell()
+        viewModel = DefaultPostsProgrammaticViewModel()
         
-        // Setup Injection
-        let postService: PostService = PostServiceImpl()
-        let postRepository: PostRepository = PostRepositoryImpl(postService: postService)
-        let useCase: ShowPostsUseCase = ShowPostsUseCaseImpl(repository: postRepository)
-        let viewModel = PostsViewModel(useCase: useCase)
-        self.viewModel = viewModel
-        
-        viewModel.loadPosts()
-        observe()
+        bind(to: viewModel)
+    }
+    
+    private func bind(to viewModel: PostsProgrammaticViewModel) {
+        viewModel.items.observe(on: self) { [weak self] posts in
+            self?.tableView.reloadData()
+        }
+        viewModel.error.observe(on: self) { [weak self] error in
+            self?.showAlertController(withTitle: "Error", message: error, completion: nil)
+        }
     }
     
     private func setupTableView() {
@@ -59,21 +61,6 @@ class PostsProgrammaticViewController: UIViewController {
     
     private func setupCell() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
-    }
-    
-    private func observe() {
-        viewModel?.items.observe(on: self, observerBlock: { posts in
-            self.tableView.reloadData()
-        })
-        viewModel?.error.observe(on: self, observerBlock: { message in
-            self.showAlertController(withTitle: "Perhatian", message: message, completion: nil)
-        })
-        viewModel?.loadingType.observe(on: self, observerBlock: { loadingType in
-            switch loadingType {
-            case .fullScreen: self.showLoadingView()
-            case .none: self.dismissLoadingView()
-            }
-        })
     }
     
     private func showLoadingView() {
