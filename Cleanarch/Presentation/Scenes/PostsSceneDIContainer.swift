@@ -6,8 +6,9 @@
 //  Copyright © 2020 arifinfrds. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 final class PostsSceneDIContainer {
+
     
 }

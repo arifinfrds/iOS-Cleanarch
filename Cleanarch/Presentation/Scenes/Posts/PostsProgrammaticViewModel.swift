@@ -11,15 +11,11 @@ import Foundation
 protocol PostsProgrammaticViewModel: PostsViewModelOutput { }
 
 class DefaultPostsProgrammaticViewModel: PostsProgrammaticViewModel {
-    var items: Observable<[Post]> = Observable([Post]())
-    var error: Observable<String> = Observable("")
     var loadingType: Observable<PostsViewModelLoading> = Observable(.none)
-    
-    enum PostsViewModelLoading {
-        case none
-        case fullScreen
-    }
-    
+    var items: Observable<[Post]> = Observable([Post]())
+    var error: Observable<PostsViewModelError> = Observable(.none)
+    var route: Observable<PostsViewModelRoute> = Observable(.initial)
+
     private var useCase: ShowPostsUseCase?
     
     func loadPosts() {
@@ -32,7 +28,7 @@ class DefaultPostsProgrammaticViewModel: PostsProgrammaticViewModel {
             case .success(let posts):
                 strongSelf.items.value = posts
             case .failure(let error):
-                strongSelf.error.value = error.localizedDescription
+                strongSelf.error.value = .error(error.localizedDescription)
             }
             
             strongSelf.loadingType.value = .none

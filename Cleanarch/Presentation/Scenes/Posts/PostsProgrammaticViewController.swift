@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CleanarchUIComponents
 
 class PostsProgrammaticViewController: UIViewController {
     private let tableView: UITableView = {
@@ -47,7 +46,11 @@ class PostsProgrammaticViewController: UIViewController {
             self?.tableView.reloadData()
         }
         viewModel.error.observe(on: self) { [weak self] error in
-            self?.showAlertController(withTitle: "Error", message: error, completion: nil)
+            switch error {
+            case .none: break
+            case .error(let message):
+                self?.showAlertController(withTitle: "Perhatian", message: message, completion: nil)
+            }
         }
     }
     

@@ -1,5 +1,5 @@
 //
-//  PostRepository.swift
+//  PostRepositoryImpl.swift
 //  Cleanarch
 //
 //  Created by Arifin Firdaus on 12/26/19.
@@ -7,11 +7,6 @@
 //
 
 import Foundation
-
-protocol PostRepository {
-    func fetchPosts(completion: @escaping ((Result<[Post], Error>) -> Void))
-    func fetchPost(id: Int, completion: @escaping ((Result<Post, Error>) -> Void))
-}
 
 class PostRepositoryImpl: PostRepository {
     

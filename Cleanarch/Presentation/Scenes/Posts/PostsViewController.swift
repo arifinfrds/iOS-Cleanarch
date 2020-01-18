@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CleanarchUIComponents
 
 class PostsViewController: UIViewController {
     
@@ -15,11 +14,18 @@ class PostsViewController: UIViewController {
         let viewController = LoadingViewController()
         return viewController
     }()
-        
+    
     @IBOutlet var tableView: UITableView!
     let cellId = "PostsCellId"
     
-    var viewModel: PostsViewModel?
+    private(set) var viewModel: PostsViewModel!
+    
+    final class func create(with viewModel: PostsViewModel) -> PostsViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc = storyboard.instantiateViewController(identifier: "PostsViewController") as! PostsViewController
+        vc.viewModel = viewModel
+        return vc
+    }
     
     private let loadingViewController: LoadingViewController = {
         let viewController = LoadingViewController()
@@ -28,20 +34,58 @@ class PostsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCell()
-        setupTableView()
         
         // Setup Injection
         let postService: PostService = PostServiceImpl()
         let postRepository: PostRepository = PostRepositoryImpl(postService: postService)
         let useCase: ShowPostsUseCase = ShowPostsUseCaseImpl(repository: postRepository)
-        let viewModel = PostsViewModel(useCase: useCase)
+        let viewModel = DefaultPostsViewModel(useCase: useCase)
         self.viewModel = viewModel
         
         viewModel.loadPosts()
         observe()
         
+        setupCell()
+        setupTableView()
         setupNavBarItem()
+    }
+    
+    private func observe() {
+        observeItems()
+        observeError()
+        observeLoadingType()
+        observeRoute()
+    }
+    
+    private func observeItems() {
+        viewModel.items.observe(on: self, observerBlock: { posts in
+            self.tableView.reloadData()
+        })
+    }
+    
+    private func observeError() {
+        viewModel.error.observe(on: self) { error in
+            switch error {
+            case .none: break
+            case .error(let message):
+                self.showAlertController(withTitle: "Perhatian", message: message, completion: nil)
+            }
+        }
+    }
+    
+    private func observeLoadingType() {
+        viewModel.loadingType.observe(on: self, observerBlock: { loadingType in
+            switch loadingType {
+            case .fullScreen: self.showLoadingView()
+            case .none: self.dismissLoadingView()
+            }
+        })
+    }
+    
+    private func observeRoute() {
+        viewModel.route.observe(on: self, observerBlock: { [weak self] route in
+            self?.handle(route)
+        })
     }
     
     private func setupNavBarItem() {
@@ -64,21 +108,6 @@ class PostsViewController: UIViewController {
         tableView.tableFooterView = UIView()
     }
     
-    private func observe() {
-        viewModel?.items.observe(on: self, observerBlock: { posts in
-            self.tableView.reloadData()
-        })
-        viewModel?.error.observe(on: self, observerBlock: { message in
-            self.showAlertController(withTitle: "Perhatian", message: message, completion: nil)
-        })
-        viewModel?.loadingType.observe(on: self, observerBlock: { loadingType in
-            switch loadingType {
-            case .fullScreen: self.showLoadingView()
-            case .none: self.dismissLoadingView()
-            }
-        })
-    }
-    
     private func showLoadingView() {
         addChildVC(asChildViewController: loadingViewController, to: view)
     }
@@ -94,13 +123,13 @@ class PostsViewController: UIViewController {
 extension PostsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.items.value.count ?? 0
+        return viewModel.items.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-        let post = viewModel?.items.value[indexPath.row]
-        cell.textLabel?.text = post?.title
+        let post = viewModel.items.value[indexPath.row]
+        cell.textLabel?.text = post.title
         return cell
     }
     
@@ -116,7 +145,22 @@ extension PostsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let id = viewModel?.items.value[indexPath.row].id else { return }
-        showPostDetail(postId: id)
+        viewModel.route.value = .showPostDetail(postId: id)
+    }
+    
+}
+
+
+// MARK: - Handle Routing
+
+extension PostsViewController {
+    
+    private func handle(_ route: PostsViewModelRoute) {
+        switch route {
+        case .initial: break
+        case .showPostDetail(let postId):
+            showPostDetail(postId: postId)
+        }
     }
     
     private func showPostDetail(postId: Int) {

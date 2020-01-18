@@ -1,5 +1,5 @@
 //
-//  CommentRepository.swift
+//  CommentRepositoryImpl.swift
 //  Cleanarch
 //
 //  Created by Arifin Firdaus on 12/29/19.
@@ -7,10 +7,6 @@
 //
 
 import Foundation
-
-protocol CommentRepository {
-    func fetchComments(postId: Int, completion: @escaping ((Result<[Comment], Error>) -> Void))
-}
 
 class CommentRepositoryImpl: CommentRepository {
     

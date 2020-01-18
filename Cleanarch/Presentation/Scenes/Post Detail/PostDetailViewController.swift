@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CleanarchUIComponents
 
 class PostDetailViewController: UIViewController {
     
