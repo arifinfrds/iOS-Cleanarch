@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		9217219F23CE2E2500E5C91E /* PostsProgrammaticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9217219E23CE2E2500E5C91E /* PostsProgrammaticViewController.swift */; };
 		9220B6DE23B5D6F800578465 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929319A323B4CB5100DFBD27 /* PostsViewController.swift */; };
-		9220B6DF23B5D6FD00578465 /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923CFF9023B5AE270015C63B /* PostDetailViewModel.swift */; };
 		9220B6E023B5D6FD00578465 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923CFF8E23B5ADB10015C63B /* PostDetailViewController.swift */; };
 		9220B6E123B5D70300578465 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92F411D923B4BA1F00069FF0 /* Main.storyboard */; };
 		9229DD3523D2E7E600E90A18 /* DefaultPostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9229DD3423D2E7E600E90A18 /* DefaultPostsViewModel.swift */; };
+		926111E623D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926111E523D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift */; };
 		9273F54323C08484005059EF /* ShowPostsUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9273F54223C08484005059EF /* ShowPostsUseCaseImpl.swift */; };
 		9273F54523C084B7005059EF /* ShowPostUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9273F54423C084B7005059EF /* ShowPostUseCaseImpl.swift */; };
 		9273F54723C084CA005059EF /* ShowCommentsUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9273F54623C084CA005059EF /* ShowCommentsUseCaseImpl.swift */; };
@@ -57,7 +57,7 @@
 		9217219E23CE2E2500E5C91E /* PostsProgrammaticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsProgrammaticViewController.swift; sourceTree = "<group>"; };
 		9229DD3423D2E7E600E90A18 /* DefaultPostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPostsViewModel.swift; sourceTree = "<group>"; };
 		923CFF8E23B5ADB10015C63B /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
-		923CFF9023B5AE270015C63B /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
+		926111E523D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPostDetailViewModel.swift; sourceTree = "<group>"; };
 		9273F54223C08484005059EF /* ShowPostsUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPostsUseCaseImpl.swift; sourceTree = "<group>"; };
 		9273F54423C084B7005059EF /* ShowPostUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPostUseCaseImpl.swift; sourceTree = "<group>"; };
 		9273F54623C084CA005059EF /* ShowCommentsUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCommentsUseCaseImpl.swift; sourceTree = "<group>"; };
@@ -116,7 +116,7 @@
 		923CFF8D23B5AC4D0015C63B /* Post Detail */ = {
 			isa = PBXGroup;
 			children = (
-				923CFF9023B5AE270015C63B /* PostDetailViewModel.swift */,
+				926111E523D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift */,
 				923CFF8E23B5ADB10015C63B /* PostDetailViewController.swift */,
 			);
 			path = "Post Detail";
@@ -458,12 +458,12 @@
 				92BFE45723B5F07E00ACDF38 /* JSON.swift in Sources */,
 				92F411D623B4BA1F00069FF0 /* SceneDelegate.swift in Sources */,
 				92C5346323D2EA740001E125 /* UIViewController+Child.swift in Sources */,
-				9220B6DF23B5D6FD00578465 /* PostDetailViewModel.swift in Sources */,
 				92B925EF23B8D0CE006B27DF /* CommentRepositoryImpl.swift in Sources */,
 				92FAA6AF23C1C051009D0176 /* CommentsViewModel.swift in Sources */,
 				9273F54523C084B7005059EF /* ShowPostUseCaseImpl.swift in Sources */,
 				9220B6DE23B5D6F800578465 /* PostsViewController.swift in Sources */,
 				9229DD3523D2E7E600E90A18 /* DefaultPostsViewModel.swift in Sources */,
+				926111E623D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift in Sources */,
 				92B925EB23B8CF1C006B27DF /* Comment.swift in Sources */,
 				92F4120723B4C06E00069FF0 /* ShowPostUseCase.swift in Sources */,
 				92C5346D23D2EDC40001E125 /* CommentRepository.swift in Sources */,

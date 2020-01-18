@@ -68,7 +68,7 @@ class PostsViewController: UIViewController {
             switch error {
             case .none: break
             case .error(let message):
-                self.showAlertController(withTitle: "Perhatian", message: message, completion: nil)
+                self.showAlertController(withTitle: "Error", message: message, completion: nil)
             }
         }
     }

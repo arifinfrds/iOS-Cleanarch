@@ -38,6 +38,7 @@ class DefaultPostDetailViewModel: PostDetailViewModelOutput {
     
     func loadPost(id: Int) {
         loadingType.value = .fullScreen
+        error.value = .none
         
         showPostUseCase.execute(id: id) { result in
             switch result {

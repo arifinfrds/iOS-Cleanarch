@@ -35,7 +35,7 @@ class CleanarchTests: XCTestCase {
         let service: PostService = PostServiceImpl()
         let repository: PostRepository = PostRepositoryImpl(postService: service)
         let useCase: ShowPostUseCase = ShowPostUseCaseImpl(postRepository: repository)
-        let sut = PostDetailViewModel(useCase: useCase)
+        let sut = DefaultPostDetailViewModel(useCase: useCase)
         
         let id = 1
         sut.loadPost(id: id)

@@ -13,7 +13,7 @@ class PostDetailViewController: UIViewController {
     static let storybordId = "PostDetailViewController"
     var postId: Int?
     
-    private var viewModel: PostDetailViewModel?
+    private var viewModel: DefaultPostDetailViewModel?
     
     private let loadingViewController: LoadingViewController = {
         let viewController = LoadingViewController()
@@ -31,7 +31,7 @@ class PostDetailViewController: UIViewController {
         let service: PostService = PostServiceImpl()
         let repository: PostRepository = PostRepositoryImpl(postService: service)
         let useCase: ShowPostUseCase = ShowPostUseCaseImpl(postRepository: repository)
-        viewModel = PostDetailViewModel(useCase: useCase)
+        viewModel = DefaultPostDetailViewModel(useCase: useCase)
         
         guard let id = postId else { return }
         viewModel?.loadPost(id: id)
@@ -58,8 +58,12 @@ class PostDetailViewController: UIViewController {
     }
     
     private func observeError() {
-        viewModel?.error.observe(on: self, observerBlock: { message in
-            self.titleLabel.text = message
+        viewModel?.error.observe(on: self, observerBlock: { error in
+            switch error {
+            case .none: break
+            case .error(let message):
+                self.showAlertController(withTitle: "Error", message: message, completion: nil)
+            }
         })
     }
     
