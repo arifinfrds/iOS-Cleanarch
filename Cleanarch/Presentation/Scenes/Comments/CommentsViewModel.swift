@@ -10,20 +10,26 @@ import Foundation
 
 protocol CommentsViewModelOutput {
     var comments: Observable<[Comment]> { get }
-    var error: Observable<String> { get }
+    var error: Observable<CommentsViewModelError> { get }
+    var loadingType: Observable<CommentsViewModelLoadingType> { get }
+}
+
+enum CommentsViewModelError {
+    case none
+    case error(String)
+}
+
+enum CommentsViewModelLoadingType {
+    case none
+    case fullScreen
 }
 
 class CommentsViewModel: CommentsViewModelOutput {
     var comments: Observable<[Comment]> = Observable([Comment]())
-    var error: Observable<String> = Observable("")
-    var loadingType: Observable<CommentsLoadingType> = Observable(.none)
+    var error: Observable<CommentsViewModelError> = Observable(.none)
+    var loadingType: Observable<CommentsViewModelLoadingType> = Observable(.none)
     
     var postId: Observable<Int> = Observable(0)
-    
-    enum CommentsLoadingType {
-        case none
-        case fullScreen
-    }
     
     private var useCase: ShowCommentsUseCase
     
@@ -33,13 +39,14 @@ class CommentsViewModel: CommentsViewModelOutput {
     
     func fetchComments(postId: Int) {
         loadingType.value = .fullScreen
+        error.value = .none
         
         useCase.execute(postId: postId) { result in
             switch result {
             case .success(let comments):
                 self.comments.value = comments
             case .failure(let error):
-                self.error.value = error.localizedDescription
+                self.error.value = .error(error.localizedDescription)
             }
             
             self.loadingType.value = .none

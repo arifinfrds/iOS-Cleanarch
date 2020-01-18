@@ -46,13 +46,28 @@ class CommentsViewController: UIViewController {
     }
     
     private func observe() {
+        observeComments()
+        observeError()
+        observeLoadingType()
+    }
+    
+    private func observeComments() {
         viewModel?.comments.observe(on: self, observerBlock: { comments in
-            print(comments)
             self.tableView.reloadData()
         })
-        viewModel?.error.observe(on: self, observerBlock: { errorMessage in
-            print(errorMessage)
+    }
+    
+    private func observeError() {
+        viewModel?.error.observe(on: self, observerBlock: { error in
+            switch error {
+            case .none: break
+            case .error(let message):
+                self.showAlertController(withTitle: "Error", message: message, completion: nil)
+            }
         })
+    }
+    
+    private func observeLoadingType() {
         viewModel?.loadingType.observe(on: self, observerBlock: { loadingType in
             switch loadingType {
             case .fullScreen: self.showLoadingView()
@@ -74,7 +89,7 @@ class CommentsViewController: UIViewController {
         tableView.delegate = self
         tableView.tableFooterView = UIView()
     }
-
+    
     
 }
 
