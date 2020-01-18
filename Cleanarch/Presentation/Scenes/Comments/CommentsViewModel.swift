@@ -31,9 +31,9 @@ class CommentsViewModel: CommentsViewModelOutput {
     
     var postId: Observable<Int> = Observable(0)
     
-    private var useCase: ShowCommentsUseCase
+    private var useCase: ViewCommentsUseCase
     
-    init(useCase: ShowCommentsUseCase) {
+    init(useCase: ViewCommentsUseCase) {
         self.useCase = useCase
     }
     

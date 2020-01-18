@@ -1,5 +1,5 @@
 //
-//  ShowCommentsUseCase.swift
+//  ViewCommentsUseCase.swift
 //  Cleanarch
 //
 //  Created by Arifin Firdaus on 12/29/19.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol ShowCommentsUseCase {
+protocol ViewCommentsUseCase {
     func execute(postId: Int, completion: @escaping ((Result<[Comment], Error>) -> Void))
 }

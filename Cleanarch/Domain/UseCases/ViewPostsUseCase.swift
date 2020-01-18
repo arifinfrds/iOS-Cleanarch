@@ -1,5 +1,5 @@
 //
-//  ShowPostUseCase.swift
+//  ViewPostsUseCase.swift
 //  Cleanarch
 //
 //  Created by Arifin Firdaus on 12/26/19.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol ShowPostUseCase {
-    func execute(id: Int, completion: @escaping ((Result<Post, Error>) -> Void))
+protocol ViewPostsUseCase {
+    func execute(completion: @escaping ((Result<[Post], Error>) -> Void))
 }

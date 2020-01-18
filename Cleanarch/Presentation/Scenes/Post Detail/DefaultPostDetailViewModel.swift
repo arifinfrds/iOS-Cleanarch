@@ -30,9 +30,9 @@ class DefaultPostDetailViewModel: PostDetailViewModelOutput {
     var error: Observable<PostDetailViewModelError> = Observable(.none)
     var loadingType: Observable<PostDetailViewModelLoadingType> = Observable(.none)
     
-    private var showPostUseCase: ShowPostUseCase
+    private var showPostUseCase: ViewPostUseCase
     
-    init(useCase: ShowPostUseCase) {
+    init(useCase: ViewPostUseCase) {
         self.showPostUseCase = useCase
     }
     

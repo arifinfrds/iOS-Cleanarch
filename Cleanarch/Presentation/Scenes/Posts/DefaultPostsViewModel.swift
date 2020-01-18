@@ -39,9 +39,9 @@ class DefaultPostsViewModel: PostsViewModel {
     var loadingType: Observable<PostsViewModelLoading> = Observable(.none)
     var route: Observable<PostsViewModelRoute> = Observable(.initial)
     
-    private var useCase: ShowPostsUseCase
+    private var useCase: ViewPostsUseCase
 
-    init(useCase: ShowPostsUseCase) {
+    init(useCase: ViewPostsUseCase) {
         self.useCase = useCase
     }
     

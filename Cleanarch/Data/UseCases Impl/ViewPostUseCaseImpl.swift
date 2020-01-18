@@ -1,5 +1,5 @@
 //
-//  ShowPostUseCaseImpl.swift
+//  ViewPostUseCaseImpl.swift
 //  Cleanarch
 //
 //  Created by Arifin Firdaus on 1/4/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ShowPostUseCaseImpl: ShowPostUseCase {
+class ViewPostUseCaseImpl: ViewPostUseCase {
     
     private let postRepository: PostRepository
     

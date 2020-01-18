@@ -16,7 +16,7 @@ class DefaultPostsProgrammaticViewModel: PostsProgrammaticViewModel {
     var error: Observable<PostsViewModelError> = Observable(.none)
     var route: Observable<PostsViewModelRoute> = Observable(.initial)
 
-    private var useCase: ShowPostsUseCase?
+    private var useCase: ViewPostsUseCase?
     
     func loadPosts() {
         loadingType.value = .fullScreen

@@ -1,5 +1,5 @@
 //
-//  ShowCommentsUseCaseImpl.swift
+//  ViewCommentsUseCaseImpl.swift
 //  Cleanarch
 //
 //  Created by Arifin Firdaus on 1/4/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ShowCommentsUseCaseImpl: ShowCommentsUseCase {
+class ViewCommentsUseCaseImpl: ViewCommentsUseCase {
     
     private var repository: CommentRepository?
     

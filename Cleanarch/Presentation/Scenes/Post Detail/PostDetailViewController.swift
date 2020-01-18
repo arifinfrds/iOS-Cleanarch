@@ -30,7 +30,7 @@ class PostDetailViewController: UIViewController {
         
         let service: PostService = PostServiceImpl()
         let repository: PostRepository = PostRepositoryImpl(postService: service)
-        let useCase: ShowPostUseCase = ShowPostUseCaseImpl(postRepository: repository)
+        let useCase: ViewPostUseCase = ViewPostUseCaseImpl(postRepository: repository)
         viewModel = DefaultPostDetailViewModel(useCase: useCase)
         
         guard let id = postId else { return }
@@ -99,7 +99,7 @@ class PostDetailViewController: UIViewController {
         
         let service: CommentService = CommentServiceImpl()
         let repository: CommentRepository = CommentRepositoryImpl(service: service)
-        let useCase: ShowCommentsUseCase = ShowCommentsUseCaseImpl(repository: repository)
+        let useCase: ViewCommentsUseCase = ViewCommentsUseCaseImpl(repository: repository)
         let viewModel = CommentsViewModel(useCase: useCase)
         
         viewController.inject(viewModel: viewModel, postId: id)

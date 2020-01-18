@@ -34,7 +34,7 @@ class CleanarchTests: XCTestCase {
     func testPostGivenValidIdShouldReturnPost() {
         let service: PostService = PostServiceImpl()
         let repository: PostRepository = PostRepositoryImpl(postService: service)
-        let useCase: ShowPostUseCase = ShowPostUseCaseImpl(postRepository: repository)
+        let useCase: ViewPostUseCase = ShowPostUseCaseImpl(postRepository: repository)
         let sut = DefaultPostDetailViewModel(useCase: useCase)
         
         let id = 1

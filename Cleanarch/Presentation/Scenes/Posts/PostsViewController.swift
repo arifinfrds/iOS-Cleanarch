@@ -38,7 +38,7 @@ class PostsViewController: UIViewController {
         // Setup Injection
         let postService: PostService = PostServiceImpl()
         let postRepository: PostRepository = PostRepositoryImpl(postService: postService)
-        let useCase: ShowPostsUseCase = ShowPostsUseCaseImpl(repository: postRepository)
+        let useCase: ViewPostsUseCase = ViewPostsUseCaseImpl(repository: postRepository)
         let viewModel = DefaultPostsViewModel(useCase: useCase)
         self.viewModel = viewModel
         
