@@ -12,9 +12,19 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    
+    private let appDIContainer = AppDIContainer()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        setupRootViewController()
         return true
+    }
+    
+    private func setupRootViewController() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let viewController = appDIContainer.makePostsSceneDIContainer().makePostsViewController()
+        window?.rootViewController = UINavigationController(rootViewController: viewController)
+        window?.makeKeyAndVisible()
     }
 
     // MARK: UISceneSession Lifecycle
