@@ -22,6 +22,7 @@ final class PostsSceneDIContainer {
     
     
     // MARK: - Posts
+    
     func makePostsViewController() -> UIViewController {
         let viewController = PostsViewController.create(with: makePostsViewModel())
         return viewController
