@@ -21,7 +21,7 @@ final class PostsSceneDIContainer {
     }
     
     
-    // MARK: - Posts List
+    // MARK: - Posts
     func makePostsViewController() -> UIViewController {
         let viewController = PostsViewController.create(with: makePostsViewModel())
         return viewController
@@ -42,5 +42,26 @@ final class PostsSceneDIContainer {
         return repository
     }
     
+    
+    // MARK: - PostDetail
+    
+    func makePostDetailViewController() -> UIViewController {
+        let service: PostService = PostServiceImpl()
+        let repository: PostRepository = PostRepositoryImpl(postService: service)
+        let useCase: ViewPostUseCase = ViewPostUseCaseImpl(postRepository: repository)
+        let viewModel = DefaultPostDetailViewModel(useCase: useCase)
+        let viewController = PostDetailViewController.create(with: viewModel)
+        return viewController
+    }
+    
+    func makePostDetailViewModel() -> PostDetailViewModel {
+        let viewModel: PostDetailViewModel = DefaultPostDetailViewModel(useCase: makeViewPostUseCase())
+        return viewModel
+    }
+    
+    func makeViewPostUseCase() -> ViewPostUseCase {
+        let useCase: ViewPostUseCase = ViewPostUseCaseImpl(postRepository: makePostRepository())
+        return useCase
+    }
     
 }

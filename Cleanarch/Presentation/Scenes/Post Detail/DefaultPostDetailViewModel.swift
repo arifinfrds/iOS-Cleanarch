@@ -25,7 +25,9 @@ protocol PostDetailViewModelOutput {
     var loadingType: Observable<PostDetailViewModelLoadingType> { get }
 }
 
-class DefaultPostDetailViewModel: PostDetailViewModelOutput {
+protocol PostDetailViewModel: PostDetailViewModelOutput { }
+
+class DefaultPostDetailViewModel: PostDetailViewModel {
     var post: Observable<Post> = Observable(Post())
     var error: Observable<PostDetailViewModelError> = Observable(.none)
     var loadingType: Observable<PostDetailViewModelLoadingType> = Observable(.none)

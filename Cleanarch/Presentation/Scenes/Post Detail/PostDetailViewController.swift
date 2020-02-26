@@ -13,7 +13,7 @@ class PostDetailViewController: UIViewController {
     static let storybordId = "PostDetailViewController"
     var postId: Int?
     
-    private var viewModel: DefaultPostDetailViewModel?
+    
     
     private let loadingViewController: LoadingViewController = {
         let viewController = LoadingViewController()
@@ -24,6 +24,15 @@ class PostDetailViewController: UIViewController {
     @IBOutlet weak private var bodyLabel: UILabel!
     @IBOutlet weak private var commentsLabel: UILabel!
     @IBOutlet weak private var containerView: UIView!
+    
+    private var viewModel: DefaultPostDetailViewModel?
+    
+    final class func create(with viewModel: DefaultPostDetailViewModel) -> PostDetailViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc = storyboard.instantiateViewController(identifier: "PostDetailViewController") as! PostDetailViewController
+        vc.viewModel = viewModel
+        return vc
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
