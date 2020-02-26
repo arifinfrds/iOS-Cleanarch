@@ -47,23 +47,29 @@ class PostsViewController: UIViewController {
         
         setupCell()
         setupTableView()
-        setupNavBarItem()
     }
     
-    private func observe() {
+}
+
+
+// MARK: - Observing
+
+private extension PostsViewController {
+    
+    func observe() {
         observeItems()
         observeError()
         observeLoadingType()
         observeRoute()
     }
     
-    private func observeItems() {
+    func observeItems() {
         viewModel.items.observe(on: self, observerBlock: { posts in
             self.tableView.reloadData()
         })
     }
     
-    private func observeError() {
+    func observeError() {
         viewModel.error.observe(on: self) { error in
             switch error {
             case .none: break
@@ -73,7 +79,7 @@ class PostsViewController: UIViewController {
         }
     }
     
-    private func observeLoadingType() {
+    func observeLoadingType() {
         viewModel.loadingType.observe(on: self, observerBlock: { loadingType in
             switch loadingType {
             case .fullScreen: self.showLoadingView()
@@ -82,37 +88,35 @@ class PostsViewController: UIViewController {
         })
     }
     
-    private func observeRoute() {
+    func observeRoute() {
         viewModel.route.observe(on: self, observerBlock: { [weak self] route in
             self?.handle(route)
         })
     }
     
-    private func setupNavBarItem() {
-        let item = UIBarButtonItem(title: "navigate", style: .plain, target: self, action: #selector(navigate))
-        navigationItem.rightBarButtonItem = item
-    }
+}
+
+
+// MARK: - Views setup
+
+private extension PostsViewController {
     
-    @objc private func navigate() {
-        let viewController = PostsProgrammaticViewController()
-        navigationController?.pushViewController(viewController, animated: true)
-    }
     
-    private func setupCell() {
+    func setupCell() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
     }
     
-    private func setupTableView() {
+    func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
     }
     
-    private func showLoadingView() {
+    func showLoadingView() {
         addChildVC(asChildViewController: loadingViewController, to: view)
     }
     
-    private func dismissLoadingView() {
+    func dismissLoadingView() {
         loadingViewController.remove()
     }
     
