@@ -23,6 +23,10 @@ enum PostsViewModelError {
     case error(String)
 }
 
+protocol PostsViewModelInput {
+    func viewDidLoad()
+}
+
 protocol PostsViewModelOutput {
     var items: Observable<[Post]> { get }
     var error: Observable<PostsViewModelError> { get }
@@ -30,7 +34,7 @@ protocol PostsViewModelOutput {
     var route: Observable<PostsViewModelRoute> { get }
 }
 
-protocol PostsViewModel: PostsViewModelOutput { }
+protocol PostsViewModel: PostsViewModelInput, PostsViewModelOutput { }
 
 
 class DefaultPostsViewModel: PostsViewModel {
@@ -45,7 +49,11 @@ class DefaultPostsViewModel: PostsViewModel {
         self.useCase = useCase
     }
     
-    func loadPosts() {
+    func viewDidLoad() {
+        loadPosts()
+    }
+    
+    private func loadPosts() {
         loadingType.value = .fullScreen
         error.value = .none
         

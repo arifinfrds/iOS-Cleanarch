@@ -28,17 +28,17 @@ final class PostsSceneDIContainer {
         return viewController
     }
     
-    func makePostsViewModel() -> PostsViewModel {
+    private func makePostsViewModel() -> PostsViewModel {
         let viewModel: PostsViewModel = DefaultPostsViewModel(useCase: makeViewPostsUseCase())
         return viewModel
     }
     
-    func makeViewPostsUseCase() -> ViewPostsUseCase {
+    private func makeViewPostsUseCase() -> ViewPostsUseCase {
         let useCase: ViewPostsUseCase = ViewPostsUseCaseImpl(repository: makePostRepository())
         return useCase
     }
     
-    func makePostRepository() -> PostRepository {
+    private func makePostRepository() -> PostRepository {
         let repository: PostRepository = PostRepositoryImpl(postService: dependencies.postService)
         return repository
     }
@@ -55,12 +55,12 @@ final class PostsSceneDIContainer {
         return viewController
     }
     
-    func makePostDetailViewModel() -> PostDetailViewModel {
+    private func makePostDetailViewModel() -> PostDetailViewModel {
         let viewModel: PostDetailViewModel = DefaultPostDetailViewModel(useCase: makeViewPostUseCase())
         return viewModel
     }
     
-    func makeViewPostUseCase() -> ViewPostUseCase {
+    private func makeViewPostUseCase() -> ViewPostUseCase {
         let useCase: ViewPostUseCase = ViewPostUseCaseImpl(postRepository: makePostRepository())
         return useCase
     }

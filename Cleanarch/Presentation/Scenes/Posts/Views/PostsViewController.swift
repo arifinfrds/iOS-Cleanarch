@@ -34,19 +34,12 @@ class PostsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Setup Injection
-        let postService: PostService = PostServiceImpl()
-        let postRepository: PostRepository = PostRepositoryImpl(postService: postService)
-        let useCase: ViewPostsUseCase = ViewPostsUseCaseImpl(repository: postRepository)
-        let viewModel = DefaultPostsViewModel(useCase: useCase)
-        self.viewModel = viewModel
-        
-        viewModel.loadPosts()
         observe()
         
         setupCell()
         setupTableView()
+        
+        viewModel.viewDidLoad()
     }
     
 }

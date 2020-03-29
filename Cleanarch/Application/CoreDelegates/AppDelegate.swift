@@ -22,7 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func setupRootViewController() {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let viewController = appDIContainer.makePostsSceneDIContainer().makePostsViewController()
+
+        let service: PostService = PostServiceImpl()
+        let repository: PostRepository = PostRepositoryImpl(postService: service)
+        let useCase: ViewPostsUseCase = ViewPostsUseCaseImpl(repository: repository)
+        let viewModel: PostsViewModel = DefaultPostsViewModel(useCase: useCase)
+        let viewController = PostsViewController.create(with: viewModel)
         window?.rootViewController = UINavigationController(rootViewController: viewController)
         window?.makeKeyAndVisible()
     }
