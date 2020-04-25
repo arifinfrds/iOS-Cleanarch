@@ -9,7 +9,6 @@
 import Foundation
 
 class CommentRepositoryImpl: CommentRepository {
-    
     private var service: CommentService?
     
     init(service: CommentService) {

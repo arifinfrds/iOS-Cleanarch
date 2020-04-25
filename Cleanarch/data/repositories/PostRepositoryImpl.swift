@@ -9,7 +9,6 @@
 import Foundation
 
 class PostRepositoryImpl: PostRepository {
-    
     private var postService: PostService
     
     init(postService: PostService) {
