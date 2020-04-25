@@ -42,14 +42,18 @@ class PostDetailViewController: UIViewController {
         let useCase: ViewPostUseCase = ViewPostUseCaseImpl(postRepository: repository)
         viewModel = DefaultPostDetailViewModel(useCase: useCase)
         
-        guard let id = postId else { return }
-        viewModel?.loadPost(id: id)
+        attemptLoadPost()
         observe()
         
         setupTitleLabel()
         setupBodyLabel()
         
         setupContainerView()
+    }
+    
+    private func attemptLoadPost() {
+        guard let id = postId else { return }
+        viewModel?.loadPost(id: id)
     }
     
     private func observe() {
