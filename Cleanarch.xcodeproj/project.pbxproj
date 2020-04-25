@@ -141,6 +141,16 @@
 			path = CoreDelegates;
 			sourceTree = "<group>";
 		};
+		92987E902453ECCC005EFAAC /* views */ = {
+			isa = PBXGroup;
+			children = (
+				92F411D923B4BA1F00069FF0 /* Main.storyboard */,
+				92F411DC23B4BA1F00069FF0 /* Assets.xcassets */,
+				92F411DE23B4BA1F00069FF0 /* LaunchScreen.storyboard */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 		929CB0F82406BE180027395C /* viewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,9 +323,7 @@
 			children = (
 				92C5345F23D2EA5E0001E125 /* ui-components */,
 				9273F54823C0851B005059EF /* scenes */,
-				92F411D923B4BA1F00069FF0 /* Main.storyboard */,
-				92F411DC23B4BA1F00069FF0 /* Assets.xcassets */,
-				92F411DE23B4BA1F00069FF0 /* LaunchScreen.storyboard */,
+				92987E902453ECCC005EFAAC /* views */,
 			);
 			path = presentation;
 			sourceTree = "<group>";
