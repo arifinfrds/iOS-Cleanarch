@@ -202,22 +202,22 @@
 			path = DIContainer;
 			sourceTree = "<group>";
 		};
-		92F18D0423B4C62D005893C7 /* Services */ = {
+		92F18D0423B4C62D005893C7 /* services */ = {
 			isa = PBXGroup;
 			children = (
 				92F411FF23B4BDFD00069FF0 /* PostService.swift */,
 				92B925F023B8D19F006B27DF /* CommentService.swift */,
 			);
-			path = Services;
+			path = services;
 			sourceTree = "<group>";
 		};
-		92F18D0523B4C638005893C7 /* Repositories */ = {
+		92F18D0523B4C638005893C7 /* repositories */ = {
 			isa = PBXGroup;
 			children = (
 				92F18D0223B4C613005893C7 /* PostRepositoryImpl.swift */,
 				92B925EE23B8D0CE006B27DF /* CommentRepositoryImpl.swift */,
 			);
-			path = Repositories;
+			path = repositories;
 			sourceTree = "<group>";
 		};
 		92F411C723B4BA1F00069FF0 = {
@@ -244,7 +244,7 @@
 			children = (
 				92F4120123B4BFF900069FF0 /* helpers */,
 				92F411F523B4BB7C00069FF0 /* domain */,
-				92F411FE23B4BDF100069FF0 /* Data */,
+				92F411FE23B4BDF100069FF0 /* data */,
 				92F4120823B4C14000069FF0 /* Presentation */,
 				92C5346E23D2EFF70001E125 /* Application */,
 				92F411E123B4BA1F00069FF0 /* Info.plist */,
@@ -290,13 +290,13 @@
 			path = usecases;
 			sourceTree = "<group>";
 		};
-		92F411FE23B4BDF100069FF0 /* Data */ = {
+		92F411FE23B4BDF100069FF0 /* data */ = {
 			isa = PBXGroup;
 			children = (
-				92F18D0423B4C62D005893C7 /* Services */,
-				92F18D0523B4C638005893C7 /* Repositories */,
+				92F18D0423B4C62D005893C7 /* services */,
+				92F18D0523B4C638005893C7 /* repositories */,
 			);
-			path = Data;
+			path = data;
 			sourceTree = "<group>";
 		};
 		92F4120123B4BFF900069FF0 /* helpers */ = {
