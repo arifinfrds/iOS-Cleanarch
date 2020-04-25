@@ -39,10 +39,14 @@ class CommentsViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         
-        guard let id = viewModel?.postId.value else { return }
-        viewModel?.fetchComments(postId: id)
+        attemptFetchComments()
         
         observe()
+    }
+    
+    private func attemptFetchComments() {
+        guard let id = viewModel?.postId.value else { return }
+        viewModel?.fetchComments(postId: id)
     }
     
     private func observe() {
