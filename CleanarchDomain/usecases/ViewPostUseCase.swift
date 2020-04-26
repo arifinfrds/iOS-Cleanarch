@@ -1,25 +1,25 @@
 //
 //  ViewPostUseCase.swift
-//  Cleanarch
+//  CleanarchDomain
 //
-//  Created by Arifin Firdaus on 12/26/19.
-//  Copyright © 2019 arifinfrds. All rights reserved.
+//  Created by Arifin Firdaus on 26/04/20.
+//  Copyright © 2020 arifinfrds. All rights reserved.
 //
 
 import Foundation
 
-protocol ViewPostUseCase {
+public protocol ViewPostUseCase {
     func execute(id: Int, completion: @escaping ((Result<Post, Error>) -> Void))
 }
 
-class ViewPostUseCaseImpl: ViewPostUseCase {
+public final class ViewPostUseCaseImpl: ViewPostUseCase {
     private let postRepository: PostRepository
     
-    init(postRepository: PostRepository) {
+    public init(postRepository: PostRepository) {
         self.postRepository = postRepository
     }
     
-    func execute(id: Int, completion: @escaping ((Result<Post, Error>) -> Void)) {
+    public func execute(id: Int, completion: @escaping ((Result<Post, Error>) -> Void)) {
         postRepository.fetchPost(id: id) { result in
             switch result {
             case .success(let post):

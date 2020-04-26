@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CleanarchDomain
 
 final class CommentModuleDIContainer {
     struct Dependency {

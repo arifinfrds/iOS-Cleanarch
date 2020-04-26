@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1100"
+   LastUpgradeVersion = "1130"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "92F411CF23B4BA1F00069FF0"
-               BuildableName = "Cleanarch.app"
-               BlueprintName = "Cleanarch"
+               BlueprintIdentifier = "92B8ADBE24551A69004A22E1"
+               BuildableName = "CleanarchDomain.framework"
+               BlueprintName = "CleanarchDomain"
                ReferencedContainer = "container:Cleanarch.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,26 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "92F411E523B4BA2000069FF0"
-               BuildableName = "CleanarchTests.xctest"
-               BlueprintName = "CleanarchTests"
-               ReferencedContainer = "container:Cleanarch.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "92B8ADC624551A69004A22E1"
-               BuildableName = "CleanarchDomainTests.xctest"
-               BlueprintName = "CleanarchDomainTests"
-               ReferencedContainer = "container:Cleanarch.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -60,16 +40,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "92F411CF23B4BA1F00069FF0"
-            BuildableName = "Cleanarch.app"
-            BlueprintName = "Cleanarch"
-            ReferencedContainer = "container:Cleanarch.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -77,16 +47,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "92F411CF23B4BA1F00069FF0"
-            BuildableName = "Cleanarch.app"
-            BlueprintName = "Cleanarch"
+            BlueprintIdentifier = "92B8ADBE24551A69004A22E1"
+            BuildableName = "CleanarchDomain.framework"
+            BlueprintName = "CleanarchDomain"
             ReferencedContainer = "container:Cleanarch.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

@@ -1,25 +1,25 @@
 //
 //  ViewCommentsUseCase.swift
-//  Cleanarch
+//  CleanarchDomain
 //
-//  Created by Arifin Firdaus on 12/29/19.
-//  Copyright © 2019 arifinfrds. All rights reserved.
+//  Created by Arifin Firdaus on 26/04/20.
+//  Copyright © 2020 arifinfrds. All rights reserved.
 //
 
 import Foundation
 
-protocol ViewCommentsUseCase {
+public protocol ViewCommentsUseCase {
     func execute(postId: Int, completion: @escaping ((Result<[Comment], Error>) -> Void))
 }
 
-class ViewCommentsUseCaseImpl: ViewCommentsUseCase {
+public final class ViewCommentsUseCaseImpl: ViewCommentsUseCase {
     private var repository: CommentRepository?
     
-    init(repository: CommentRepository) {
+    public init(repository: CommentRepository) {
         self.repository = repository
     }
     
-    func execute(postId: Int, completion: @escaping ((Result<[Comment], Error>) -> Void)) {
+    public func execute(postId: Int, completion: @escaping ((Result<[Comment], Error>) -> Void)) {
         repository?.fetchComments(postId: postId, completion: { result in
             switch result {
             case .success(let comments):
@@ -30,3 +30,4 @@ class ViewCommentsUseCaseImpl: ViewCommentsUseCase {
         })
     }
 }
+

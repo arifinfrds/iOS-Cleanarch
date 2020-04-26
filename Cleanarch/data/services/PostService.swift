@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CleanarchDomain
 
 protocol PostService {
     func fetchPosts(completion: @escaping ((Result<[Post], Error>) -> Void))

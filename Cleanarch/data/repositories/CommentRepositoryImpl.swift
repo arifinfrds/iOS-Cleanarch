@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CleanarchDomain
 
 class CommentRepositoryImpl: CommentRepository {
     private var service: CommentService?
