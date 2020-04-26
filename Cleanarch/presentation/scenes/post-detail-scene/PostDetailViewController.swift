@@ -8,12 +8,18 @@
 
 import UIKit
 
+extension PostDetailViewController {
+    final class func create(with viewModel: DefaultPostDetailViewModel) -> PostDetailViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc = storyboard.instantiateViewController(identifier: "PostDetailViewController") as! PostDetailViewController
+        vc.viewModel = viewModel
+        return vc
+    }
+}
+
 class PostDetailViewController: UIViewController {
     
     static let storybordId = "PostDetailViewController"
-    var postId: Int?
-    
-    
     
     private let loadingViewController: LoadingViewController = {
         let viewController = LoadingViewController()
@@ -25,22 +31,16 @@ class PostDetailViewController: UIViewController {
     @IBOutlet weak private var commentsLabel: UILabel!
     @IBOutlet weak private var containerView: UIView!
     
-    private var viewModel: DefaultPostDetailViewModel?
+    private var viewModel: PostDetailViewModel!
+    private var postId: Int?
     
-    final class func create(with viewModel: DefaultPostDetailViewModel) -> PostDetailViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc = storyboard.instantiateViewController(identifier: "PostDetailViewController") as! PostDetailViewController
-        vc.viewModel = viewModel
-        return vc
+    func inject(with viewModel: PostDetailViewModel, postId: Int) {
+        self.viewModel = viewModel
+        self.postId = postId
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let service: PostService = PostServiceImpl()
-        let repository: PostRepository = PostRepositoryImpl(postService: service)
-        let useCase: ViewPostUseCase = ViewPostUseCaseImpl(postRepository: repository)
-        viewModel = DefaultPostDetailViewModel(useCase: useCase)
         
         attemptLoadPost()
         observe()
@@ -53,7 +53,7 @@ class PostDetailViewController: UIViewController {
     
     private func attemptLoadPost() {
         guard let id = postId else { return }
-        viewModel?.loadPost(id: id)
+        viewModel.loadPost(id: id)
     }
     
     private func observe() {
@@ -110,14 +110,11 @@ class PostDetailViewController: UIViewController {
         let viewController = storyboard.instantiateViewController(identifier: "CommentsViewController") as! CommentsViewController
         guard let id = postId else { return }
         
-        let service: CommentService = CommentServiceImpl()
-        let repository: CommentRepository = CommentRepositoryImpl(service: service)
-        let useCase: ViewCommentsUseCase = ViewCommentsUseCaseImpl(repository: repository)
-        let viewModel = CommentsViewModel(useCase: useCase)
-        
-        viewController.inject(viewModel: viewModel, postId: id)
-        
-        addChildVC(asChildViewController: viewController, to: containerView)
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            let viewModel = appDelegate.appDIContainer.makeCommentsModuleDIContainer().makeCommentsViewModel()
+            viewController.inject(viewModel: viewModel, postId: id)
+            addChildVC(asChildViewController: viewController, to: containerView)
+        }
     }
     
 }

@@ -8,7 +8,22 @@
 
 import UIKit
 
-class PostsViewController: UIViewController {
+
+
+// MARK: - Dependency Injection Helper
+
+extension PostsViewController {
+    
+    final class func create(with viewModel: PostsViewModel) -> PostsViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc = storyboard.instantiateViewController(identifier: "PostsViewController") as! PostsViewController
+        vc.viewModel = viewModel
+        return vc
+    }
+    
+}
+
+final class PostsViewController: UIViewController {
     
     private let loadingView: LoadingViewController = {
         let viewController = LoadingViewController()
@@ -18,19 +33,17 @@ class PostsViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     let cellId = "PostsCellId"
     
-    private(set) var viewModel: PostsViewModel!
-    
-    final class func create(with viewModel: PostsViewModel) -> PostsViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc = storyboard.instantiateViewController(identifier: "PostsViewController") as! PostsViewController
-        vc.viewModel = viewModel
-        return vc
-    }
-    
     private let loadingViewController: LoadingViewController = {
         let viewController = LoadingViewController()
         return viewController
     }()
+    
+    
+    private var viewModel: PostsViewModel!
+    
+    func inject(with viewModel: PostsViewModel) {
+        self.viewModel = viewModel
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -163,8 +176,12 @@ extension PostsViewController {
     private func showPostDetail(postId: Int) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let viewController = storyboard.instantiateViewController(identifier: PostDetailViewController.storybordId) as! PostDetailViewController
-        viewController.postId = postId
-        navigationController?.pushViewController(viewController, animated: true)
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            let viewModel = appDelegate.appDIContainer.makePostModuleDIContainer().makePostDetailViewModel()
+            viewController.inject(with: viewModel, postId: postId)
+            navigationController?.pushViewController(viewController, animated: true)
+            
+        }
     }
     
 }

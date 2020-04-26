@@ -23,7 +23,7 @@
 		92C5346723D2EAB50001E125 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C5346623D2EAB50001E125 /* UIViewController+Alert.swift */; };
 		92C5346B23D2ED990001E125 /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C5346A23D2ED990001E125 /* PostRepository.swift */; };
 		92C5346D23D2EDC40001E125 /* CommentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C5346C23D2EDC40001E125 /* CommentRepository.swift */; };
-		92EB47C923CEBB0B00D6A7EC /* PostsSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EB47C823CEBB0B00D6A7EC /* PostsSceneDIContainer.swift */; };
+		92EB47C923CEBB0B00D6A7EC /* PostModuleDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EB47C823CEBB0B00D6A7EC /* PostModuleDIContainer.swift */; };
 		92F18D0323B4C613005893C7 /* PostRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F18D0223B4C613005893C7 /* PostRepositoryImpl.swift */; };
 		92F411D423B4BA1F00069FF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F411D323B4BA1F00069FF0 /* AppDelegate.swift */; };
 		92F411D623B4BA1F00069FF0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F411D523B4BA1F00069FF0 /* SceneDelegate.swift */; };
@@ -66,7 +66,7 @@
 		92C5346623D2EAB50001E125 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		92C5346A23D2ED990001E125 /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
 		92C5346C23D2EDC40001E125 /* CommentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRepository.swift; sourceTree = "<group>"; };
-		92EB47C823CEBB0B00D6A7EC /* PostsSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsSceneDIContainer.swift; sourceTree = "<group>"; };
+		92EB47C823CEBB0B00D6A7EC /* PostModuleDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModuleDIContainer.swift; sourceTree = "<group>"; };
 		92F18D0223B4C613005893C7 /* PostRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepositoryImpl.swift; sourceTree = "<group>"; };
 		92F411D023B4BA1F00069FF0 /* Cleanarch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cleanarch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92F411D323B4BA1F00069FF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -206,7 +206,7 @@
 		92C5346F23D2F03A0001E125 /* di */ = {
 			isa = PBXGroup;
 			children = (
-				92EB47C823CEBB0B00D6A7EC /* PostsSceneDIContainer.swift */,
+				92EB47C823CEBB0B00D6A7EC /* PostModuleDIContainer.swift */,
 				92814A3C2406C4C9009F02E4 /* AppDIContainer.swift */,
 			);
 			path = di;
@@ -452,7 +452,7 @@
 				92FAA6B123C1C177009D0176 /* CommentsViewController.swift in Sources */,
 				92B925ED23B8CF83006B27DF /* ViewCommentsUseCase.swift in Sources */,
 				92F411D423B4BA1F00069FF0 /* AppDelegate.swift in Sources */,
-				92EB47C923CEBB0B00D6A7EC /* PostsSceneDIContainer.swift in Sources */,
+				92EB47C923CEBB0B00D6A7EC /* PostModuleDIContainer.swift in Sources */,
 				92F4120023B4BDFD00069FF0 /* PostService.swift in Sources */,
 				9220B6E023B5D6FD00578465 /* PostDetailViewController.swift in Sources */,
 				92C5346B23D2ED990001E125 /* PostRepository.swift in Sources */,

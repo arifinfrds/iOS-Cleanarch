@@ -8,27 +8,26 @@
 
 import UIKit
 
-final class PostsSceneDIContainer {
+final class PostModuleDIContainer {
     
-    struct Dependencies {
+    struct Dependency {
         let postService: PostService
     }
     
-    private let dependencies: Dependencies
+    private let dependency: Dependency
     
-    init(dependencies: Dependencies) {
-        self.dependencies = dependencies
+    init(dependency: Dependency) {
+        self.dependency = dependency
     }
-    
     
     // MARK: - Posts
     
-    func makePostsViewController() -> UIViewController {
+    private func makePostsViewController() -> UIViewController {
         let viewController = PostsViewController.create(with: makePostsViewModel())
         return viewController
     }
     
-    private func makePostsViewModel() -> PostsViewModel {
+    func makePostsViewModel() -> PostsViewModel {
         let viewModel: PostsViewModel = DefaultPostsViewModel(useCase: makeViewPostsUseCase())
         return viewModel
     }
@@ -39,14 +38,14 @@ final class PostsSceneDIContainer {
     }
     
     private func makePostRepository() -> PostRepository {
-        let repository: PostRepository = PostRepositoryImpl(postService: dependencies.postService)
+        let repository: PostRepository = PostRepositoryImpl(postService: dependency.postService)
         return repository
     }
     
     
     // MARK: - PostDetail
     
-    func makePostDetailViewController() -> UIViewController {
+    private func makePostDetailViewController() -> UIViewController {
         let service: PostService = PostServiceImpl()
         let repository: PostRepository = PostRepositoryImpl(postService: service)
         let useCase: ViewPostUseCase = ViewPostUseCaseImpl(postRepository: repository)
@@ -55,7 +54,7 @@ final class PostsSceneDIContainer {
         return viewController
     }
     
-    private func makePostDetailViewModel() -> PostDetailViewModel {
+    func makePostDetailViewModel() -> PostDetailViewModel {
         let viewModel: PostDetailViewModel = DefaultPostDetailViewModel(useCase: makeViewPostUseCase())
         return viewModel
     }

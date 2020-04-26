@@ -19,15 +19,24 @@ enum PostDetailViewModelError {
     case error(String)
 }
 
+protocol PostDetailViewModelInput {
+    var postId: Observable<Int> { get set }
+    func loadPost(id: Int)
+}
+
 protocol PostDetailViewModelOutput {
     var post: Observable<Post> { get }
     var error: Observable<PostDetailViewModelError> { get }
     var loadingType: Observable<PostDetailViewModelLoadingType> { get }
 }
 
-protocol PostDetailViewModel: PostDetailViewModelOutput { }
+
+
+protocol PostDetailViewModel: PostDetailViewModelInput, PostDetailViewModelOutput { }
 
 class DefaultPostDetailViewModel: PostDetailViewModel {
+    var postId: Observable<Int> = Observable(0)
+    
     var post: Observable<Post> = Observable(Post())
     var error: Observable<PostDetailViewModelError> = Observable(.none)
     var loadingType: Observable<PostDetailViewModelLoadingType> = Observable(.none)
