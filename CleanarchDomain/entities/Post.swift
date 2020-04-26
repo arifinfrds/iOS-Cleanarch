@@ -7,3 +7,20 @@
 //
 
 import Foundation
+
+public struct Post: Codable {
+    public var userId: Int?
+    public var id: Int?
+    public var title: String?
+    public var body: String?
+ 
+    enum CodingKeys: String, CodingKey {
+        case userId = "userId"
+        case id = "id"
+        case title = "title"
+        case body = "body"
+    }
+    
+    public init() { }
+  
+}
