@@ -13,6 +13,7 @@
 		9229DD3523D2E7E600E90A18 /* DefaultPostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9229DD3423D2E7E600E90A18 /* DefaultPostsViewModel.swift */; };
 		926111E623D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926111E523D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift */; };
 		92814A3D2406C4C9009F02E4 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92814A3C2406C4C9009F02E4 /* AppDIContainer.swift */; };
+		92B8ADB9245519C7004A22E1 /* CommentModuleDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8ADB8245519C7004A22E1 /* CommentModuleDIContainer.swift */; };
 		92B925EB23B8CF1C006B27DF /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B925EA23B8CF1C006B27DF /* Comment.swift */; };
 		92B925ED23B8CF83006B27DF /* ViewCommentsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B925EC23B8CF83006B27DF /* ViewCommentsUseCase.swift */; };
 		92B925EF23B8D0CE006B27DF /* CommentRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B925EE23B8D0CE006B27DF /* CommentRepositoryImpl.swift */; };
@@ -56,6 +57,7 @@
 		927D65EE23B90770005C939F /* CleanarchUIComponents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CleanarchUIComponents.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CleanarchUIComponents-fvomfypcdcyfwygiqicjmusuyhpe/Build/Products/Debug-iphonesimulator/CleanarchUIComponents.framework"; sourceTree = "<group>"; };
 		92814A3C2406C4C9009F02E4 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		929319A323B4CB5100DFBD27 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
+		92B8ADB8245519C7004A22E1 /* CommentModuleDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModuleDIContainer.swift; sourceTree = "<group>"; };
 		92B925EA23B8CF1C006B27DF /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		92B925EC23B8CF83006B27DF /* ViewCommentsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCommentsUseCase.swift; sourceTree = "<group>"; };
 		92B925EE23B8D0CE006B27DF /* CommentRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -206,8 +208,9 @@
 		92C5346F23D2F03A0001E125 /* di */ = {
 			isa = PBXGroup;
 			children = (
-				92EB47C823CEBB0B00D6A7EC /* PostModuleDIContainer.swift */,
 				92814A3C2406C4C9009F02E4 /* AppDIContainer.swift */,
+				92EB47C823CEBB0B00D6A7EC /* PostModuleDIContainer.swift */,
+				92B8ADB8245519C7004A22E1 /* CommentModuleDIContainer.swift */,
 			);
 			path = di;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				92C5346523D2EA970001E125 /* LoadingViewController.swift in Sources */,
 				92814A3D2406C4C9009F02E4 /* AppDIContainer.swift in Sources */,
 				92B925F123B8D19F006B27DF /* CommentService.swift in Sources */,
+				92B8ADB9245519C7004A22E1 /* CommentModuleDIContainer.swift in Sources */,
 				92F411F723B4BB8D00069FF0 /* Post.swift in Sources */,
 				92C5346723D2EAB50001E125 /* UIViewController+Alert.swift in Sources */,
 			);
