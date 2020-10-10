@@ -36,7 +36,6 @@ class CommentServiceTests: XCTestCase {
             switch result {
             case .success(let comments):
                 print(comments)
-                break
             case .failure(let error):
                 capturedError = error
                 expectation.fulfill()
@@ -59,7 +58,6 @@ class CommentServiceTests: XCTestCase {
             switch result {
             case .success(let comments):
                 print(comments)
-                break
             case .failure(let error):
                 capturedError = error
                 expectation.fulfill()
