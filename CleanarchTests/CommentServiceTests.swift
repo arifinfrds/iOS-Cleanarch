@@ -42,7 +42,7 @@ class CommentServiceTests: XCTestCase {
                 expectation.fulfill()
             }
         }
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 2, handler: nil)
         
         // then
         XCTAssertNotNil(capturedError)
