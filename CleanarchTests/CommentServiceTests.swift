@@ -25,6 +25,28 @@ class CommentServiceTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
+    func test_fetchComments_given_invalidPostId_shouldReturnErrorCount1() {
+        // given
+        let postId = -99
+        let sut: CommentService = CommentServiceImpl()
+        var capturedErrors: [LoadCommentsError] = []
+        let expectation = self.expectation(description: "Capture an error")
+        // when
+        sut.fetchComments(postId: postId) { result in
+            switch result {
+            case .success(let comments):
+                print(comments)
+            case .failure(let error):
+                capturedErrors.append(error)
+                expectation.fulfill()
+            }
+        }
+        waitForExpectations(timeout: 2, handler: nil)
+        
+        // then
+        XCTAssertEqual(capturedErrors.count, 1)
+    }
+    
     func test_fetchComments_given_invalidPostId_shouldReturnAnError() {
         // given
         let postId = -99
