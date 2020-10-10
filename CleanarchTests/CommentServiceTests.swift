@@ -48,4 +48,28 @@ class CommentServiceTests: XCTestCase {
         XCTAssertNotNil(capturedError)
     }
     
+    func test_fetchComments_givenInvalidPostId_shouldReturnInvalidIdError() {
+        // given
+        let postId = -99
+        let sut: CommentService = CommentServiceImpl()
+        var capturedError: LoadCommentsError?
+        let expectation = self.expectation(description: "Capture error")
+        // when
+        sut.fetchComments(postId: postId) { result in
+            switch result {
+            case .success(let comments):
+                print(comments)
+                break
+            case .failure(let error):
+                capturedError = error
+                expectation.fulfill()
+            }
+        }
+        waitForExpectations(timeout: 2, handler: nil)
+        
+        // then
+        XCTAssertNotNil(capturedError)
+        XCTAssertEqual(LoadCommentsError.invalidPostId, capturedError!)
+    }
+    
 }

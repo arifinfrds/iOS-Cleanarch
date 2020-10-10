@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum LoadCommentsError: Error {
+public enum LoadCommentsError: Error, Equatable {
     case invalidPostId
     case unknown(message: String)
 }
