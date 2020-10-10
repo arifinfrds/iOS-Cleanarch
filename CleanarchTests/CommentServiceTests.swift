@@ -30,7 +30,7 @@ class CommentServiceTests: XCTestCase {
         let postId = -99
         let sut: CommentService = CommentServiceImpl()
         var capturedErrors: [LoadCommentsError] = []
-        let expectation = self.expectation(description: "Capture an error")
+        let expectation = self.expectation(description: "Capture an error only 1")
         // when
         sut.fetchComments(postId: postId) { result in
             switch result {
