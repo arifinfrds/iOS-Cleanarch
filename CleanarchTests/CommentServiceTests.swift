@@ -30,7 +30,7 @@ class CommentServiceTests: XCTestCase {
         let postId = -99
         let sut: CommentService = CommentServiceImpl()
         var capturedError: LoadCommentsError?
-        let expectation = self.expectation(description: "Capture error")
+        let expectation = self.expectation(description: "Capture an error")
         // when
         sut.fetchComments(postId: postId) { result in
             switch result {
@@ -52,7 +52,7 @@ class CommentServiceTests: XCTestCase {
         let postId = -99
         let sut: CommentService = CommentServiceImpl()
         var capturedError: LoadCommentsError?
-        let expectation = self.expectation(description: "Capture error")
+        let expectation = self.expectation(description: "Capture valid error")
         // when
         sut.fetchComments(postId: postId) { result in
             switch result {
@@ -69,5 +69,29 @@ class CommentServiceTests: XCTestCase {
         XCTAssertNotNil(capturedError)
         XCTAssertEqual(LoadCommentsError.invalidPostId, capturedError!)
     }
+    
+    func test_fetchComments_givenValidPostId_shouldReturnValidComments() {
+        // given
+        let postId = 1
+        let sut: CommentService = CommentServiceImpl()
+        var capturedComments: [Comment] = []
+        let expectation = self.expectation(description: "Capture comments")
+        // when
+        sut.fetchComments(postId: postId) { result in
+            switch result {
+            case .success(let comments):
+                capturedComments = comments
+            case .failure(let error):
+                print(error)
+            }
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 2, handler: nil)
+        
+        // then
+        XCTAssertNotNil(capturedComments)
+    }
+    
+    
     
 }
