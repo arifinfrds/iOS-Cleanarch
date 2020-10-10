@@ -8,8 +8,13 @@
 
 import Foundation
 
+public enum LoadCommentsError: Error {
+    case invalidPostId
+    case unknown(message: String)
+}
+
 public protocol ViewCommentsUseCase {
-    func execute(postId: Int, completion: @escaping ((Result<[Comment], Error>) -> Void))
+    func execute(postId: Int, completion: @escaping ((Result<[Comment], LoadCommentsError>) -> Void))
 }
 
 public final class ViewCommentsUseCaseImpl: ViewCommentsUseCase {
@@ -19,7 +24,7 @@ public final class ViewCommentsUseCaseImpl: ViewCommentsUseCase {
         self.repository = repository
     }
     
-    public func execute(postId: Int, completion: @escaping ((Result<[Comment], Error>) -> Void)) {
+    public func execute(postId: Int, completion: @escaping ((Result<[Comment], LoadCommentsError>) -> Void)) {
         repository?.fetchComments(postId: postId, completion: { result in
             switch result {
             case .success(let comments):
