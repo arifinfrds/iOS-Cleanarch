@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1130"
+   LastUpgradeVersion = "1200"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "92B8ADBE24551A69004A22E1"
-               BuildableName = "CleanarchDomain.framework"
-               BlueprintName = "CleanarchDomain"
+               BlueprintIdentifier = "9280841A25332F6B001A7966"
+               BuildableName = "CleanarchCore.framework"
+               BlueprintName = "CleanarchCore"
                ReferencedContainer = "container:Cleanarch.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -50,9 +50,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "92B8ADBE24551A69004A22E1"
-            BuildableName = "CleanarchDomain.framework"
-            BlueprintName = "CleanarchDomain"
+            BlueprintIdentifier = "9280841A25332F6B001A7966"
+            BuildableName = "CleanarchCore.framework"
+            BlueprintName = "CleanarchCore"
             ReferencedContainer = "container:Cleanarch.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

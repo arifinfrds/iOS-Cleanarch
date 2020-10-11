@@ -7,16 +7,15 @@
 //
 
 import Foundation
-import CleanarchDomain
 
-class CommentRepositoryImpl: CommentRepository {
+public class CommentRepositoryImpl: CommentRepository {
     private var service: CommentService?
     
-    init(service: CommentService) {
+    public init(service: CommentService) {
         self.service = service
     }
     
-    func fetchComments(postId: Int, completion: @escaping ((Result<[Comment], LoadCommentsError>) -> Void)) {
+    public func fetchComments(postId: Int, completion: @escaping ((Result<[Comment], LoadCommentsError>) -> Void)) {
         service?.fetchComments(postId: postId, completion: { result in
             switch result {
             case .success(let comments):

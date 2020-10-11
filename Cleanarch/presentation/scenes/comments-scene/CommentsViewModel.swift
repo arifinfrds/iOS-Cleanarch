@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import CleanarchDomain
+import CleanarchCore
 
 protocol CommentsViewModelOutput {
     var comments: Observable<[Comment]> { get }

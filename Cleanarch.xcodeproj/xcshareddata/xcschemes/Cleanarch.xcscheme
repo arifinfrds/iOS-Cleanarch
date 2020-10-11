@@ -48,6 +48,16 @@
                ReferencedContainer = "container:Cleanarch.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9280842225332F6B001A7966"
+               BuildableName = "CleanarchCoreTests.xctest"
+               BlueprintName = "CleanarchCoreTests"
+               ReferencedContainer = "container:Cleanarch.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

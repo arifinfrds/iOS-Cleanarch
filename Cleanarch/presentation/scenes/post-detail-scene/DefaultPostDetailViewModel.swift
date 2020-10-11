@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import CleanarchDomain
+import CleanarchCore
 
 enum PostDetailViewModelLoadingType {
     case none

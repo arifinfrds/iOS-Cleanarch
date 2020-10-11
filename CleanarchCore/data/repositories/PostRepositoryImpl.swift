@@ -9,14 +9,14 @@
 import Foundation
 import CleanarchDomain
 
-class PostRepositoryImpl: PostRepository {
+public class PostRepositoryImpl: PostRepository {
     private var postService: PostService
     
-    init(postService: PostService) {
+    public init(postService: PostService) {
         self.postService = postService
     }
     
-    func fetchPosts(completion: @escaping ((Result<[Post], Error>) -> Void)) {
+    public func fetchPosts(completion: @escaping ((Result<[Post], Error>) -> Void)) {
         postService.fetchPosts { result in
             switch result {
             case .success(let posts):
@@ -27,7 +27,7 @@ class PostRepositoryImpl: PostRepository {
         }
     }
     
-    func fetchPost(id: Int, completion: @escaping ((Result<Post, Error>) -> Void)) {
+    public func fetchPost(id: Int, completion: @escaping ((Result<Post, Error>) -> Void)) {
         postService.fetchPost(id: id) { result in
             switch result {
             case .success(let post):

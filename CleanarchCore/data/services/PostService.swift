@@ -7,18 +7,17 @@
 //
 
 import Foundation
-import CleanarchDomain
 
-protocol PostService {
+public protocol PostService {
     func fetchPosts(completion: @escaping ((Result<[Post], Error>) -> Void))
     func fetchPost(id: Int, completion: @escaping ((Result<Post, Error>) -> Void))
 }
 
-class PostServiceImpl: PostService {
+public class PostServiceImpl: PostService {
     
-    init() { }
+    public init() { }
     
-    func fetchPosts(completion: @escaping ((Result<[Post], Error>) -> Void)) {
+    public func fetchPosts(completion: @escaping ((Result<[Post], Error>) -> Void)) {
         let urlString = "https://jsonplaceholder.typicode.com/posts/"
         let url = URL(string: urlString)
         URLSession.shared.dataTask(with: url!) { (data, urlResponse, error) in
@@ -37,7 +36,7 @@ class PostServiceImpl: PostService {
         }.resume()
     }
     
-    func fetchPost(id: Int, completion: @escaping ((Result<Post, Error>) -> Void)) {
+    public func fetchPost(id: Int, completion: @escaping ((Result<Post, Error>) -> Void)) {
         let urlString = "https://jsonplaceholder.typicode.com/posts/\(id)"
         let url = URL(string: urlString)
         URLSession.shared.dataTask(with: url!) { (data, urlResponse, error) in

@@ -7,30 +7,28 @@
 //
 
 import Foundation
-import CleanarchDomain
 
 
-
-protocol CommentService {
+public protocol CommentService {
     func fetchComments(postId: Int, completion: @escaping ((Result<[Comment], LoadCommentsError>) -> Void))
 }
 
-class CommentServiceImpl: CommentService {
+public class CommentServiceImpl: CommentService {
     var baseURL = "https://jsonplaceholder.typicode.com"
 
-    init() { }
+    public init() { }
     
     var stubURL: String = ""
     
-    func stub(withURL: String) {
+    public func stub(withURL: String) {
         self.stubURL = withURL
     }
     
-    func makeURLString(postId: Int) -> String {
+    public func makeURLString(postId: Int) -> String {
         return baseURL + "/comments?postId=\(postId)"
     }
     
-    func fetchComments(postId: Int, completion: @escaping ((Result<[Comment], LoadCommentsError>) -> Void)) {
+    public func fetchComments(postId: Int, completion: @escaping ((Result<[Comment], LoadCommentsError>) -> Void)) {
         if postId < 0 {
             completion(.failure(.invalidPostId))
             return
