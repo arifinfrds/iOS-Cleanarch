@@ -1,5 +1,5 @@
 //
-//  UserServiceImplMockTests.swift
+//  MockUserServiceImplTests.swift
 //  CleanarchCoreTests
 //
 //  Created by Arifin Firdaus on 11/10/20.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import CleanarchCore
 
-class UserServiceImplMockTests: XCTestCase {
+class MockUserServiceImplTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -33,7 +33,7 @@ class UserServiceImplMockTests: XCTestCase {
     
     func test_UserServiceImplMock_fetchUsers_givenNoConnectionError_shouldReturnNoConnectionError() {
         // let given
-        let sut: UserService = UserServiceImplMock(expectedCase: .fail(error: .noInternetConnection))
+        let sut: UserService = MockUserServiceImpl(expectedCase: .fail(error: .noInternetConnection))
         var capturedErrors: [LoadUsersError] = []
         let expectation = self.expectation(description: "should return no internect connection error.")
         
@@ -55,7 +55,7 @@ class UserServiceImplMockTests: XCTestCase {
     
     func test_UserServiceImplMock_fetchUsers_givenServerError_shouldReturnServerError() {
         // let given
-        let sut: UserService = UserServiceImplMock(expectedCase: .fail(error: .serverError))
+        let sut: UserService = MockUserServiceImpl(expectedCase: .fail(error: .serverError))
         var capturedErrors: [LoadUsersError] = []
         let expectation = self.expectation(description: "should return no internect connection error.")
         
@@ -77,7 +77,7 @@ class UserServiceImplMockTests: XCTestCase {
     
     func test_UserServiceImplMock_fetchUsers_givenInvalidTokenError_shouldReturnInvalidTokenError() {
         // let given
-        let sut: UserService = UserServiceImplMock(expectedCase: .fail(error: .invalidToken))
+        let sut: UserService = MockUserServiceImpl(expectedCase: .fail(error: .invalidToken))
         var capturedErrors: [LoadUsersError] = []
         let expectation = self.expectation(description: "should return no internect connection error.")
         
@@ -99,7 +99,7 @@ class UserServiceImplMockTests: XCTestCase {
     
     func test_UserServiceImplMock_fetchUsers_givenInvalidURL_shouldReturnInvalidURLError() {
         // let given
-        let sut: UserService = UserServiceImplMock(expectedCase: .fail(error: .invalidURL))
+        let sut: UserService = MockUserServiceImpl(expectedCase: .fail(error: .invalidURL))
         var capturedErrors: [LoadUsersError] = []
         let expectation = self.expectation(description: "should return no internect connection error.")
         
@@ -121,7 +121,7 @@ class UserServiceImplMockTests: XCTestCase {
     
     func test_UserServiceImplMock_fetchUsers_givenSuccessPath_shouldReturnProperArrays() {
         // let given
-        let sut: UserService = UserServiceImplMock(expectedCase: .success)
+        let sut: UserService = MockUserServiceImpl(expectedCase: .success)
         var capturedErrors: [LoadUsersError] = []
         var capturedUsers: [User] = []
         let expectedUsers = [User(id: 1, name: "Arifin Firdaus", username: "arifinfrds", email: nil)]

@@ -20,7 +20,7 @@ public protocol UserService {
     func fetchUsers(completion: @escaping (Result<[User], LoadUsersError>) -> Void)
 }
 
-class UserServiceImplMock: UserService {
+class MockUserServiceImpl: UserService {
     enum ExpectedCase {
         case success
         case fail(error: LoadUsersError)

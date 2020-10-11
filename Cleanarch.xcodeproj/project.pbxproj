@@ -14,7 +14,7 @@
 		926111E623D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926111E523D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift */; };
 		926463EF2533324A001540A2 /* CommentServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9299FC392531C33E00DF849F /* CommentServiceTests.swift */; };
 		926463F7253332D3001540A2 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926463F6253332D3001540A2 /* UserService.swift */; };
-		926463FC253333A1001540A2 /* UserServiceImplMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926463FB253333A1001540A2 /* UserServiceImplMockTests.swift */; };
+		926463FC253333A1001540A2 /* MockUserServiceImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926463FB253333A1001540A2 /* MockUserServiceImplTests.swift */; };
 		9280842425332F6B001A7966 /* CleanarchCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9280841B25332F6B001A7966 /* CleanarchCore.framework */; };
 		9280842B25332F6B001A7966 /* CleanarchCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9280842A25332F6B001A7966 /* CleanarchCoreTests.swift */; };
 		9280842D25332F6C001A7966 /* CleanarchCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 9280841D25332F6B001A7966 /* CleanarchCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -101,7 +101,7 @@
 		923CFF8E23B5ADB10015C63B /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		926111E523D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPostDetailViewModel.swift; sourceTree = "<group>"; };
 		926463F6253332D3001540A2 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
-		926463FB253333A1001540A2 /* UserServiceImplMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceImplMockTests.swift; sourceTree = "<group>"; };
+		926463FB253333A1001540A2 /* MockUserServiceImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserServiceImplTests.swift; sourceTree = "<group>"; };
 		927D65EE23B90770005C939F /* CleanarchUIComponents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CleanarchUIComponents.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CleanarchUIComponents-fvomfypcdcyfwygiqicjmusuyhpe/Build/Products/Debug-iphonesimulator/CleanarchUIComponents.framework"; sourceTree = "<group>"; };
 		9280840925332D76001A7966 /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
 		9280841125332EC1001A7966 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -224,7 +224,7 @@
 			children = (
 				9280842A25332F6B001A7966 /* CleanarchCoreTests.swift */,
 				9299FC392531C33E00DF849F /* CommentServiceTests.swift */,
-				926463FB253333A1001540A2 /* UserServiceImplMockTests.swift */,
+				926463FB253333A1001540A2 /* MockUserServiceImplTests.swift */,
 				9280842C25332F6C001A7966 /* Info.plist */,
 			);
 			path = CleanarchCoreTests;
@@ -650,7 +650,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9280842B25332F6B001A7966 /* CleanarchCoreTests.swift in Sources */,
-				926463FC253333A1001540A2 /* UserServiceImplMockTests.swift in Sources */,
+				926463FC253333A1001540A2 /* MockUserServiceImplTests.swift in Sources */,
 				926463EF2533324A001540A2 /* CommentServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
