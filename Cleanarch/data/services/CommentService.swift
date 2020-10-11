@@ -15,15 +15,26 @@ protocol CommentService {
 }
 
 class CommentServiceImpl: CommentService {
-    
+    var baseURL = "https://jsonplaceholder.typicode.com"
+
     init() { }
+    
+    var stubURL: String = ""
+    
+    func stub(withURL: String) {
+        self.stubURL = withURL
+    }
+    
+    func makeURLString(postId: Int) -> String {
+        return baseURL + "/comments?postId=\(postId)"
+    }
     
     func fetchComments(postId: Int, completion: @escaping ((Result<[Comment], LoadCommentsError>) -> Void)) {
         if postId < 0 {
             completion(.failure(.invalidPostId))
             return
         }
-        let urlString = "https://jsonplaceholder.typicode.com/comments?postId=\(postId)"
+        let urlString = makeURLString(postId: postId)
         let url = URL(string: urlString)
         URLSession.shared.dataTask(with: url!) { (data, urlResponse, error) in
             if let error = error {

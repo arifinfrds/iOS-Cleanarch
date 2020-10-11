@@ -114,6 +114,29 @@ class CommentServiceTests: XCTestCase {
         XCTAssertNotNil(capturedComments)
     }
     
+    func test_makeURLString_givenInvalidURL_shouldReturnInvalidURLError() {
+        // given
+        let sut = CommentServiceImpl()
+        sut.stub(withURL: "an-invalid-url")
+        let postId = 1
+        var capturedErrors: [LoadCommentsError] = [.invalidURL]
+        let expectation = self.expectation(description: "Capture invalid url error")
+        
+        // when
+        sut.fetchComments(postId: postId) { result in
+            switch result {
+            case .success(_):
+                break
+            case .failure(let error):
+                capturedErrors.append(error)
+            }
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 2, handler: nil)
+        
+        // then
+        XCTAssertEqual(capturedErrors, [.invalidURL])
+    }
     
     
 }

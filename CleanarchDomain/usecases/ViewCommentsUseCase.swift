@@ -10,6 +10,7 @@ import Foundation
 
 public enum LoadCommentsError: Error, Equatable {
     case invalidPostId
+    case invalidURL
     case unknown(message: String)
 }
 
