@@ -72,3 +72,11 @@ public struct Company: Codable {
     }
 }
 
+
+public enum LoadUsersError: Error {
+    case invalidToken
+    case serverError
+    case noInternetConnection
+    case unknown(message: String)
+}
+
