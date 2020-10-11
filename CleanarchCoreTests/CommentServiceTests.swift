@@ -7,8 +7,7 @@
 //
 
 import XCTest
-@testable import Cleanarch
-@testable import CleanarchDomain
+@testable import CleanarchCore
 
 class CommentServiceTests: XCTestCase {
     

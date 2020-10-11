@@ -12,6 +12,7 @@
 		9220B6E123B5D70300578465 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92F411D923B4BA1F00069FF0 /* Main.storyboard */; };
 		9229DD3523D2E7E600E90A18 /* DefaultPostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9229DD3423D2E7E600E90A18 /* DefaultPostsViewModel.swift */; };
 		926111E623D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926111E523D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift */; };
+		926463EF2533324A001540A2 /* CommentServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9299FC392531C33E00DF849F /* CommentServiceTests.swift */; };
 		9280842425332F6B001A7966 /* CleanarchCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9280841B25332F6B001A7966 /* CleanarchCore.framework */; };
 		9280842B25332F6B001A7966 /* CleanarchCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9280842A25332F6B001A7966 /* CleanarchCoreTests.swift */; };
 		9280842D25332F6C001A7966 /* CleanarchCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 9280841D25332F6B001A7966 /* CleanarchCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -34,7 +35,6 @@
 		928084A22533308C001A7966 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9280840925332D76001A7966 /* Configurable.swift */; };
 		928084A32533308C001A7966 /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B925F023B8D19F006B27DF /* CommentService.swift */; };
 		92814A3D2406C4C9009F02E4 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92814A3C2406C4C9009F02E4 /* AppDIContainer.swift */; };
-		9299FC3A2531C33E00DF849F /* CommentServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9299FC392531C33E00DF849F /* CommentServiceTests.swift */; };
 		92B8ADB9245519C7004A22E1 /* CommentModuleDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8ADB8245519C7004A22E1 /* CommentModuleDIContainer.swift */; };
 		92C5346323D2EA740001E125 /* UIViewController+Child.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C5346223D2EA740001E125 /* UIViewController+Child.swift */; };
 		92C5346523D2EA970001E125 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C5346423D2EA970001E125 /* LoadingViewController.swift */; };
@@ -219,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				9280842A25332F6B001A7966 /* CleanarchCoreTests.swift */,
+				9299FC392531C33E00DF849F /* CommentServiceTests.swift */,
 				9280842C25332F6C001A7966 /* Info.plist */,
 			);
 			path = CleanarchCoreTests;
@@ -392,7 +393,6 @@
 			isa = PBXGroup;
 			children = (
 				92F411EA23B4BA2000069FF0 /* CleanarchTests.swift */,
-				9299FC392531C33E00DF849F /* CommentServiceTests.swift */,
 				92F411EC23B4BA2000069FF0 /* Info.plist */,
 			);
 			path = CleanarchTests;
@@ -643,6 +643,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9280842B25332F6B001A7966 /* CleanarchCoreTests.swift in Sources */,
+				926463EF2533324A001540A2 /* CommentServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -672,7 +673,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				92F411EB23B4BA2000069FF0 /* CleanarchTests.swift in Sources */,
-				9299FC3A2531C33E00DF849F /* CommentServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
