@@ -12,6 +12,8 @@
 		9220B6E123B5D70300578465 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92F411D923B4BA1F00069FF0 /* Main.storyboard */; };
 		9229DD3523D2E7E600E90A18 /* DefaultPostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9229DD3423D2E7E600E90A18 /* DefaultPostsViewModel.swift */; };
 		926111E623D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926111E523D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift */; };
+		9280840A25332D76001A7966 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9280840925332D76001A7966 /* Configurable.swift */; };
+		9280841225332EC1001A7966 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9280841125332EC1001A7966 /* User.swift */; };
 		92814A3D2406C4C9009F02E4 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92814A3C2406C4C9009F02E4 /* AppDIContainer.swift */; };
 		9299FC3A2531C33E00DF849F /* CommentServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9299FC392531C33E00DF849F /* CommentServiceTests.swift */; };
 		9299FC3C2531CCD300DF849F /* HTTPCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9299FC3B2531CCD300DF849F /* HTTPCode.swift */; };
@@ -97,6 +99,8 @@
 		923CFF8E23B5ADB10015C63B /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		926111E523D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPostDetailViewModel.swift; sourceTree = "<group>"; };
 		927D65EE23B90770005C939F /* CleanarchUIComponents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CleanarchUIComponents.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CleanarchUIComponents-fvomfypcdcyfwygiqicjmusuyhpe/Build/Products/Debug-iphonesimulator/CleanarchUIComponents.framework"; sourceTree = "<group>"; };
+		9280840925332D76001A7966 /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
+		9280841125332EC1001A7966 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		92814A3C2406C4C9009F02E4 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		929319A323B4CB5100DFBD27 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		9299FC392531C33E00DF849F /* CommentServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentServiceTests.swift; sourceTree = "<group>"; };
@@ -261,6 +265,7 @@
 			children = (
 				92B8ADDE24551AC0004A22E1 /* Post.swift */,
 				92B8ADE024551AE1004A22E1 /* Comment.swift */,
+				9280841125332EC1001A7966 /* User.swift */,
 			);
 			path = entities;
 			sourceTree = "<group>";
@@ -327,6 +332,7 @@
 				92F411FF23B4BDFD00069FF0 /* PostService.swift */,
 				92B925F023B8D19F006B27DF /* CommentService.swift */,
 				9299FC3B2531CCD300DF849F /* HTTPCode.swift */,
+				9280840925332D76001A7966 /* Configurable.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -610,6 +616,7 @@
 				92B8ADDF24551AC0004A22E1 /* Post.swift in Sources */,
 				92B8ADEC24551B6E004A22E1 /* PostRepository.swift in Sources */,
 				92B8ADE424551B22004A22E1 /* ViewPostsUseCase.swift in Sources */,
+				9280841225332EC1001A7966 /* User.swift in Sources */,
 				92B8ADE624551B32004A22E1 /* ViewPostUseCase.swift in Sources */,
 				92B8ADE124551AE1004A22E1 /* Comment.swift in Sources */,
 				92B8ADE824551B42004A22E1 /* ViewCommentsUseCase.swift in Sources */,
@@ -644,6 +651,7 @@
 				9229DD3523D2E7E600E90A18 /* DefaultPostsViewModel.swift in Sources */,
 				926111E623D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift in Sources */,
 				92C5346523D2EA970001E125 /* LoadingViewController.swift in Sources */,
+				9280840A25332D76001A7966 /* Configurable.swift in Sources */,
 				9299FC3C2531CCD300DF849F /* HTTPCode.swift in Sources */,
 				92814A3D2406C4C9009F02E4 /* AppDIContainer.swift in Sources */,
 				92B925F123B8D19F006B27DF /* CommentService.swift in Sources */,

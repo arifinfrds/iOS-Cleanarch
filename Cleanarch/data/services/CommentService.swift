@@ -10,6 +10,7 @@ import Foundation
 import CleanarchDomain
 
 
+
 protocol CommentService {
     func fetchComments(postId: Int, completion: @escaping ((Result<[Comment], LoadCommentsError>) -> Void))
 }
