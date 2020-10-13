@@ -16,8 +16,13 @@ public enum LoadUsersError: Error, Equatable {
     case unknown(message: String)
 }
 
+public enum LoadUserError: Error, Equatable {
+    case invalidUserId
+}
+
 public protocol UserService {
     func fetchUsers(completion: @escaping (Result<[User], LoadUsersError>) -> Void)
+    func fetchUser(id: Int, completion: @escaping ((Result<User, LoadUserError>) -> Void))
 }
 
 class MockUserServiceImpl: UserService {
@@ -28,7 +33,7 @@ class MockUserServiceImpl: UserService {
     
     var expectedCase: ExpectedCase
     
-    init(expectedCase: ExpectedCase) {
+    init(expectedCase: ExpectedCase = .success) {
         self.expectedCase = expectedCase
     }
     
@@ -59,8 +64,19 @@ class MockUserServiceImpl: UserService {
                      email: nil
                 )
             ]
+//            let url = Bundle(for: MockUserServiceImpl.self).url(forResource: "Users", withExtension: "json")
+//            let data = try! Data(contentsOf: url!)
+//            let decodedUsers = try! JSONDecoder().decode([User].self, from: data)
             completion(.success(decodedUsers))
         }
+    }
+    
+    func fetchUser(id: Int, completion: @escaping ((Result<User, LoadUserError>) -> Void)) {
+        if id <= 0 {
+            completion(.failure(.invalidUserId))
+            return
+        }
+        
     }
 }
 

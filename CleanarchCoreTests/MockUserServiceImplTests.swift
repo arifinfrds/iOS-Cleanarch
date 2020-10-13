@@ -143,4 +143,76 @@ class MockUserServiceImplTests: XCTestCase {
         XCTAssertEqual(capturedErrors, [])
         XCTAssertEqual(capturedUsers, expectedUsers)
     }
+    
+    func test_UserServiceImplMock_fetchUser_givenInvalidUserId_shouldReturnAnError() {
+        // given
+        let userId = -99
+        let sut: UserService = MockUserServiceImpl()
+        var capturedError: LoadUserError?
+        let expectation = self.expectation(description: "should return invalid user id error.")
+        
+        // when
+        sut.fetchUser(id: userId) { result in
+            switch result {
+            case .success(_):
+                XCTFail("Expected fail, but got success.")
+            case .failure(let error):
+                capturedError = error
+            }
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 2, handler: nil)
+        
+        // then
+        XCTAssertNotNil(capturedError)
+    }
+    
+    func test_UserServiceImplMock_fetchUser_givenInvalidUserId_shouldReturnInvalidUserIdError() {
+        // given
+        let userId = -99
+        let sut: UserService = MockUserServiceImpl()
+        var capturedError: LoadUserError?
+        let expectation = self.expectation(description: "should return invalid user id error.")
+        
+        // when
+        sut.fetchUser(id: userId) { result in
+            switch result {
+            case .success(_):
+                XCTFail("Expected fail, but got success.")
+            case .failure(let error):
+                capturedError = error
+            }
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 2, handler: nil)
+        
+        // then
+        XCTAssertNotNil(capturedError)
+        XCTAssertEqual(capturedError!, .invalidUserId)
+    }
+    
+    func test_UserServiceImplMock_fetchUser_givenInvalidUserId_shouldReturnOnlyOneInvalidUserIdError() {
+        // given
+        let userId = -99
+        let sut: UserService = MockUserServiceImpl()
+        var capturedErrors: [LoadUserError] = []
+        let expectation = self.expectation(description: "should return invalid user id error.")
+        
+        // when
+        sut.fetchUser(id: userId) { result in
+            switch result {
+            case .success(_):
+                XCTFail("Expected fail, but got success.")
+            case .failure(let error):
+                capturedErrors.append(error)
+            }
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 2, handler: nil)
+        
+        // then
+        XCTAssertEqual(capturedErrors, [.invalidUserId])
+    }
+    
+    
 }
