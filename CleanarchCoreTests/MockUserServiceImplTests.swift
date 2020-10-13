@@ -10,26 +10,29 @@ import XCTest
 @testable import CleanarchCore
 
 class MockUserServiceImplTests: XCTestCase {
-
+    
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-
+    
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
+    
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
-
+    
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    
+    // MARK: - FetchUsers API
     
     func test_UserServiceImplMock_fetchUsers_givenNoConnectionError_shouldReturnNoConnectionError() {
         // let given
@@ -144,6 +147,9 @@ class MockUserServiceImplTests: XCTestCase {
         XCTAssertEqual(capturedUsers, expectedUsers)
     }
     
+    
+    // MARK: - FetchUser API
+    
     func test_UserServiceImplMock_fetchUser_givenInvalidUserId_shouldReturnAnError() {
         // given
         let userId = -99
@@ -212,6 +218,93 @@ class MockUserServiceImplTests: XCTestCase {
         
         // then
         XCTAssertEqual(capturedErrors, [.invalidUserId])
+    }
+    
+    func test_UserServiceImplMock_fetchUser_givenInvalidBundle_shouldReturnInvalidBundleUrlError() {
+        // given
+        let bundle = Bundle.main
+        let sut: MockUserServiceImpl = MockUserServiceImpl(bundle: bundle)
+        var capturedErrors: [LoadUserError] = []
+        let userId = 1
+        
+        // when
+        sut.fetchUser(id: userId) { result in
+            switch result {
+            case .success(_):
+                XCTFail("Expected fail, but got success.")
+            case .failure(let error):
+                capturedErrors.append(error)
+            }
+        }
+        
+        // then
+        XCTAssertEqual(capturedErrors, [.invalidBundleUrl])
+    }
+    
+    func test_UserServiceImplMock_fetchUser_givenValidBundle_shouldReturnUser() {
+        // given
+        let bundle = Bundle(for: MockUserServiceImplTests.self)
+        let sut: MockUserServiceImpl = MockUserServiceImpl(bundle: bundle)
+        var capturedUser: User?
+        let userId = 1
+        
+        // when
+        sut.fetchUser(id: userId) { result in
+            switch result {
+            case .success(let user):
+                capturedUser = user
+            case .failure(let error):
+                XCTFail("Expected success, but got fail, reason: \(error.localizedDescription)")
+            }
+        }
+        
+        // then
+        XCTAssertNotNil(capturedUser)
+    }
+    
+    func test_UserServiceImplMock_fetchUser_givenValidBundle_shouldReturnACorrectUser() {
+        // given
+        let bundle = Bundle(for: MockUserServiceImplTests.self)
+        let sut: MockUserServiceImpl = MockUserServiceImpl(bundle: bundle)
+        var capturedUser: User?
+        let userId = 1
+        
+        // when
+        sut.fetchUser(id: userId) { result in
+            switch result {
+            case .success(let user):
+                capturedUser = user
+            case .failure(let error):
+                XCTFail("Expected success, but got fail, reason: \(error.localizedDescription)")
+            }
+        }
+        
+        // then
+        XCTAssertNotNil(capturedUser)
+        XCTAssertEqual(userId, capturedUser!.id)
+    }
+    
+    func test_UserServiceImplMock_fetchUser_givenValidBundle_shouldReturnOnlyOneAndExactSameUser() {
+        // given
+        let bundle = Bundle(for: MockUserServiceImplTests.self)
+        let sut: MockUserServiceImpl = MockUserServiceImpl(bundle: bundle)
+        var capturedUsers: [User] = []
+        let userId = 1
+        
+        // when
+        sut.fetchUser(id: userId) { result in
+            switch result {
+            case .success(let user):
+                capturedUsers.append(user)
+            case .failure(let error):
+                XCTFail("Expected success, but got fail, reason: \(error.localizedDescription)")
+            }
+        }
+        
+        // then
+        XCTAssertEqual(
+            capturedUsers, [User(id: 1, name: "Leanne Graham", username: "Bret", email: "Sincere@april.biz")]
+        )
     }
     
     

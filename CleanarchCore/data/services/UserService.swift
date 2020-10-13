@@ -18,6 +18,8 @@ public enum LoadUsersError: Error, Equatable {
 
 public enum LoadUserError: Error, Equatable {
     case invalidUserId
+    case invalidBundleUrl
+    case failToMakeDataOrDecodeUserData
 }
 
 public protocol UserService {
@@ -32,9 +34,16 @@ class MockUserServiceImpl: UserService {
     }
     
     var expectedCase: ExpectedCase
+    var bundle: Bundle
     
-    init(expectedCase: ExpectedCase = .success) {
+    init(bundle: Bundle = .init()) {
+        self.bundle = bundle
+        self.expectedCase = .success
+    }
+    
+    init(expectedCase: ExpectedCase = .success, bundle: Bundle = .init()) {
         self.expectedCase = expectedCase
+        self.bundle = bundle
     }
     
     func fetchUsers(completion: @escaping (Result<[User], LoadUsersError>) -> Void) {
@@ -64,9 +73,9 @@ class MockUserServiceImpl: UserService {
                      email: nil
                 )
             ]
-//            let url = Bundle(for: MockUserServiceImpl.self).url(forResource: "Users", withExtension: "json")
-//            let data = try! Data(contentsOf: url!)
-//            let decodedUsers = try! JSONDecoder().decode([User].self, from: data)
+            //            let url = Bundle(for: MockUserServiceImpl.self).url(forResource: "Users", withExtension: "json")
+            //            let data = try! Data(contentsOf: url!)
+            //            let decodedUsers = try! JSONDecoder().decode([User].self, from: data)
             completion(.success(decodedUsers))
         }
     }
@@ -77,6 +86,18 @@ class MockUserServiceImpl: UserService {
             return
         }
         
+        guard let url = bundle.url(forResource: "User", withExtension: "json") else {
+            completion(.failure(.invalidBundleUrl))
+            return
+        }
+        do {
+            let data = try! Data(contentsOf: url)
+            let decodedUser = try! JSONDecoder().decode(User.self, from: data)
+            completion(.success(decodedUser))
+        } catch {
+            completion(.failure(.failToMakeDataOrDecodeUserData))
+            return
+        }
     }
 }
 
