@@ -91,8 +91,8 @@ class MockUserServiceImpl: UserService {
             return
         }
         do {
-            let data = try! Data(contentsOf: url)
-            let decodedUser = try! JSONDecoder().decode(User.self, from: data)
+            let data = try Data(contentsOf: url)
+            let decodedUser = try JSONDecoder().decode(User.self, from: data)
             completion(.success(decodedUser))
         } catch {
             completion(.failure(.failToMakeDataOrDecodeUserData))
