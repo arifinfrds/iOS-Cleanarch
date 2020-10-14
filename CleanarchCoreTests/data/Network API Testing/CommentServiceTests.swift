@@ -9,6 +9,8 @@
 import XCTest
 @testable import CleanarchCore
 
+
+// This class will be refactored soon.
 class CommentServiceTests: XCTestCase {
     
     override func setUp() {

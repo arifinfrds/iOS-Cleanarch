@@ -194,6 +194,31 @@
 			path = "post-detail-scene";
 			sourceTree = "<group>";
 		};
+		92476D992537163700F24F7E /* Network API Testing */ = {
+			isa = PBXGroup;
+			children = (
+				9299FC392531C33E00DF849F /* CommentServiceTests.swift */,
+			);
+			path = "Network API Testing";
+			sourceTree = "<group>";
+		};
+		92476DA02537167300F24F7E /* Mock Testing */ = {
+			isa = PBXGroup;
+			children = (
+				926463FB253333A1001540A2 /* MockUserServiceImplTests.swift */,
+			);
+			path = "Mock Testing";
+			sourceTree = "<group>";
+		};
+		92476DA12537168600F24F7E /* data */ = {
+			isa = PBXGroup;
+			children = (
+				92476DA02537167300F24F7E /* Mock Testing */,
+				92476D992537163700F24F7E /* Network API Testing */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
 		9273F54823C0851B005059EF /* scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,9 +251,8 @@
 		9280842925332F6B001A7966 /* CleanarchCoreTests */ = {
 			isa = PBXGroup;
 			children = (
+				92476DA12537168600F24F7E /* data */,
 				9280842A25332F6B001A7966 /* CleanarchCoreTests.swift */,
-				9299FC392531C33E00DF849F /* CommentServiceTests.swift */,
-				926463FB253333A1001540A2 /* MockUserServiceImplTests.swift */,
 				9280842C25332F6C001A7966 /* Info.plist */,
 				92CF2C042533FE870075F47A /* Users.json */,
 				922226FD2535A47A00585D79 /* User.json */,
