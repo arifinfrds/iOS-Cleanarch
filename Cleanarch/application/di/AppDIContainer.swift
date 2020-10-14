@@ -31,5 +31,12 @@ class AppDIContainer {
         let dependency = CommentModuleDIContainer.Dependency(commentService: commentService)
         return CommentModuleDIContainer(dependency: dependency)
     }
+    
+    func makeLoadUsersUseCase() -> LoadUsersUseCase {
+        let service: UserService = UserServiceImpl()
+        let repository: UserRepository = UserRepositoryImpl(service: service)
+        let useCase: LoadUsersUseCase = LoadUsersUseCaseImpl(repository: repository)
+        return useCase
+    }
 }
 

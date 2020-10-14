@@ -8,15 +8,6 @@
 
 import Foundation
 
-public enum LoadUsersError: Error, Equatable {
-    case invalidToken
-    case invalidURL
-    case serverError
-    case noInternetConnection
-    case invalidBundleUrl
-    case failToMakeDataOrDecodeUsersData
-    case unknown(message: String)
-}
 
 public enum LoadUserError: Error, Equatable {
     case invalidUserId
@@ -29,8 +20,24 @@ public protocol UserService {
     func fetchUser(id: Int, completion: @escaping ((Result<User, LoadUserError>) -> Void))
 }
 
-class MockUserServiceImpl: UserService {
-    enum ExpectedCase {
+public class UserServiceImpl: UserService {
+    
+    public init() { }
+    
+    public func fetchUsers(completion: @escaping (Result<[User], LoadUsersError>) -> Void) {
+        completion(.success([]))
+    }
+    
+    public func fetchUser(id: Int, completion: @escaping ((Result<User, LoadUserError>) -> Void)) {
+        completion(.failure(.invalidUserId))
+    }
+}
+
+
+// MARK: - Mock
+
+public class MockUserServiceImpl: UserService {
+    public enum ExpectedCase {
         case success
         case fail(error: LoadUsersError)
     }
@@ -38,17 +45,17 @@ class MockUserServiceImpl: UserService {
     var expectedCase: ExpectedCase
     var bundle: Bundle
     
-    init(bundle: Bundle = .init()) {
+    public init(bundle: Bundle = .init()) {
         self.bundle = bundle
         self.expectedCase = .success
     }
     
-    init(expectedCase: ExpectedCase = .success, bundle: Bundle = .init()) {
+    public init(expectedCase: ExpectedCase = .success, bundle: Bundle = .init()) {
         self.expectedCase = expectedCase
         self.bundle = bundle
     }
     
-    func fetchUsers(completion: @escaping (Result<[User], LoadUsersError>) -> Void) {
+    public func fetchUsers(completion: @escaping (Result<[User], LoadUsersError>) -> Void) {
         switch expectedCase {
         case .fail(let error):
             if error == .noInternetConnection {
@@ -83,7 +90,7 @@ class MockUserServiceImpl: UserService {
         }
     }
     
-    func fetchUser(id: Int, completion: @escaping ((Result<User, LoadUserError>) -> Void)) {
+    public func fetchUser(id: Int, completion: @escaping ((Result<User, LoadUserError>) -> Void)) {
         if id <= 0 {
             completion(.failure(.invalidUserId))
             return

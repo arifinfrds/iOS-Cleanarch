@@ -12,6 +12,9 @@
 		9220B6E123B5D70300578465 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92F411D923B4BA1F00069FF0 /* Main.storyboard */; };
 		922226FE2535A47A00585D79 /* User.json in Resources */ = {isa = PBXBuildFile; fileRef = 922226FD2535A47A00585D79 /* User.json */; };
 		9229DD3523D2E7E600E90A18 /* DefaultPostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9229DD3423D2E7E600E90A18 /* DefaultPostsViewModel.swift */; };
+		92476DA8253717DF00F24F7E /* LoadUsersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92476DA7253717DF00F24F7E /* LoadUsersUseCase.swift */; };
+		92476DAD2537181D00F24F7E /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92476DAC2537181D00F24F7E /* UserRepository.swift */; };
+		92476DB22537185600F24F7E /* UserRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92476DB12537185600F24F7E /* UserRepositoryImpl.swift */; };
 		926111E623D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926111E523D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift */; };
 		926463EF2533324A001540A2 /* CommentServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9299FC392531C33E00DF849F /* CommentServiceTests.swift */; };
 		926463F7253332D3001540A2 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926463F6253332D3001540A2 /* UserService.swift */; };
@@ -102,6 +105,9 @@
 		922226FD2535A47A00585D79 /* User.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = User.json; sourceTree = "<group>"; };
 		9229DD3423D2E7E600E90A18 /* DefaultPostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPostsViewModel.swift; sourceTree = "<group>"; };
 		923CFF8E23B5ADB10015C63B /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		92476DA7253717DF00F24F7E /* LoadUsersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadUsersUseCase.swift; sourceTree = "<group>"; };
+		92476DAC2537181D00F24F7E /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		92476DB12537185600F24F7E /* UserRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryImpl.swift; sourceTree = "<group>"; };
 		926111E523D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPostDetailViewModel.swift; sourceTree = "<group>"; };
 		926463F6253332D3001540A2 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		926463FB253333A1001540A2 /* MockUserServiceImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserServiceImplTests.swift; sourceTree = "<group>"; };
@@ -213,6 +219,7 @@
 		92476DA12537168600F24F7E /* data */ = {
 			isa = PBXGroup;
 			children = (
+				92476DA32537176300F24F7E /* repository */,
 				92476DA2253716D700F24F7E /* service */,
 			);
 			path = data;
@@ -225,6 +232,13 @@
 				92476D992537163700F24F7E /* Network API Testing */,
 			);
 			path = service;
+			sourceTree = "<group>";
+		};
+		92476DA32537176300F24F7E /* repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = repository;
 			sourceTree = "<group>";
 		};
 		9273F54823C0851B005059EF /* scenes */ = {
@@ -329,6 +343,7 @@
 				92B8ADE324551B22004A22E1 /* ViewPostsUseCase.swift */,
 				92B8ADE524551B32004A22E1 /* ViewPostUseCase.swift */,
 				92B8ADE724551B42004A22E1 /* ViewCommentsUseCase.swift */,
+				92476DA7253717DF00F24F7E /* LoadUsersUseCase.swift */,
 			);
 			path = usecases;
 			sourceTree = "<group>";
@@ -346,6 +361,7 @@
 			children = (
 				92B8ADEB24551B6E004A22E1 /* PostRepository.swift */,
 				92B8ADED24551B79004A22E1 /* CommentRepository.swift */,
+				92476DAC2537181D00F24F7E /* UserRepository.swift */,
 			);
 			path = repositories;
 			sourceTree = "<group>";
@@ -396,6 +412,7 @@
 			children = (
 				92F18D0223B4C613005893C7 /* PostRepositoryImpl.swift */,
 				92B925EE23B8D0CE006B27DF /* CommentRepositoryImpl.swift */,
+				92476DB12537185600F24F7E /* UserRepositoryImpl.swift */,
 			);
 			path = repositories;
 			sourceTree = "<group>";
@@ -681,6 +698,9 @@
 				9280846B25332FCB001A7966 /* ViewCommentsUseCase.swift in Sources */,
 				928084A02533308C001A7966 /* PostService.swift in Sources */,
 				9280849825333084001A7966 /* PostRepositoryImpl.swift in Sources */,
+				92476DB22537185600F24F7E /* UserRepositoryImpl.swift in Sources */,
+				92476DA8253717DF00F24F7E /* LoadUsersUseCase.swift in Sources */,
+				92476DAD2537181D00F24F7E /* UserRepository.swift in Sources */,
 				9280846A25332FCB001A7966 /* ViewPostsUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

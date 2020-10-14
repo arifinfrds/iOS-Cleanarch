@@ -53,6 +53,15 @@ final class PostsViewController: UIViewController {
         setupTableView()
         
         viewModel.viewDidLoad()
+        
+        AppDIContainer().makeLoadUsersUseCase().execute { result in
+            switch result {
+            case .success(let users):
+                print(users)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
 }
