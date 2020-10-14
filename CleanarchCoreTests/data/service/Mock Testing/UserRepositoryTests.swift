@@ -31,6 +31,27 @@ class UserRepositoryTests: XCTestCase {
         }
     }
     
+    func test_fetchUsers_givenInvalidBundleDependencyMockService_shouldReturnInvalidBundleError() {
+        // given
+        let bundle = Bundle(for: UserRepositoryImpl.self)
+        let service: UserService = MockUserServiceImpl(bundle: bundle)
+        let sut: UserRepository = UserRepositoryImpl(service: service)
+        var capturedErrors: [LoadUsersError] = []
+        
+        // when
+        sut.fetchUsers { result in
+            switch result {
+            case .success(_):
+                XCTFail("expected error, but got user instead.")
+            case .failure(let error):
+                capturedErrors.append(error)
+            }
+        }
+        
+        // then
+        XCTAssertEqual(capturedErrors, [.invalidBundleUrl])
+    }
+    
     func test_fetchUsers_givenValidMockService_shouldReturnUsers() {
         // given
         let bundle = Bundle(for: UserRepositoryTests.self)
