@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9206346C2537233300E50B18 /* UserRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9206346B2537233300E50B18 /* UserRepositoryTests.swift */; };
 		9220B6DE23B5D6F800578465 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929319A323B4CB5100DFBD27 /* PostsViewController.swift */; };
 		9220B6E023B5D6FD00578465 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923CFF8E23B5ADB10015C63B /* PostDetailViewController.swift */; };
 		9220B6E123B5D70300578465 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92F411D923B4BA1F00069FF0 /* Main.storyboard */; };
@@ -102,6 +103,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9206346B2537233300E50B18 /* UserRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryTests.swift; sourceTree = "<group>"; };
 		922226FD2535A47A00585D79 /* User.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = User.json; sourceTree = "<group>"; };
 		9229DD3423D2E7E600E90A18 /* DefaultPostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPostsViewModel.swift; sourceTree = "<group>"; };
 		923CFF8E23B5ADB10015C63B /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				926463FB253333A1001540A2 /* MockUserServiceImplTests.swift */,
+				9206346B2537233300E50B18 /* UserRepositoryTests.swift */,
 			);
 			path = "Mock Testing";
 			sourceTree = "<group>";
@@ -711,6 +714,7 @@
 			files = (
 				9280842B25332F6B001A7966 /* CleanarchCoreTests.swift in Sources */,
 				926463FC253333A1001540A2 /* MockUserServiceImplTests.swift in Sources */,
+				9206346C2537233300E50B18 /* UserRepositoryTests.swift in Sources */,
 				926463EF2533324A001540A2 /* CommentServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
