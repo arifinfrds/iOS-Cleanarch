@@ -124,10 +124,11 @@ class MockUserServiceImplTests: XCTestCase {
     
     func test_UserServiceImplMock_fetchUsers_givenSuccessPath_shouldReturnProperArrays() {
         // let given
-        let sut: UserService = MockUserServiceImpl(expectedCase: .success)
-        var capturedErrors: [LoadUsersError] = []
+        let bundle = Bundle(for: MockUserServiceImplTests.self)
+        let sut: UserService = MockUserServiceImpl(expectedCase: .success, bundle: bundle)
+        let capturedErrors: [LoadUsersError] = []
         var capturedUsers: [User] = []
-        let expectedUsers = [User(id: 1, name: "Arifin Firdaus", username: "arifinfrds", email: nil)]
+        let expectedUsers = [User(id: 1, name: "Leanne Graham", username: "Bret", email: "Sincere@april.biz")]
         let expectation = self.expectation(description: "should return array of users.")
         
         // when
@@ -136,7 +137,7 @@ class MockUserServiceImplTests: XCTestCase {
             case .success(let users):
                 capturedUsers = users
             case .failure(let error):
-                capturedErrors.append(error)
+                XCTFail("expected no error, but got error. reason: \(error.localizedDescription)")
             }
             expectation.fulfill()
         }

@@ -103,7 +103,7 @@ class CommentServiceTests: XCTestCase {
             case .success(let comments):
                 capturedComments = comments
             case .failure(let error):
-                print(error)
+                XCTFail("expected no error, but got error. reason: \(error.localizedDescription)")
             }
             expectation.fulfill()
         }
@@ -125,7 +125,7 @@ class CommentServiceTests: XCTestCase {
         sut.fetchComments(postId: postId) { result in
             switch result {
             case .success(_):
-                break
+                XCTFail("expected fail, but got success.")
             case .failure(let error):
                 capturedErrors.append(error)
             }

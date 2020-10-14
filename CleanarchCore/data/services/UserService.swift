@@ -13,6 +13,8 @@ public enum LoadUsersError: Error, Equatable {
     case invalidURL
     case serverError
     case noInternetConnection
+    case invalidBundleUrl
+    case failToMakeDataOrDecodeUsersData
     case unknown(message: String)
 }
 
@@ -66,17 +68,18 @@ class MockUserServiceImpl: UserService {
                 return
             }
         case .success:
-            let decodedUsers = [
-                User(id: 1,
-                     name: "Arifin Firdaus",
-                     username: "arifinfrds",
-                     email: nil
-                )
-            ]
-            //            let url = Bundle(for: MockUserServiceImpl.self).url(forResource: "Users", withExtension: "json")
-            //            let data = try! Data(contentsOf: url!)
-            //            let decodedUsers = try! JSONDecoder().decode([User].self, from: data)
-            completion(.success(decodedUsers))
+            guard let url = bundle.url(forResource: "Users", withExtension: "json") else {
+                completion(.failure(.invalidBundleUrl))
+                return
+            }
+            do {
+                let data = try Data(contentsOf: url)
+                let decodedUsers = try JSONDecoder().decode([User].self, from: data)
+                completion(.success(decodedUsers))
+            } catch(_) {
+                completion(.failure(.failToMakeDataOrDecodeUsersData))
+                return
+            }
         }
     }
     
@@ -94,7 +97,7 @@ class MockUserServiceImpl: UserService {
             let data = try Data(contentsOf: url)
             let decodedUser = try JSONDecoder().decode(User.self, from: data)
             completion(.success(decodedUser))
-        } catch {
+        } catch(_) {
             completion(.failure(.failToMakeDataOrDecodeUserData))
             return
         }
