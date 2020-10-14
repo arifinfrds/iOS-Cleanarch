@@ -213,10 +213,18 @@
 		92476DA12537168600F24F7E /* data */ = {
 			isa = PBXGroup;
 			children = (
+				92476DA2253716D700F24F7E /* service */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		92476DA2253716D700F24F7E /* service */ = {
+			isa = PBXGroup;
+			children = (
 				92476DA02537167300F24F7E /* Mock Testing */,
 				92476D992537163700F24F7E /* Network API Testing */,
 			);
-			path = data;
+			path = service;
 			sourceTree = "<group>";
 		};
 		9273F54823C0851B005059EF /* scenes */ = {
