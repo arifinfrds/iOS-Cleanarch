@@ -214,7 +214,6 @@
 			isa = PBXGroup;
 			children = (
 				926463FB253333A1001540A2 /* MockUserServiceImplTests.swift */,
-				9206346B2537233300E50B18 /* UserRepositoryTests.swift */,
 			);
 			path = "Mock Testing";
 			sourceTree = "<group>";
@@ -240,6 +239,7 @@
 		92476DA32537176300F24F7E /* repository */ = {
 			isa = PBXGroup;
 			children = (
+				9206346B2537233300E50B18 /* UserRepositoryTests.swift */,
 			);
 			path = repository;
 			sourceTree = "<group>";
