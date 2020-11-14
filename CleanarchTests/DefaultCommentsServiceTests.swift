@@ -24,7 +24,7 @@ class DefaultCommentsService {
     
     func fetchComments(completion: @escaping (Result<[Comment], Error>) -> Void) {
         let url = URL(string: "https://invalid-url.com")!
-        session.dataTask(with: url) { (_, response, error) in
+        session.dataTask(with: url) { (data, response, error) in
             if let error = error as NSError? {
                 if error.domain == NSURLErrorDomain {
                     if error.code == NSURLErrorNotConnectedToInternet {
@@ -44,6 +44,9 @@ class DefaultCommentsService {
                 if let httpResponse = response as? HTTPURLResponse {
                     if httpResponse.statusCode == 400 {
                         completion(.failure(.invalidData))
+                    }
+                    if httpResponse.statusCode == 500 {
+                        completion(.failure(.serverError))
                     }
                 }
                 fatalError("Unhandled case yet")
@@ -174,6 +177,9 @@ class DefaultCommentsServiceTests: XCTestCase {
         
         XCTAssertEqual(capturedErrors, [.invalidData])
     }
+    
+    // FIXME: - Not passing for empty json body, e.g.: "{}"
+    
     
     
     // MARK: - Helpers
