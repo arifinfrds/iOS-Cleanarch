@@ -26,17 +26,19 @@ class DefaultCommentsService {
         let url = URL(string: "https://invalid-url.com")!
         session.dataTask(with: url) { (_, _, error) in
             if let error = error as NSError? {
-                if error.domain == NSURLErrorDomain && error.code == NSURLErrorNotConnectedToInternet {
-                    completion(.failure(.connectivity))
-                    return
-                }
-                if error.domain == NSURLErrorDomain && error.code == NSURLErrorCannotParseResponse {
-                    completion(.failure(.invalidData))
-                    return
-                }
-                if error.domain == NSURLErrorDomain && error.code == NSURLErrorBadServerResponse {
-                    completion(.failure(.serverError))
-                    return
+                if error.domain == NSURLErrorDomain {
+                    if error.code == NSURLErrorNotConnectedToInternet {
+                        completion(.failure(.connectivity))
+                        return
+                    }
+                    if error.code == NSURLErrorCannotParseResponse {
+                        completion(.failure(.invalidData))
+                        return
+                    }
+                    if error.code == NSURLErrorBadServerResponse {
+                        completion(.failure(.serverError))
+                        return
+                    }
                 }
                 fatalError("Unhandled case yet")
             }
