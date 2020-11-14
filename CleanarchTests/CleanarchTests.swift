@@ -49,6 +49,17 @@ class CleanarchTests: XCTestCase {
         XCTAssertEqual(client.requestedURLs, [url])
     }
     
+    func test_fetchPosts_requestDataFromURLTwice() {
+        let url = URL(string: "https://any-url.com")!
+        let client = HTTPClientSpy()
+        let sut = DefaultPostService(url: url, client: client)
+        
+        sut.fetchPosts()
+        sut.fetchPosts()
+        
+        XCTAssertEqual(client.requestedURLs, [url, url])
+    }
+    
     private class HTTPClientSpy: HTTPClient {
         var requestedURLs: [URL] = []
         
