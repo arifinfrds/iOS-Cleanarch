@@ -60,11 +60,40 @@ class CleanarchTests: XCTestCase {
         XCTAssertEqual(client.requestedURLs, [url, url])
     }
     
+    func test_fetchPosts_deliversErrorOnClientError() {
+        let url = URL(string: "https://any-url.com")!
+        let client = HTTPClientSpy()
+        let expectedError = NSError(domain: "some error", code: 1, userInfo: nil)
+        let sut = DefaultPostService(url: url, client: client)
+        
+        sut.fetchPosts()
+        client.complete(with: expectedError)
+        
+        XCTAssertEqual(client.messages[0].error as NSError, expectedError)
+    }
+    
     private class HTTPClientSpy: HTTPClient {
         var requestedURLs: [URL] = []
+        var errros: [Error] = []
+        
+        struct Message {
+            var requestedURL: URL
+            var error: Error
+        }
+        
+        var messages: [Message] = []
         
         func get(from url: URL) {
             requestedURLs.append(url)
+        }
+        
+        
+        // MARK: - Stubbing
+        
+        func complete(with error: Error) {
+            let url = requestedURLs[0]
+            let message = Message(requestedURL: url, error: error)
+            messages.append(message)
         }
     }
 
