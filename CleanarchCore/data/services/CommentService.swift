@@ -9,26 +9,25 @@
 import Foundation
 
 
-public protocol CommentService {
+protocol CommentService {
     func fetchComments(postId: Int, completion: @escaping ((Result<[Comment], LoadCommentsError>) -> Void))
 }
 
-public class CommentServiceImpl: CommentService {
+class CommentServiceImpl: CommentService {
     var baseURL = "https://jsonplaceholder.typicode.com"
 
-    public init() { }
     
     var stubURL: String = ""
     
-    public func stub(withURL: String) {
+    func stub(withURL: String) {
         self.stubURL = withURL
     }
     
-    public func makeURLString(postId: Int) -> String {
+    func makeURLString(postId: Int) -> String {
         return baseURL + "/comments?postId=\(postId)"
     }
     
-    public func fetchComments(postId: Int, completion: @escaping ((Result<[Comment], LoadCommentsError>) -> Void)) {
+    func fetchComments(postId: Int, completion: @escaping ((Result<[Comment], LoadCommentsError>) -> Void)) {
         if postId < 0 {
             completion(.failure(.invalidPostId))
             return

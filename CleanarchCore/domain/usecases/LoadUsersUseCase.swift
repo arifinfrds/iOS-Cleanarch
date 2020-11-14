@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum LoadUsersError: Error, Equatable {
+enum LoadUsersError: Error, Equatable {
     case invalidToken
     case invalidURL
     case serverError
@@ -18,18 +18,18 @@ public enum LoadUsersError: Error, Equatable {
     case unknown(message: String)
 }
 
-public protocol LoadUsersUseCase {
+protocol LoadUsersUseCase {
     func execute(completion: @escaping (Result<[User], LoadUsersError>) -> Void)
 }
 
-public class LoadUsersUseCaseImpl: LoadUsersUseCase {
+class LoadUsersUseCaseImpl: LoadUsersUseCase {
     private let repository: UserRepository
     
-    public init(repository: UserRepository) {
+    init(repository: UserRepository) {
         self.repository = repository
     }
     
-    public func execute(completion: @escaping (Result<[User], LoadUsersError>) -> Void) {
+    func execute(completion: @escaping (Result<[User], LoadUsersError>) -> Void) {
         repository.fetchUsers { result in
             switch result {
             case .success(let users):

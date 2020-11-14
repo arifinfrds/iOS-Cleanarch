@@ -8,12 +8,12 @@
 
 import Foundation
 
-public struct Comment: Codable {
-    public var postID: Int?
-    public var id: Int?
-    public var name: String?
-    public var email: String?
-    public var body: String?
+struct Comment: Codable {
+    var postID: Int?
+    var id: Int?
+    var name: String?
+    var email: String?
+    var body: String?
 
     enum CodingKeys: String, CodingKey {
         case postID = "postId"

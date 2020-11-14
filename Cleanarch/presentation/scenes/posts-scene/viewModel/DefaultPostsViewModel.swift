@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CleanarchCore
 
 enum PostsViewModelLoading {
     case none

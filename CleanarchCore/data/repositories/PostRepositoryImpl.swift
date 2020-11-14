@@ -7,16 +7,15 @@
 //
 
 import Foundation
-import CleanarchDomain
 
-public class PostRepositoryImpl: PostRepository {
+class PostRepositoryImpl: PostRepository {
     private var postService: PostService
     
-    public init(postService: PostService) {
+    init(postService: PostService) {
         self.postService = postService
     }
     
-    public func fetchPosts(completion: @escaping ((Result<[Post], Error>) -> Void)) {
+    func fetchPosts(completion: @escaping ((Result<[Post], Error>) -> Void)) {
         postService.fetchPosts { result in
             switch result {
             case .success(let posts):
@@ -27,7 +26,7 @@ public class PostRepositoryImpl: PostRepository {
         }
     }
     
-    public func fetchPost(id: Int, completion: @escaping ((Result<Post, Error>) -> Void)) {
+    func fetchPost(id: Int, completion: @escaping ((Result<Post, Error>) -> Void)) {
         postService.fetchPost(id: id) { result in
             switch result {
             case .success(let post):
