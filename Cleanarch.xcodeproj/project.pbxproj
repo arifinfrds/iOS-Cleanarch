@@ -32,6 +32,7 @@
 		924FD173255FE184005D5126 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926463F6253332D3001540A2 /* UserService.swift */; };
 		924FD174255FE184005D5126 /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B925F023B8D19F006B27DF /* CommentService.swift */; };
 		926111E623D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926111E523D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift */; };
+		92697820256022D200B1E36E /* DefaultCommentsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9269781F256022D200B1E36E /* DefaultCommentsServiceTests.swift */; };
 		92814A3D2406C4C9009F02E4 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92814A3C2406C4C9009F02E4 /* AppDIContainer.swift */; };
 		92B8ADB9245519C7004A22E1 /* CommentModuleDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8ADB8245519C7004A22E1 /* CommentModuleDIContainer.swift */; };
 		92C5346323D2EA740001E125 /* UIViewController+Child.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C5346223D2EA740001E125 /* UIViewController+Child.swift */; };
@@ -42,7 +43,7 @@
 		92F411D623B4BA1F00069FF0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F411D523B4BA1F00069FF0 /* SceneDelegate.swift */; };
 		92F411DD23B4BA1F00069FF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92F411DC23B4BA1F00069FF0 /* Assets.xcassets */; };
 		92F411E023B4BA1F00069FF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92F411DE23B4BA1F00069FF0 /* LaunchScreen.storyboard */; };
-		92F411EB23B4BA2000069FF0 /* CleanarchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F411EA23B4BA2000069FF0 /* CleanarchTests.swift */; };
+		92F411EB23B4BA2000069FF0 /* DefaultPostServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F411EA23B4BA2000069FF0 /* DefaultPostServiceTests.swift */; };
 		92FAA6AF23C1C051009D0176 /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FAA6AE23C1C051009D0176 /* CommentsViewModel.swift */; };
 		92FAA6B123C1C177009D0176 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FAA6B023C1C177009D0176 /* CommentsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -78,6 +79,7 @@
 		92476DB12537185600F24F7E /* UserRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryImpl.swift; sourceTree = "<group>"; };
 		926111E523D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPostDetailViewModel.swift; sourceTree = "<group>"; };
 		926463F6253332D3001540A2 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		9269781F256022D200B1E36E /* DefaultCommentsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCommentsServiceTests.swift; sourceTree = "<group>"; };
 		927D65EE23B90770005C939F /* CleanarchUIComponents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CleanarchUIComponents.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CleanarchUIComponents-fvomfypcdcyfwygiqicjmusuyhpe/Build/Products/Debug-iphonesimulator/CleanarchUIComponents.framework"; sourceTree = "<group>"; };
 		9280840925332D76001A7966 /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
 		9280841125332EC1001A7966 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -108,7 +110,7 @@
 		92F411DF23B4BA1F00069FF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		92F411E123B4BA1F00069FF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92F411E623B4BA2000069FF0 /* CleanarchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanarchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		92F411EA23B4BA2000069FF0 /* CleanarchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanarchTests.swift; sourceTree = "<group>"; };
+		92F411EA23B4BA2000069FF0 /* DefaultPostServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPostServiceTests.swift; sourceTree = "<group>"; };
 		92F411EC23B4BA2000069FF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92F411FF23B4BDFD00069FF0 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		92F4120223B4C00600069FF0 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -331,7 +333,8 @@
 		92F411E923B4BA2000069FF0 /* CleanarchTests */ = {
 			isa = PBXGroup;
 			children = (
-				92F411EA23B4BA2000069FF0 /* CleanarchTests.swift */,
+				92F411EA23B4BA2000069FF0 /* DefaultPostServiceTests.swift */,
+				9269781F256022D200B1E36E /* DefaultCommentsServiceTests.swift */,
 				92F411EC23B4BA2000069FF0 /* Info.plist */,
 			);
 			path = CleanarchTests;
@@ -528,7 +531,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92F411EB23B4BA2000069FF0 /* CleanarchTests.swift in Sources */,
+				92F411EB23B4BA2000069FF0 /* DefaultPostServiceTests.swift in Sources */,
+				92697820256022D200B1E36E /* DefaultCommentsServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
