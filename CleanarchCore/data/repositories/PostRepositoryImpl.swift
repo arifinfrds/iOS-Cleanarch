@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CleanarchDomain
 
 public class PostRepositoryImpl: PostRepository {
     private var postService: PostService

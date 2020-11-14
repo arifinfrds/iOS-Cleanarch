@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CleanarchCore
 
 protocol CommentsViewModelOutput {
     var comments: Observable<[Comment]> { get }

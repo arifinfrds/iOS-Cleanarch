@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CleanarchCore
 
 enum PostDetailViewModelLoadingType {
     case none
