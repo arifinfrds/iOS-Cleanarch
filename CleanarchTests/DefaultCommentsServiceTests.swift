@@ -15,6 +15,7 @@ class DefaultCommentsService {
     enum Error: Swift.Error {
         case connectivity
         case invalidData
+        case serverError
     }
     
     init(session: URLSession) {
@@ -33,7 +34,11 @@ class DefaultCommentsService {
                     completion(.failure(.invalidData))
                     return
                 }
-                fatalError("Unahndled case yet.")
+                if error.domain == NSURLErrorDomain && error.code == NSURLErrorBadServerResponse {
+                    completion(.failure(.serverError))
+                    return
+                }
+                fatalError("Unhandled case yet")
             }
             fatalError("Unahndled case yet.")
         }.resume()
@@ -108,6 +113,28 @@ class DefaultCommentsServiceTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
         
         XCTAssertEqual(capturedErrors, [.invalidData])
+    }
+    
+    func test_fetchComments_deliversServerError() {
+        let sut = makeSUT()
+        let error = NSError(domain: NSURLErrorDomain, code: NSURLErrorBadServerResponse)
+        URLProtocolStub.stub(with: error)
+        
+        let exp = expectation(description: "wait for request")
+        var capturedErrors: [DefaultCommentsService.Error] = []
+        sut.fetchComments { result in
+            switch result {
+            case .failure(let error):
+                capturedErrors.append(error)
+            default:
+                XCTFail("Expected error, but got success instead.")
+            }
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 1.0)
+        
+        XCTAssertEqual(capturedErrors, [.serverError])
     }
     
     func makeSUT() -> DefaultCommentsService {
