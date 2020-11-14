@@ -27,9 +27,15 @@ class DefaultCommentsService {
             if let error = error as NSError? {
                 if error.domain == NSURLErrorDomain && error.code == NSURLErrorNotConnectedToInternet {
                     completion(.failure(.connectivity))
+                    return
                 }
+                if error.domain == NSURLErrorDomain && error.code == NSURLErrorCannotParseResponse {
+                    completion(.failure(.invalidData))
+                    return
+                }
+                fatalError("Unahndled case yet.")
             }
-            // completion(.failure(.invalidData))
+            fatalError("Unahndled case yet.")
         }.resume()
     }
 }
@@ -85,7 +91,7 @@ class DefaultCommentsServiceTests: XCTestCase {
     
     func test_fetchComments_deliversInvalidDataError() {
         let sut = makeSUT()
-        URLProtocolStub.stub(with: NSError(domain: NSURLErrorDomain, code: 1))
+        URLProtocolStub.stub(with: NSError(domain: NSURLErrorDomain, code: NSURLErrorCannotParseResponse))
         
         let exp = expectation(description: "wait for request")
         var capturedErrors: [DefaultCommentsService.Error] = []
@@ -98,7 +104,6 @@ class DefaultCommentsServiceTests: XCTestCase {
             }
             exp.fulfill()
         }
-        
         
         wait(for: [exp], timeout: 1.0)
         
