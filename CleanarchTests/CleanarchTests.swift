@@ -32,17 +32,14 @@ class DefaultPostService {
 class CleanarchTests: XCTestCase {
     
     func test_init_doesNotRequestDataFromURL() {
-        let url = URL(string: "https://any-url.com")!
-        let client = HTTPClientSpy()
-        let _ = DefaultPostService(url: url, client: client)
+        let (_, client) = makeSUT()
         
         XCTAssertEqual(client.requestedURLs, [])
     }
     
     func test_fetchPosts_requestDataFromURL() {
         let url = URL(string: "https://any-url.com")!
-        let client = HTTPClientSpy()
-        let sut = DefaultPostService(url: url, client: client)
+        let (sut, client) = makeSUT()
         
         sut.fetchPosts()
         
@@ -51,8 +48,7 @@ class CleanarchTests: XCTestCase {
     
     func test_fetchPosts_requestDataFromURLTwice() {
         let url = URL(string: "https://any-url.com")!
-        let client = HTTPClientSpy()
-        let sut = DefaultPostService(url: url, client: client)
+        let (sut, client) = makeSUT()
         
         sut.fetchPosts()
         sut.fetchPosts()
@@ -61,15 +57,21 @@ class CleanarchTests: XCTestCase {
     }
     
     func test_fetchPosts_deliversErrorOnClientError() {
-        let url = URL(string: "https://any-url.com")!
-        let client = HTTPClientSpy()
-        let expectedError = NSError(domain: "some error", code: 1, userInfo: nil)
-        let sut = DefaultPostService(url: url, client: client)
+        let (sut, client) = makeSUT()
         
         sut.fetchPosts()
+        let expectedError = NSError(domain: "some error", code: 1, userInfo: nil)
         client.complete(with: expectedError)
         
         XCTAssertEqual(client.messages[0].error as NSError, expectedError)
+    }
+    
+    
+    // MARK: - Helpers
+    private func makeSUT(url: URL = URL(string: "https://any-url.com")!) -> (sut: DefaultPostService, client: HTTPClientSpy) {
+        let client = HTTPClientSpy()
+        let sut = DefaultPostService(url: url, client: client)
+        return (sut, client)
     }
     
     private class HTTPClientSpy: HTTPClient {
