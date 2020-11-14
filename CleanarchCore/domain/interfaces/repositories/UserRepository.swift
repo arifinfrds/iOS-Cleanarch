@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol UserRepository {
+protocol UserRepository {
     func fetchUsers(completion: @escaping (Result<[User], LoadUsersError>) -> Void)
 }

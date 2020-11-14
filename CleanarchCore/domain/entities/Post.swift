@@ -8,11 +8,11 @@
 
 import Foundation
 
-public struct Post: Codable {
-    public var userId: Int?
-    public var id: Int?
-    public var title: String?
-    public var body: String?
+struct Post: Codable {
+    var userId: Int?
+    var id: Int?
+    var title: String?
+    var body: String?
  
     enum CodingKeys: String, CodingKey {
         case userId = "userId"
@@ -20,7 +20,4 @@ public struct Post: Codable {
         case title = "title"
         case body = "body"
     }
-    
-    public init() { }
-  
 }
