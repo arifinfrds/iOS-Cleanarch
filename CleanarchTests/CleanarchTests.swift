@@ -9,21 +9,28 @@
 import XCTest
 @testable import Cleanarch
 
-protocol HTTPClient {
+fileprivate protocol HTTPClient {
     func get(from url: URL)
 }
 
-class DefaultPostService {
+fileprivate class DefaultPostService {
     private let url: URL
     private let client: HTTPClient
+    
+    enum Error: Swift.Error {
+        case connectivity
+        case invalidData
+    }
     
     init(url: URL, client: HTTPClient) {
         self.url = url
         self.client = client
     }
     
-    func fetchPosts() {
+    func fetchPosts(completion: (Result<Post, Error>) -> Void) {
         client.get(from: url)
+        
+        completion(.failure(.connectivity))
     }
     
 }
@@ -41,7 +48,7 @@ class CleanarchTests: XCTestCase {
         let url = URL(string: "https://any-url.com")!
         let (sut, client) = makeSUT()
         
-        sut.fetchPosts()
+        sut.fetchPosts { _ in }
         
         XCTAssertEqual(client.requestedURLs, [url])
     }
@@ -50,8 +57,8 @@ class CleanarchTests: XCTestCase {
         let url = URL(string: "https://any-url.com")!
         let (sut, client) = makeSUT()
         
-        sut.fetchPosts()
-        sut.fetchPosts()
+        sut.fetchPosts { _ in }
+        sut.fetchPosts { _ in }
         
         XCTAssertEqual(client.requestedURLs, [url, url])
     }
@@ -59,11 +66,43 @@ class CleanarchTests: XCTestCase {
     func test_fetchPosts_deliversErrorOnClientError() {
         let (sut, client) = makeSUT()
         
-        sut.fetchPosts()
+        var capturedError: DefaultPostService.Error?
+        let exp = expectation(description: "wait for completion")
+        sut.fetchPosts { result in
+            switch result {
+            case .failure(let error):
+                capturedError = error
+            default:
+                XCTFail("Expected failure with error, but got success instead.")
+            }
+            exp.fulfill()
+        }
         let expectedError = NSError(domain: "some error", code: 1, userInfo: nil)
         client.complete(with: expectedError)
         
-        XCTAssertEqual(client.messages[0].error as NSError, expectedError)
+        wait(for: [exp], timeout: 1.0)
+        
+        // XCTAssertEqual(client.messages[0].error as NSError, capturedError)
+        XCTAssertEqual(capturedError, .connectivity)
+    }
+    
+    // FIXME: - I dont know how to stub error here.
+    
+    func test_fetchPosts_deliversErrorOnNon200HTTPResposne() {
+        let (sut, client) = makeSUT()
+        
+        // client.complete(with: <#T##Error#>)
+        var capturedError: DefaultPostService.Error?
+        sut.fetchPosts { result in
+            switch result {
+            case .failure(let error):
+                capturedError = error
+            default:
+                XCTFail("Expected failure with error, but got success instead.")
+            }
+        }
+        
+        XCTAssertEqual(capturedError, .connectivity)
     }
     
     
