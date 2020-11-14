@@ -24,7 +24,7 @@ class DefaultCommentsService {
     
     func fetchComments(completion: @escaping (Result<[Comment], Error>) -> Void) {
         let url = URL(string: "https://invalid-url.com")!
-        session.dataTask(with: url) { (_, _, error) in
+        session.dataTask(with: url) { (_, response, error) in
             if let error = error as NSError? {
                 if error.domain == NSURLErrorDomain {
                     if error.code == NSURLErrorNotConnectedToInternet {
@@ -40,6 +40,12 @@ class DefaultCommentsService {
                         return
                     }
                 }
+                
+                if let httpResponse = response as? HTTPURLResponse {
+                    if httpResponse.statusCode == 400 {
+                        completion(.failure(.invalidData))
+                    }
+                }
                 fatalError("Unhandled case yet")
             }
             fatalError("Unahndled case yet.")
@@ -49,9 +55,14 @@ class DefaultCommentsService {
 
 class URLProtocolStub: URLProtocol {
     private static var error: Error?
+    private static var data: Data?
     
     static func stub(with error: Error) {
         self.error = error
+    }
+    
+    static func stub(with data: Data) {
+        self.data = data
     }
     
     override class func canInit(with request: URLRequest) -> Bool {
@@ -65,6 +76,9 @@ class URLProtocolStub: URLProtocol {
     override func startLoading() {
         if let error = URLProtocolStub.error {
             self.client?.urlProtocol(self, didFailWithError: error)
+        }
+        if let data = URLProtocolStub.data {
+            self.client?.urlProtocol(self, didLoad: data)
         }
     }
     
@@ -138,6 +152,31 @@ class DefaultCommentsServiceTests: XCTestCase {
         
         XCTAssertEqual(capturedErrors, [.serverError])
     }
+    
+    func test_fetchComments_deliversInvalidParsingData() {
+        let sut = makeSUT()
+        let invalidJSONData = "an-invalid-json".data(using: .utf8)!
+        URLProtocolStub.stub(with: invalidJSONData)
+        
+        let exp = expectation(description: "wait for request")
+        var capturedErrors: [DefaultCommentsService.Error] = []
+        sut.fetchComments { result in
+            switch result {
+            case .failure(let error):
+                capturedErrors.append(error)
+            default:
+                XCTFail("Expected error, but got success instead.")
+            }
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 1.0)
+        
+        XCTAssertEqual(capturedErrors, [.invalidData])
+    }
+    
+    
+    // MARK: - Helpers
     
     func makeSUT() -> DefaultCommentsService {
         let configuration = URLSessionConfiguration.ephemeral
