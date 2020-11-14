@@ -13,6 +13,7 @@ class DefaultCommentsService {
     private let session: URLSession
     
     enum Error: Swift.Error {
+        case connectivity
         case invalidData
     }
     
@@ -22,8 +23,13 @@ class DefaultCommentsService {
     
     func fetchComments(completion: @escaping (Result<[Comment], Error>) -> Void) {
         let url = URL(string: "https://invalid-url.com")!
-        session.dataTask(with: url) { (_, _, _) in
-            completion(.failure(.invalidData))
+        session.dataTask(with: url) { (_, _, error) in
+            if let error = error as NSError? {
+                if error.domain == NSURLErrorDomain && error.code == NSURLErrorNotConnectedToInternet {
+                    completion(.failure(.connectivity))
+                }
+            }
+            // completion(.failure(.invalidData))
         }.resume()
     }
 }
@@ -55,7 +61,28 @@ class URLProtocolStub: URLProtocol {
 
 class DefaultCommentsServiceTests: XCTestCase {
     
-    // testing error response
+    func test_fetchComments_deliversNoConnectivityError() {
+        let sut = makeSUT()
+        let error = NSError(domain: NSURLErrorDomain, code: NSURLErrorNotConnectedToInternet)
+        URLProtocolStub.stub(with: error)
+        
+        let exp = expectation(description: "wait for request")
+        var capturedErrors: [DefaultCommentsService.Error] = []
+        sut.fetchComments { result in
+            switch result {
+            case .failure(let error):
+                capturedErrors.append(error)
+            default:
+                XCTFail("Expected error, but got success instead.")
+            }
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 1.0)
+        
+        XCTAssertEqual(capturedErrors, [.connectivity])
+    }
+    
     func test_fetchComments_deliversInvalidDataError() {
         let sut = makeSUT()
         URLProtocolStub.stub(with: NSError(domain: NSURLErrorDomain, code: 1))
