@@ -40,16 +40,21 @@ class DefaultCommentsService {
                         return
                     }
                 }
-                
-                if let httpResponse = response as? HTTPURLResponse {
-                    if httpResponse.statusCode == 400 {
-                        completion(.failure(.invalidData))
-                    }
-                    if httpResponse.statusCode == 500 {
-                        completion(.failure(.serverError))
-                    }
+                return
+            }
+            if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode == 400 {
+                    completion(.failure(.invalidData))
+                    return
                 }
-                fatalError("Unhandled case yet")
+                if httpResponse.statusCode == 500 {
+                    completion(.failure(.serverError))
+                    return
+                }
+                if httpResponse.statusCode == 200 {
+                    completion(.success([]))
+                    return
+                }
             }
             fatalError("Unahndled case yet.")
         }.resume()
@@ -59,12 +64,18 @@ class DefaultCommentsService {
 class URLProtocolStub: URLProtocol {
     private static var error: Error?
     private static var data: Data?
+    private static var httpURLResponse: HTTPURLResponse?
     
     static func stub(with error: Error) {
         self.error = error
     }
     
     static func stub(with data: Data) {
+        self.data = data
+    }
+    
+    static func stub(httpURLResponse: HTTPURLResponse?, data: Data?) {
+        self.httpURLResponse = httpURLResponse
         self.data = data
     }
     
@@ -83,6 +94,10 @@ class URLProtocolStub: URLProtocol {
         if let data = URLProtocolStub.data {
             self.client?.urlProtocol(self, didLoad: data)
         }
+        if let response = URLProtocolStub.httpURLResponse {
+            self.client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
+        }
+        self.client?.urlProtocolDidFinishLoading(self)
     }
     
     override func stopLoading() { }
@@ -177,19 +192,56 @@ class DefaultCommentsServiceTests: XCTestCase {
         
         XCTAssertEqual(capturedErrors, [.invalidData])
     }
-    
-    // FIXME: - Not passing for empty json body, e.g.: "{}"
-    
+ 
+    func test_fetchComments_deliversEmptyItems() {
+        let sut = makeSUT()
+        let url = makeAnyURL()
+        let response = makeHTTPURLResponse(url: url, statusCode: 200)
+        let data = "[]".data(using: .utf8)!
+        
+        URLProtocolStub.stub(httpURLResponse: response, data: data)
+        
+        let exp = expectation(description: "wait for request")
+        var capturedComments: [Comment] = []
+        sut.fetchComments { result in
+            switch result {
+            case .success(let comments):
+                capturedComments = comments
+            case .failure(let error):
+                XCTFail("Expected success, but got error instead, with error: \(error)")
+            }
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 1.0)
+        
+        XCTAssertTrue(capturedComments.isEmpty)
+    }
     
     
     // MARK: - Helpers
     
-    func makeSUT() -> DefaultCommentsService {
+    private func makeSUT() -> DefaultCommentsService {
         let configuration = URLSessionConfiguration.ephemeral
         configuration.protocolClasses = [URLProtocolStub.self]
         let session = URLSession(configuration: configuration)
         let sut = DefaultCommentsService(session: session)
         return sut
+    }
+    
+    private func makeAnyURL() -> URL {
+        return URL(string: "https://any-url.com")!
+    }
+    
+    private func makeHTTPURLResponse(url: URL, statusCode: Int) -> HTTPURLResponse {
+        return HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)!
+    }
+    
+    private func loadJSONData(forResource resource: String, extensionName: String) -> Data {
+        let bundle = Bundle(for: DefaultCommentsServiceTests.self)
+        let resourceURL = bundle.url(forResource: resource, withExtension: extensionName)!
+        let data = try! Data(contentsOf: resourceURL)
+        return data
     }
 
 }
