@@ -7,26 +7,42 @@
 //
 
 import XCTest
+@testable import Cleanarch
+
+struct CommentsMapper {
+    static func map(_ data: Data) -> Result<[Comment], DefaultCommentsService.Error> {
+        do {
+            let items = try JSONDecoder().decode([Comment].self, from: data)
+            return .success(items)
+        } catch(let error) {
+            return .failure(.decodeFail(message: error.localizedDescription))
+        }
+    }
+}
 
 class CommentsMapperTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    func test_map_deliversDecodeError() {
+        let invalidJSONData = "invalid-json-data".data(using: .utf8)!
+        let completionResult = CommentsMapper.map(invalidJSONData)
+        
+        switch completionResult {
+        case .failure(let error):
+            XCTAssertEqual(error, .decodeFail(message: "The data couldn’t be read because it isn’t in the correct format."))
+        default:
+            XCTFail("expect failure, but got success instead.")
+        }
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func test_Map_deliversEmptyItems() {
+        let validJSONData = "[]".data(using: .utf8)!
+        let completionResult = CommentsMapper.map(validJSONData)
+        
+        switch completionResult {
+        case .success(let comments):
+            XCTAssertTrue(comments.isEmpty)
+        case .failure(let error):
+            XCTFail("expect success, but got failure instead with error: \(error)")
         }
     }
 
