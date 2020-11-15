@@ -56,27 +56,20 @@ class DefaultCommentsService {
 
 
 class URLProtocolStub: URLProtocol {
-    private static var error: Error?
-    private static var data: Data?
-    private static var httpURLResponse: HTTPURLResponse?
-    
-    static func stub(with error: Error) {
-        self.error = error
+    private struct Stub {
+        let response: URLResponse?
+        let data: Data?
+        let error: Error?
     }
     
-    static func stub(with data: Data) {
-        self.data = data
+    private static var stub: Stub?
+    
+    static func stub(response: URLResponse?, data: Data?, error: Error?) {
+        stub = Stub(response: response, data: data, error: error)
     }
     
-    static func clear(){
-        data = nil
-        httpURLResponse = nil
-        error = nil
-    }
-    
-    static func stub(httpURLResponse: HTTPURLResponse?, data: Data?) {
-        self.httpURLResponse = httpURLResponse
-        self.data = data
+    static func clear() {
+        self.stub = nil
     }
     
     override class func canInit(with request: URLRequest) -> Bool {
@@ -88,13 +81,13 @@ class URLProtocolStub: URLProtocol {
     }
     
     override func startLoading() {
-        if let error = URLProtocolStub.error {
+        if let error = URLProtocolStub.stub?.error {
             self.client?.urlProtocol(self, didFailWithError: error)
         }
-        if let data = URLProtocolStub.data {
+        if let data = URLProtocolStub.stub?.data {
             self.client?.urlProtocol(self, didLoad: data)
         }
-        if let response = URLProtocolStub.httpURLResponse {
+        if let response = URLProtocolStub.stub?.response {
             self.client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
         }
         self.client?.urlProtocolDidFinishLoading(self)
@@ -109,7 +102,7 @@ class DefaultCommentsServiceTests: XCTestCase {
     func test_fetchComments_deliversNoConnectivityError() {
         let sut = makeSUT()
         let error = NSError(domain: NSURLErrorDomain, code: NSURLErrorNotConnectedToInternet)
-        URLProtocolStub.stub(with: error)
+        URLProtocolStub.stub(response: nil, data: nil, error: error)
         
         let exp = expectation(description: "wait for request")
         var capturedErrors: [DefaultCommentsService.Error] = []
@@ -130,7 +123,8 @@ class DefaultCommentsServiceTests: XCTestCase {
     
     func test_fetchComments_deliversInvalidDataError() {
         let sut = makeSUT()
-        URLProtocolStub.stub(with: NSError(domain: NSURLErrorDomain, code: NSURLErrorCannotParseResponse))
+        let error = NSError(domain: NSURLErrorDomain, code: NSURLErrorCannotParseResponse)
+        URLProtocolStub.stub(response: nil, data: nil, error: error)
         
         let exp = expectation(description: "wait for request")
         var capturedErrors: [DefaultCommentsService.Error] = []
@@ -153,7 +147,7 @@ class DefaultCommentsServiceTests: XCTestCase {
     func test_fetchComments_deliversServerError() {
         let sut = makeSUT()
         let error = NSError(domain: NSURLErrorDomain, code: NSURLErrorBadServerResponse)
-        URLProtocolStub.stub(with: error)
+        URLProtocolStub.stub(response: nil, data: nil, error: error)
         
         let exp = expectation(description: "wait for request")
         var capturedErrors: [DefaultCommentsService.Error] = []
@@ -177,7 +171,7 @@ class DefaultCommentsServiceTests: XCTestCase {
         let sut = makeSUT()
         let invalidJSONData = "an-invalid-json".data(using: .utf8)!
         let response = HTTPURLResponse(url: makeAnyURL(), statusCode: 200, httpVersion: nil, headerFields: nil)!
-        URLProtocolStub.stub(httpURLResponse: response, data: invalidJSONData)
+        URLProtocolStub.stub(response: response, data: invalidJSONData, error: nil)
         
         let exp = expectation(description: "wait for request")
         var capturedErrors: [DefaultCommentsService.Error] = []
@@ -203,7 +197,7 @@ class DefaultCommentsServiceTests: XCTestCase {
         let response = makeHTTPURLResponse(url: url, statusCode: 200)
         let data = "[]".data(using: .utf8)!
         
-        URLProtocolStub.stub(httpURLResponse: response, data: data)
+        URLProtocolStub.stub(response: response, data: data, error: nil)
         
         let exp = expectation(description: "wait for request")
         var capturedComments: [CommentResponseDTO] = []
@@ -229,7 +223,7 @@ class DefaultCommentsServiceTests: XCTestCase {
         let response = makeHTTPURLResponse(url: url, statusCode: 200)
         let data = loadJSONData(forResource: "comments-response", extensionName: "json")
         
-        URLProtocolStub.stub(httpURLResponse: response, data: data)
+        URLProtocolStub.stub(response: response, data: data, error: nil)
         
         let exp = expectation(description: "wait for request")
         var capturedComments: [CommentResponseDTO] = []

@@ -43,7 +43,7 @@ class CommentsMapperTests: XCTestCase {
         
         switch completionResult {
         case .failure(let error):
-            XCTAssertEqual(error, .decodeFail(message: "The data couldn’t be read because it isn’t in the correct format."))
+            XCTAssertEqual(error, .invalidData)
         default:
             XCTFail("expect failure, but got success instead.")
         }
