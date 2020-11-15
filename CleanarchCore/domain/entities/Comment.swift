@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Comment: Codable {
+struct Comment: Codable, Equatable {
     var postID: Int?
     var id: Int?
     var name: String?
