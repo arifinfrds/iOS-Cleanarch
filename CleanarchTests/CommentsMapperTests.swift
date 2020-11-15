@@ -14,9 +14,24 @@ struct CommentsMapper {
         do {
             let items = try JSONDecoder().decode([CommentResponseDTO].self, from: data)
             return .success(items)
-        } catch(let error) {
-            return .failure(.decodeFail(message: error.localizedDescription))
+        } catch(_) {
+            return .failure(.invalidData)
         }
+    }
+    
+    static func map(_ response: URLResponse, _ data: Data) -> Result<[CommentResponseDTO], DefaultCommentsService.Error> {
+        if let httpResponse = response as? HTTPURLResponse {
+            if httpResponse.statusCode == 400 {
+                return .failure(.invalidData)
+            }
+            if httpResponse.statusCode == 500 {
+                return .failure(.serverError)
+            }
+            if httpResponse.statusCode == 200 {
+                return map(data)
+            }
+        }
+        return .failure(.connectivity)
     }
 }
 

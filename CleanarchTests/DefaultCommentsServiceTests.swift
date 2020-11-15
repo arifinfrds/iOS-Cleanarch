@@ -44,19 +44,9 @@ class DefaultCommentsService {
                 return
             }
             if let httpResponse = response as? HTTPURLResponse {
-                if httpResponse.statusCode == 400 {
-                    completion(.failure(.invalidData))
-                    return
-                }
-                if httpResponse.statusCode == 500 {
-                    completion(.failure(.serverError))
-                    return
-                }
-                if httpResponse.statusCode == 200 {
-                    let completionResult = CommentsMapper.map(data!)
-                    completion(completionResult)
-                    return
-                }
+                let completionResult = CommentsMapper.map(httpResponse, data!)
+                completion(completionResult)
+                return
             }
             fatalError("Unahndled case yet.")
         }.resume()
@@ -186,7 +176,8 @@ class DefaultCommentsServiceTests: XCTestCase {
     func test_fetchComments_deliversInvalidParsingData() {
         let sut = makeSUT()
         let invalidJSONData = "an-invalid-json".data(using: .utf8)!
-        URLProtocolStub.stub(with: invalidJSONData)
+        let response = HTTPURLResponse(url: makeAnyURL(), statusCode: 200, httpVersion: nil, headerFields: nil)!
+        URLProtocolStub.stub(httpURLResponse: response, data: invalidJSONData)
         
         let exp = expectation(description: "wait for request")
         var capturedErrors: [DefaultCommentsService.Error] = []
