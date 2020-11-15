@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CommentsViewModelOutput {
-    var comments: Observable<[Comment]> { get }
+    var comments: Observable<[CommentResponseDTO]> { get }
     var error: Observable<CommentsViewModelError> { get }
     var loadingType: Observable<CommentsViewModelLoadingType> { get }
 }
@@ -25,7 +25,7 @@ enum CommentsViewModelLoadingType {
 }
 
 class CommentsViewModel: CommentsViewModelOutput {
-    var comments: Observable<[Comment]> = Observable([Comment]())
+    var comments: Observable<[CommentResponseDTO]> = Observable([CommentResponseDTO]())
     var error: Observable<CommentsViewModelError> = Observable(.none)
     var loadingType: Observable<CommentsViewModelLoadingType> = Observable(.none)
     

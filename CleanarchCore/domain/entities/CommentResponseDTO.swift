@@ -1,5 +1,5 @@
 //
-//  Comment.swift
+//  CommentResponseDTO.swift
 //  CleanarchDomain
 //
 //  Created by Arifin Firdaus on 26/04/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Comment: Codable, Equatable {
+struct CommentResponseDTO: Codable, Equatable {
     var postID: Int?
     var id: Int?
     var name: String?

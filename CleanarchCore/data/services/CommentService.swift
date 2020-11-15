@@ -10,7 +10,7 @@ import Foundation
 
 
 protocol CommentService {
-    func fetchComments(postId: Int, completion: @escaping ((Result<[Comment], LoadCommentsError>) -> Void))
+    func fetchComments(postId: Int, completion: @escaping ((Result<[CommentResponseDTO], LoadCommentsError>) -> Void))
 }
 
 class CommentServiceImpl: CommentService {
@@ -27,7 +27,7 @@ class CommentServiceImpl: CommentService {
         return baseURL + "/comments?postId=\(postId)"
     }
     
-    func fetchComments(postId: Int, completion: @escaping ((Result<[Comment], LoadCommentsError>) -> Void)) {
+    func fetchComments(postId: Int, completion: @escaping ((Result<[CommentResponseDTO], LoadCommentsError>) -> Void)) {
         if postId < 0 {
             completion(.failure(.invalidPostId))
             return
@@ -49,7 +49,7 @@ class CommentServiceImpl: CommentService {
             }
             if httpResponse.statusCode == HTTPCode.OK_200 {
                 do {
-                    let comments = try JSON().newJSONDecoder().decode([Comment].self, from: data)
+                    let comments = try JSON().newJSONDecoder().decode([CommentResponseDTO].self, from: data)
                     completion(.success(comments))
                 } catch(let error) {
                     completion(.failure(.unknown(message: error.localizedDescription)))

@@ -15,7 +15,7 @@ enum LoadCommentsError: Error, Equatable {
 }
 
 protocol ViewCommentsUseCase {
-    func execute(postId: Int, completion: @escaping ((Result<[Comment], LoadCommentsError>) -> Void))
+    func execute(postId: Int, completion: @escaping ((Result<[CommentResponseDTO], LoadCommentsError>) -> Void))
 }
 
 final class ViewCommentsUseCaseImpl: ViewCommentsUseCase {
@@ -25,7 +25,7 @@ final class ViewCommentsUseCaseImpl: ViewCommentsUseCase {
         self.repository = repository
     }
     
-    func execute(postId: Int, completion: @escaping ((Result<[Comment], LoadCommentsError>) -> Void)) {
+    func execute(postId: Int, completion: @escaping ((Result<[CommentResponseDTO], LoadCommentsError>) -> Void)) {
         repository?.fetchComments(postId: postId, completion: { result in
             switch result {
             case .success(let comments):

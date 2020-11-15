@@ -10,9 +10,9 @@ import XCTest
 @testable import Cleanarch
 
 struct CommentsMapper {
-    static func map(_ data: Data) -> Result<[Comment], DefaultCommentsService.Error> {
+    static func map(_ data: Data) -> Result<[CommentResponseDTO], DefaultCommentsService.Error> {
         do {
-            let items = try JSONDecoder().decode([Comment].self, from: data)
+            let items = try JSONDecoder().decode([CommentResponseDTO].self, from: data)
             return .success(items)
         } catch(let error) {
             return .failure(.decodeFail(message: error.localizedDescription))
@@ -68,16 +68,16 @@ class CommentsMapperTests: XCTestCase {
         return data
     }
     
-    private func makeExpectedComments() -> [Comment] {
+    private func makeExpectedComments() -> [CommentResponseDTO] {
         return [
-            Comment(
+            CommentResponseDTO(
                 postID: 1,
                 id: 1,
                 name: "id labore ex et quam laborum",
                 email: "Eliseo@gardner.biz",
                 body: "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
             ),
-            Comment(
+            CommentResponseDTO(
                 postID: 1,
                 id: 2,
                 name: "quo vero reiciendis velit similique earum",

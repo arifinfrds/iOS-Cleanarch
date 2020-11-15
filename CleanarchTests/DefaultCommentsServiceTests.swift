@@ -23,7 +23,7 @@ class DefaultCommentsService {
         self.session = session
     }
     
-    func fetchComments(completion: @escaping (Result<[Comment], Error>) -> Void) {
+    func fetchComments(completion: @escaping (Result<[CommentResponseDTO], Error>) -> Void) {
         let url = URL(string: "https://invalid-url.com")!
         session.dataTask(with: url) { (data, response, error) in
             if let error = error as NSError? {
@@ -78,6 +78,12 @@ class URLProtocolStub: URLProtocol {
         self.data = data
     }
     
+    static func clear(){
+        data = nil
+        httpURLResponse = nil
+        error = nil
+    }
+    
     static func stub(httpURLResponse: HTTPURLResponse?, data: Data?) {
         self.httpURLResponse = httpURLResponse
         self.data = data
@@ -126,9 +132,9 @@ class DefaultCommentsServiceTests: XCTestCase {
             }
             exp.fulfill()
         }
-        
         wait(for: [exp], timeout: 1.0)
-        
+        URLProtocolStub.clear()
+
         XCTAssertEqual(capturedErrors, [.connectivity])
     }
     
@@ -149,6 +155,7 @@ class DefaultCommentsServiceTests: XCTestCase {
         }
         
         wait(for: [exp], timeout: 1.0)
+        URLProtocolStub.clear()
         
         XCTAssertEqual(capturedErrors, [.invalidData])
     }
@@ -171,6 +178,7 @@ class DefaultCommentsServiceTests: XCTestCase {
         }
         
         wait(for: [exp], timeout: 1.0)
+        URLProtocolStub.clear()
         
         XCTAssertEqual(capturedErrors, [.serverError])
     }
@@ -193,6 +201,7 @@ class DefaultCommentsServiceTests: XCTestCase {
         }
         
         wait(for: [exp], timeout: 1.0)
+        URLProtocolStub.clear()
         
         XCTAssertEqual(capturedErrors, [.invalidData])
     }
@@ -206,7 +215,7 @@ class DefaultCommentsServiceTests: XCTestCase {
         URLProtocolStub.stub(httpURLResponse: response, data: data)
         
         let exp = expectation(description: "wait for request")
-        var capturedComments: [Comment] = []
+        var capturedComments: [CommentResponseDTO] = []
         sut.fetchComments { result in
             switch result {
             case .success(let comments):
@@ -218,6 +227,7 @@ class DefaultCommentsServiceTests: XCTestCase {
         }
         
         wait(for: [exp], timeout: 1.0)
+        URLProtocolStub.clear()
         
         XCTAssertTrue(capturedComments.isEmpty)
     }
@@ -231,7 +241,7 @@ class DefaultCommentsServiceTests: XCTestCase {
         URLProtocolStub.stub(httpURLResponse: response, data: data)
         
         let exp = expectation(description: "wait for request")
-        var capturedComments: [Comment] = []
+        var capturedComments: [CommentResponseDTO] = []
         sut.fetchComments { result in
             switch result {
             case .success(let comments):
@@ -245,14 +255,14 @@ class DefaultCommentsServiceTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
         
         let expectedComments = [
-            Comment(
+            CommentResponseDTO(
                 postID: 1,
                 id: 1,
                 name: "id labore ex et quam laborum",
                 email: "Eliseo@gardner.biz",
                 body: "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
             ),
-            Comment(
+            CommentResponseDTO(
                 postID: 1,
                 id: 2,
                 name: "quo vero reiciendis velit similique earum",
@@ -260,6 +270,7 @@ class DefaultCommentsServiceTests: XCTestCase {
                 body: "est natus enim nihil est dolore omnis voluptatem numquam\net omnis occaecati quod ullam at\nvoluptatem error expedita pariatur\nnihil sint nostrum voluptatem reiciendis et"
             )
         ]
+        URLProtocolStub.clear()
         
         XCTAssertEqual(capturedComments, expectedComments)
     }

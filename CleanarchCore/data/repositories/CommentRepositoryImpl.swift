@@ -15,7 +15,7 @@ class CommentRepositoryImpl: CommentRepository {
         self.service = service
     }
     
-    func fetchComments(postId: Int, completion: @escaping ((Result<[Comment], LoadCommentsError>) -> Void)) {
+    func fetchComments(postId: Int, completion: @escaping ((Result<[CommentResponseDTO], LoadCommentsError>) -> Void)) {
         service?.fetchComments(postId: postId, completion: { result in
             switch result {
             case .success(let comments):
