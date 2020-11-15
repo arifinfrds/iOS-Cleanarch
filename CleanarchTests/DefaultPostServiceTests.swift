@@ -91,7 +91,7 @@ class DefaultPostServiceTests: XCTestCase {
     func test_fetchPosts_deliversErrorOnNon200HTTPResposne() {
         let (sut, client) = makeSUT()
         
-        // client.complete(with: <#T##Error#>)
+        // client.complete(with: T##Error)
         var capturedError: DefaultPostService.Error?
         sut.fetchPosts { result in
             switch result {

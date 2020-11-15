@@ -9,26 +9,25 @@
 import Foundation
 
 
-public protocol CommentService {
-    func fetchComments(postId: Int, completion: @escaping ((Result<[Comment], LoadCommentsError>) -> Void))
+protocol CommentService {
+    func fetchComments(postId: Int, completion: @escaping ((Result<[CommentResponseDTO], LoadCommentsError>) -> Void))
 }
 
-public class CommentServiceImpl: CommentService {
+class CommentServiceImpl: CommentService {
     var baseURL = "https://jsonplaceholder.typicode.com"
 
-    public init() { }
     
     var stubURL: String = ""
     
-    public func stub(withURL: String) {
+    func stub(withURL: String) {
         self.stubURL = withURL
     }
     
-    public func makeURLString(postId: Int) -> String {
+    func makeURLString(postId: Int) -> String {
         return baseURL + "/comments?postId=\(postId)"
     }
     
-    public func fetchComments(postId: Int, completion: @escaping ((Result<[Comment], LoadCommentsError>) -> Void)) {
+    func fetchComments(postId: Int, completion: @escaping ((Result<[CommentResponseDTO], LoadCommentsError>) -> Void)) {
         if postId < 0 {
             completion(.failure(.invalidPostId))
             return
@@ -50,7 +49,7 @@ public class CommentServiceImpl: CommentService {
             }
             if httpResponse.statusCode == HTTPCode.OK_200 {
                 do {
-                    let comments = try JSON().newJSONDecoder().decode([Comment].self, from: data)
+                    let comments = try JSON().newJSONDecoder().decode([CommentResponseDTO].self, from: data)
                     completion(.success(comments))
                 } catch(let error) {
                     completion(.failure(.unknown(message: error.localizedDescription)))

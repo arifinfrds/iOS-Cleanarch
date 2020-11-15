@@ -8,24 +8,24 @@
 
 import Foundation
 
-public enum LoadCommentsError: Error, Equatable {
+enum LoadCommentsError: Error, Equatable {
     case invalidPostId
     case invalidURL
     case unknown(message: String)
 }
 
-public protocol ViewCommentsUseCase {
-    func execute(postId: Int, completion: @escaping ((Result<[Comment], LoadCommentsError>) -> Void))
+protocol ViewCommentsUseCase {
+    func execute(postId: Int, completion: @escaping ((Result<[CommentResponseDTO], LoadCommentsError>) -> Void))
 }
 
-public final class ViewCommentsUseCaseImpl: ViewCommentsUseCase {
+final class ViewCommentsUseCaseImpl: ViewCommentsUseCase {
     private var repository: CommentRepository?
     
-    public init(repository: CommentRepository) {
+    init(repository: CommentRepository) {
         self.repository = repository
     }
     
-    public func execute(postId: Int, completion: @escaping ((Result<[Comment], LoadCommentsError>) -> Void)) {
+    func execute(postId: Int, completion: @escaping ((Result<[CommentResponseDTO], LoadCommentsError>) -> Void)) {
         repository?.fetchComments(postId: postId, completion: { result in
             switch result {
             case .success(let comments):

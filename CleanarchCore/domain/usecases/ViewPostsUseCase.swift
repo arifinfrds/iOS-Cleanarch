@@ -8,18 +8,18 @@
 
 import Foundation
 
-public protocol ViewPostsUseCase {
+protocol ViewPostsUseCase {
     func execute(completion: @escaping ((Result<[Post], Error>) -> Void))
 }
 
-public final class ViewPostsUseCaseImpl: ViewPostsUseCase {
+final class ViewPostsUseCaseImpl: ViewPostsUseCase {
     private let repository: PostRepository
     
-    public init(repository: PostRepository) {
+    init(repository: PostRepository) {
         self.repository = repository
     }
     
-    public func execute(completion: @escaping ((Result<[Post], Error>) -> Void)) {
+    func execute(completion: @escaping ((Result<[Post], Error>) -> Void)) {
         repository.fetchPosts { result in
             switch result {
             case .success(let posts):

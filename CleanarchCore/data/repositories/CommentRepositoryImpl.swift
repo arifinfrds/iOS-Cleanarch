@@ -8,14 +8,14 @@
 
 import Foundation
 
-public class CommentRepositoryImpl: CommentRepository {
+class CommentRepositoryImpl: CommentRepository {
     private var service: CommentService?
     
-    public init(service: CommentService) {
+    init(service: CommentService) {
         self.service = service
     }
     
-    public func fetchComments(postId: Int, completion: @escaping ((Result<[Comment], LoadCommentsError>) -> Void)) {
+    func fetchComments(postId: Int, completion: @escaping ((Result<[CommentResponseDTO], LoadCommentsError>) -> Void)) {
         service?.fetchComments(postId: postId, completion: { result in
             switch result {
             case .success(let comments):

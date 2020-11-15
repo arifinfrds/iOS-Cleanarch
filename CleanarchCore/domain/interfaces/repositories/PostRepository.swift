@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol PostRepository {
+protocol PostRepository {
     func fetchPosts(completion: @escaping ((Result<[Post], Error>) -> Void))
     func fetchPost(id: Int, completion: @escaping ((Result<Post, Error>) -> Void))
 }

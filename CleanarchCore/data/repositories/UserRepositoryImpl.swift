@@ -8,14 +8,14 @@
 
 import Foundation
 
-public class UserRepositoryImpl: UserRepository {
+class UserRepositoryImpl: UserRepository {
     private let service: UserService
     
-    public init(service: UserService) {
+    init(service: UserService) {
         self.service = service
     }
     
-    public func fetchUsers(completion: @escaping (Result<[User], LoadUsersError>) -> Void) {
+    func fetchUsers(completion: @escaping (Result<[User], LoadUsersError>) -> Void) {
         service.fetchUsers { result in
             switch result {
             case .success(let users):

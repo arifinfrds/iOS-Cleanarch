@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CleanarchCore
 
 final class PostModuleDIContainer {
     

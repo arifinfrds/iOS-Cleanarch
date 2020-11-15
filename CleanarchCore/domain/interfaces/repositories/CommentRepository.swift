@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol CommentRepository {
-    func fetchComments(postId: Int, completion: @escaping ((Result<[Comment], LoadCommentsError>) -> Void))
+protocol CommentRepository {
+    func fetchComments(postId: Int, completion: @escaping ((Result<[CommentResponseDTO], LoadCommentsError>) -> Void))
 }
