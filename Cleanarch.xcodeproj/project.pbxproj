@@ -35,6 +35,7 @@
 		92697820256022D200B1E36E /* DefaultCommentsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9269781F256022D200B1E36E /* DefaultCommentsServiceTests.swift */; };
 		926978252560384E00B1E36E /* comments-response.json in Resources */ = {isa = PBXBuildFile; fileRef = 926978242560384E00B1E36E /* comments-response.json */; };
 		92814A3D2406C4C9009F02E4 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92814A3C2406C4C9009F02E4 /* AppDIContainer.swift */; };
+		9286F1BC25610CA10011AA3E /* CommentsMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9286F1BB25610CA10011AA3E /* CommentsMapperTests.swift */; };
 		92B8ADB9245519C7004A22E1 /* CommentModuleDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8ADB8245519C7004A22E1 /* CommentModuleDIContainer.swift */; };
 		92C5346323D2EA740001E125 /* UIViewController+Child.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C5346223D2EA740001E125 /* UIViewController+Child.swift */; };
 		92C5346523D2EA970001E125 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C5346423D2EA970001E125 /* LoadingViewController.swift */; };
@@ -86,6 +87,7 @@
 		9280840925332D76001A7966 /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
 		9280841125332EC1001A7966 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		92814A3C2406C4C9009F02E4 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
+		9286F1BB25610CA10011AA3E /* CommentsMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsMapperTests.swift; sourceTree = "<group>"; };
 		929319A323B4CB5100DFBD27 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		9299FC3B2531CCD300DF849F /* HTTPCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPCode.swift; sourceTree = "<group>"; };
 		92B8ADB8245519C7004A22E1 /* CommentModuleDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModuleDIContainer.swift; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 			children = (
 				92F411EA23B4BA2000069FF0 /* DefaultPostServiceTests.swift */,
 				9269781F256022D200B1E36E /* DefaultCommentsServiceTests.swift */,
+				9286F1BB25610CA10011AA3E /* CommentsMapperTests.swift */,
 				92F411EC23B4BA2000069FF0 /* Info.plist */,
 				926978242560384E00B1E36E /* comments-response.json */,
 			);
@@ -536,6 +539,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92F411EB23B4BA2000069FF0 /* DefaultPostServiceTests.swift in Sources */,
+				9286F1BC25610CA10011AA3E /* CommentsMapperTests.swift in Sources */,
 				92697820256022D200B1E36E /* DefaultCommentsServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
