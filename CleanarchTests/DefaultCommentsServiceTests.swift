@@ -12,10 +12,11 @@ import XCTest
 class DefaultCommentsService {
     private let session: URLSession
     
-    enum Error: Swift.Error {
+    enum Error: Swift.Error, Equatable {
         case connectivity
         case invalidData
         case serverError
+        case decodeFail(message: String)
     }
     
     init(session: URLSession) {
@@ -52,7 +53,12 @@ class DefaultCommentsService {
                     return
                 }
                 if httpResponse.statusCode == 200 {
-                    completion(.success([]))
+                    do {
+                        let items = try JSONDecoder().decode([Comment].self, from: data!)
+                        completion(.success(items))
+                    } catch(let error) {
+                        completion(.failure(.decodeFail(message: error.localizedDescription)))
+                    }
                     return
                 }
             }
@@ -192,7 +198,7 @@ class DefaultCommentsServiceTests: XCTestCase {
         
         XCTAssertEqual(capturedErrors, [.invalidData])
     }
- 
+    
     func test_fetchComments_deliversEmptyItems() {
         let sut = makeSUT()
         let url = makeAnyURL()
@@ -243,5 +249,5 @@ class DefaultCommentsServiceTests: XCTestCase {
         let data = try! Data(contentsOf: resourceURL)
         return data
     }
-
+    
 }
