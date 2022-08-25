@@ -20,7 +20,6 @@
 		924FD14F255FE15D005D5126 /* LoadUsersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92476DA7253717DF00F24F7E /* LoadUsersUseCase.swift */; };
 		924FD15F255FE17A005D5126 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F4120223B4C00600069FF0 /* Observable.swift */; };
 		924FD160255FE17A005D5126 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BFE45623B5F07E00ACDF38 /* JSON.swift */; };
-		924FD170255FE184005D5126 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9280840925332D76001A7966 /* Configurable.swift */; };
 		924FD171255FE184005D5126 /* PostServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F411FF23B4BDFD00069FF0 /* PostServiceImpl.swift */; };
 		924FD172255FE184005D5126 /* HTTPCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9299FC3B2531CCD300DF849F /* HTTPCode.swift */; };
 		924FD173255FE184005D5126 /* UserServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926463F6253332D3001540A2 /* UserServiceImpl.swift */; };
@@ -79,7 +78,6 @@
 		9269781F256022D200B1E36E /* DefaultCommentsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCommentsServiceTests.swift; sourceTree = "<group>"; };
 		926978242560384E00B1E36E /* comments-response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "comments-response.json"; sourceTree = "<group>"; };
 		927D65EE23B90770005C939F /* CleanarchUIComponents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CleanarchUIComponents.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CleanarchUIComponents-fvomfypcdcyfwygiqicjmusuyhpe/Build/Products/Debug-iphonesimulator/CleanarchUIComponents.framework"; sourceTree = "<group>"; };
-		9280840925332D76001A7966 /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
 		9280841125332EC1001A7966 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		92814A3C2406C4C9009F02E4 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		9286F1BB25610CA10011AA3E /* CommentsMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsMapperTests.swift; sourceTree = "<group>"; };
@@ -325,7 +323,6 @@
 		92F4120123B4BFF900069FF0 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				9280840925332D76001A7966 /* Configurable.swift */,
 				9299FC3B2531CCD300DF849F /* HTTPCode.swift */,
 				92BFE45623B5F07E00ACDF38 /* JSON.swift */,
 				92F4120223B4C00600069FF0 /* Observable.swift */,
@@ -465,7 +462,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				924FD171255FE184005D5126 /* PostServiceImpl.swift in Sources */,
-				924FD170255FE184005D5126 /* Configurable.swift in Sources */,
 				92FAA6B123C1C177009D0176 /* CommentsViewController.swift in Sources */,
 				924FD172255FE184005D5126 /* HTTPCode.swift in Sources */,
 				924FD160255FE17A005D5126 /* JSON.swift in Sources */,
