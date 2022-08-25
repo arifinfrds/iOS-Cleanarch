@@ -8,11 +8,6 @@
 
 import Foundation
 
-protocol PostService {
-    func fetchPosts(completion: @escaping ((Result<[Post], Error>) -> Void))
-    func fetchPost(id: Int, completion: @escaping ((Result<Post, Error>) -> Void))
-}
-
 class PostServiceImpl: PostService {
     
     func fetchPosts(completion: @escaping ((Result<[Post], Error>) -> Void)) {

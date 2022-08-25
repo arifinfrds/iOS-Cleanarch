@@ -8,16 +8,10 @@
 
 import Foundation
 
-
 enum LoadUserError: Error, Equatable {
     case invalidUserId
     case invalidBundleUrl
     case failToMakeDataOrDecodeUserData
-}
-
-protocol UserService {
-    func fetchUsers(completion: @escaping (Result<[User], LoadUsersError>) -> Void)
-    func fetchUser(id: Int, completion: @escaping ((Result<User, LoadUserError>) -> Void))
 }
 
 class UserServiceImpl: UserService {

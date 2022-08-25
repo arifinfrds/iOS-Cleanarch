@@ -8,14 +8,8 @@
 
 import Foundation
 
-
-protocol CommentService {
-    func fetchComments(postId: Int, completion: @escaping ((Result<[CommentResponseDTO], LoadCommentsError>) -> Void))
-}
-
 class CommentServiceImpl: CommentService {
     var baseURL = "https://jsonplaceholder.typicode.com"
-
     
     var stubURL: String = ""
     
