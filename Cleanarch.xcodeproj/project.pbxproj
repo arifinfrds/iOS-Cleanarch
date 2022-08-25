@@ -159,15 +159,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9280848525333029001A7966 /* domain */ = {
+		9280848525333029001A7966 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				92B8ADDD24551AB6004A22E1 /* entities */,
-				92B8ADE224551B11004A22E1 /* usecases */,
+				92B8ADDD24551AB6004A22E1 /* Entities */,
+				92B8ADE224551B11004A22E1 /* Usecases */,
 				92B52D1428B72F6A00B18C99 /* Interfaces */,
 			);
-			name = domain;
-			path = CleanarchCore/domain;
+			name = Domain;
+			path = CleanarchCore/Domain;
 			sourceTree = SOURCE_ROOT;
 		};
 		929319A523B4CEF700DFBD27 /* main */ = {
@@ -215,17 +215,17 @@
 			path = Interfaces;
 			sourceTree = "<group>";
 		};
-		92B8ADDD24551AB6004A22E1 /* entities */ = {
+		92B8ADDD24551AB6004A22E1 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
 				92B8ADDE24551AC0004A22E1 /* Post.swift */,
 				92B8ADE024551AE1004A22E1 /* CommentResponseDTO.swift */,
 				9280841125332EC1001A7966 /* User.swift */,
 			);
-			path = entities;
+			path = Entities;
 			sourceTree = "<group>";
 		};
-		92B8ADE224551B11004A22E1 /* usecases */ = {
+		92B8ADE224551B11004A22E1 /* Usecases */ = {
 			isa = PBXGroup;
 			children = (
 				92B8ADE324551B22004A22E1 /* ViewPostsUseCase.swift */,
@@ -233,7 +233,7 @@
 				92B8ADE724551B42004A22E1 /* ViewCommentsUseCase.swift */,
 				92476DA7253717DF00F24F7E /* LoadUsersUseCase.swift */,
 			);
-			path = usecases;
+			path = Usecases;
 			sourceTree = "<group>";
 		};
 		92C5345F23D2EA5E0001E125 /* ui-components */ = {
@@ -287,7 +287,7 @@
 		92F411D223B4BA1F00069FF0 /* Cleanarch */ = {
 			isa = PBXGroup;
 			children = (
-				9280848525333029001A7966 /* domain */,
+				9280848525333029001A7966 /* Domain */,
 				92F411FE23B4BDF100069FF0 /* API */,
 				92F4120823B4C14000069FF0 /* presentation */,
 				92C5346E23D2EFF70001E125 /* application */,
