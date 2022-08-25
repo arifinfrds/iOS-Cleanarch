@@ -13,14 +13,14 @@ protocol ViewPostsUseCase {
 }
 
 final class ViewPostsUseCaseImpl: ViewPostsUseCase {
-    private let repository: PostRepository
+    private let service: PostService
     
-    init(repository: PostRepository) {
-        self.repository = repository
+    init(service: PostService) {
+        self.service = service
     }
     
     func execute(completion: @escaping ((Result<[Post], Error>) -> Void)) {
-        repository.fetchPosts { result in
+        service.fetchPosts { result in
             switch result {
             case .success(let posts):
                 completion(.success(posts))

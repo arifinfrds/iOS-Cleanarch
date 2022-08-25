@@ -18,14 +18,8 @@
 		924FD14D255FE15D005D5126 /* ViewPostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8ADE524551B32004A22E1 /* ViewPostUseCase.swift */; };
 		924FD14E255FE15D005D5126 /* ViewCommentsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8ADE724551B42004A22E1 /* ViewCommentsUseCase.swift */; };
 		924FD14F255FE15D005D5126 /* LoadUsersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92476DA7253717DF00F24F7E /* LoadUsersUseCase.swift */; };
-		924FD156255FE162005D5126 /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8ADEB24551B6E004A22E1 /* PostRepository.swift */; };
-		924FD157255FE162005D5126 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92476DAC2537181D00F24F7E /* UserRepository.swift */; };
-		924FD158255FE162005D5126 /* CommentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8ADED24551B79004A22E1 /* CommentRepository.swift */; };
 		924FD15F255FE17A005D5126 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F4120223B4C00600069FF0 /* Observable.swift */; };
 		924FD160255FE17A005D5126 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BFE45623B5F07E00ACDF38 /* JSON.swift */; };
-		924FD167255FE17F005D5126 /* CommentRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B925EE23B8D0CE006B27DF /* CommentRepositoryImpl.swift */; };
-		924FD168255FE17F005D5126 /* PostRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F18D0223B4C613005893C7 /* PostRepositoryImpl.swift */; };
-		924FD169255FE17F005D5126 /* UserRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92476DB12537185600F24F7E /* UserRepositoryImpl.swift */; };
 		924FD170255FE184005D5126 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9280840925332D76001A7966 /* Configurable.swift */; };
 		924FD171255FE184005D5126 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F411FF23B4BDFD00069FF0 /* PostService.swift */; };
 		924FD172255FE184005D5126 /* HTTPCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9299FC3B2531CCD300DF849F /* HTTPCode.swift */; };
@@ -77,8 +71,6 @@
 		9229DD3423D2E7E600E90A18 /* DefaultPostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPostsViewModel.swift; sourceTree = "<group>"; };
 		923CFF8E23B5ADB10015C63B /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		92476DA7253717DF00F24F7E /* LoadUsersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadUsersUseCase.swift; sourceTree = "<group>"; };
-		92476DAC2537181D00F24F7E /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
-		92476DB12537185600F24F7E /* UserRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryImpl.swift; sourceTree = "<group>"; };
 		926111E523D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPostDetailViewModel.swift; sourceTree = "<group>"; };
 		926463F6253332D3001540A2 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		9269781F256022D200B1E36E /* DefaultCommentsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCommentsServiceTests.swift; sourceTree = "<group>"; };
@@ -96,16 +88,12 @@
 		92B8ADE324551B22004A22E1 /* ViewPostsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPostsUseCase.swift; sourceTree = "<group>"; };
 		92B8ADE524551B32004A22E1 /* ViewPostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPostUseCase.swift; sourceTree = "<group>"; };
 		92B8ADE724551B42004A22E1 /* ViewCommentsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCommentsUseCase.swift; sourceTree = "<group>"; };
-		92B8ADEB24551B6E004A22E1 /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
-		92B8ADED24551B79004A22E1 /* CommentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRepository.swift; sourceTree = "<group>"; };
-		92B925EE23B8D0CE006B27DF /* CommentRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRepositoryImpl.swift; sourceTree = "<group>"; };
 		92B925F023B8D19F006B27DF /* CommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
 		92BFE45623B5F07E00ACDF38 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		92C5346223D2EA740001E125 /* UIViewController+Child.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Child.swift"; sourceTree = "<group>"; };
 		92C5346423D2EA970001E125 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		92C5346623D2EAB50001E125 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		92EB47C823CEBB0B00D6A7EC /* PostModuleDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModuleDIContainer.swift; sourceTree = "<group>"; };
-		92F18D0223B4C613005893C7 /* PostRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepositoryImpl.swift; sourceTree = "<group>"; };
 		92F411D023B4BA1F00069FF0 /* Cleanarch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cleanarch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92F411D323B4BA1F00069FF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92F411D523B4BA1F00069FF0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -172,7 +160,6 @@
 			children = (
 				92B8ADDD24551AB6004A22E1 /* entities */,
 				92B8ADE224551B11004A22E1 /* usecases */,
-				92B8ADE924551B55004A22E1 /* interfaces */,
 			);
 			name = domain;
 			path = CleanarchCore/domain;
@@ -234,24 +221,6 @@
 			path = usecases;
 			sourceTree = "<group>";
 		};
-		92B8ADE924551B55004A22E1 /* interfaces */ = {
-			isa = PBXGroup;
-			children = (
-				92B8ADEA24551B61004A22E1 /* repositories */,
-			);
-			path = interfaces;
-			sourceTree = "<group>";
-		};
-		92B8ADEA24551B61004A22E1 /* repositories */ = {
-			isa = PBXGroup;
-			children = (
-				92B8ADEB24551B6E004A22E1 /* PostRepository.swift */,
-				92B8ADED24551B79004A22E1 /* CommentRepository.swift */,
-				92476DAC2537181D00F24F7E /* UserRepository.swift */,
-			);
-			path = repositories;
-			sourceTree = "<group>";
-		};
 		92C5345F23D2EA5E0001E125 /* ui-components */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,16 +260,6 @@
 				926463F6253332D3001540A2 /* UserService.swift */,
 			);
 			path = services;
-			sourceTree = "<group>";
-		};
-		92F18D0523B4C638005893C7 /* repositories */ = {
-			isa = PBXGroup;
-			children = (
-				92F18D0223B4C613005893C7 /* PostRepositoryImpl.swift */,
-				92B925EE23B8D0CE006B27DF /* CommentRepositoryImpl.swift */,
-				92476DB12537185600F24F7E /* UserRepositoryImpl.swift */,
-			);
-			path = repositories;
 			sourceTree = "<group>";
 		};
 		92F411C723B4BA1F00069FF0 = {
@@ -350,7 +309,6 @@
 			isa = PBXGroup;
 			children = (
 				92F4120123B4BFF900069FF0 /* helpers */,
-				92F18D0523B4C638005893C7 /* repositories */,
 				92F18D0423B4C62D005893C7 /* services */,
 			);
 			name = data;
@@ -499,29 +457,23 @@
 			files = (
 				924FD171255FE184005D5126 /* PostService.swift in Sources */,
 				924FD170255FE184005D5126 /* Configurable.swift in Sources */,
-				924FD167255FE17F005D5126 /* CommentRepositoryImpl.swift in Sources */,
 				92FAA6B123C1C177009D0176 /* CommentsViewController.swift in Sources */,
 				924FD172255FE184005D5126 /* HTTPCode.swift in Sources */,
 				924FD160255FE17A005D5126 /* JSON.swift in Sources */,
-				924FD156255FE162005D5126 /* PostRepository.swift in Sources */,
 				92F411D423B4BA1F00069FF0 /* AppDelegate.swift in Sources */,
 				92EB47C923CEBB0B00D6A7EC /* PostModuleDIContainer.swift in Sources */,
 				924FD174255FE184005D5126 /* CommentService.swift in Sources */,
 				924FD14D255FE15D005D5126 /* ViewPostUseCase.swift in Sources */,
-				924FD158255FE162005D5126 /* CommentRepository.swift in Sources */,
 				9220B6E023B5D6FD00578465 /* PostDetailViewController.swift in Sources */,
 				92F411D623B4BA1F00069FF0 /* SceneDelegate.swift in Sources */,
 				924FD145255FE159005D5126 /* CommentResponseDTO.swift in Sources */,
-				924FD168255FE17F005D5126 /* PostRepositoryImpl.swift in Sources */,
 				92C5346323D2EA740001E125 /* UIViewController+Child.swift in Sources */,
-				924FD169255FE17F005D5126 /* UserRepositoryImpl.swift in Sources */,
 				924FD173255FE184005D5126 /* UserService.swift in Sources */,
 				92FAA6AF23C1C051009D0176 /* CommentsViewModel.swift in Sources */,
 				924FD15F255FE17A005D5126 /* Observable.swift in Sources */,
 				9220B6DE23B5D6F800578465 /* PostsViewController.swift in Sources */,
 				924FD143255FE159005D5126 /* User.swift in Sources */,
 				924FD14C255FE15D005D5126 /* ViewPostsUseCase.swift in Sources */,
-				924FD157255FE162005D5126 /* UserRepository.swift in Sources */,
 				9229DD3523D2E7E600E90A18 /* DefaultPostsViewModel.swift in Sources */,
 				926111E623D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift in Sources */,
 				924FD14E255FE15D005D5126 /* ViewCommentsUseCase.swift in Sources */,

@@ -33,22 +33,15 @@ final class PostModuleDIContainer {
     }
     
     private func makeViewPostsUseCase() -> ViewPostsUseCase {
-        let useCase: ViewPostsUseCase = ViewPostsUseCaseImpl(repository: makePostRepository())
+        let useCase: ViewPostsUseCase = ViewPostsUseCaseImpl(service: dependency.postService)
         return useCase
     }
-    
-    private func makePostRepository() -> PostRepository {
-        let repository: PostRepository = PostRepositoryImpl(postService: dependency.postService)
-        return repository
-    }
-    
     
     // MARK: - PostDetail
     
     private func makePostDetailViewController() -> UIViewController {
         let service: PostService = PostServiceImpl()
-        let repository: PostRepository = PostRepositoryImpl(postService: service)
-        let useCase: ViewPostUseCase = ViewPostUseCaseImpl(postRepository: repository)
+        let useCase: ViewPostUseCase = ViewPostUseCaseImpl(service: service)
         let viewModel = DefaultPostDetailViewModel(useCase: useCase)
         let viewController = PostDetailViewController.create(with: viewModel)
         return viewController
@@ -60,7 +53,7 @@ final class PostModuleDIContainer {
     }
     
     private func makeViewPostUseCase() -> ViewPostUseCase {
-        let useCase: ViewPostUseCase = ViewPostUseCaseImpl(postRepository: makePostRepository())
+        let useCase: ViewPostUseCase = ViewPostUseCaseImpl(service: dependency.postService)
         return useCase
     }
     

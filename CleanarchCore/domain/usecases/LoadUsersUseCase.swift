@@ -23,14 +23,14 @@ protocol LoadUsersUseCase {
 }
 
 class LoadUsersUseCaseImpl: LoadUsersUseCase {
-    private let repository: UserRepository
+    private let service: UserService
     
-    init(repository: UserRepository) {
-        self.repository = repository
+    init(service: UserService) {
+        self.service = service
     }
     
     func execute(completion: @escaping (Result<[User], LoadUsersError>) -> Void) {
-        repository.fetchUsers { result in
+        service.fetchUsers { result in
             switch result {
             case .success(let users):
                 completion(.success(users))

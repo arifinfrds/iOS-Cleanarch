@@ -19,14 +19,14 @@ protocol ViewCommentsUseCase {
 }
 
 final class ViewCommentsUseCaseImpl: ViewCommentsUseCase {
-    private var repository: CommentRepository?
+    private var service: CommentService
     
-    init(repository: CommentRepository) {
-        self.repository = repository
+    init(service: CommentService) {
+        self.service = service
     }
     
     func execute(postId: Int, completion: @escaping ((Result<[CommentResponseDTO], LoadCommentsError>) -> Void)) {
-        repository?.fetchComments(postId: postId, completion: { result in
+        service.fetchComments(postId: postId, completion: { result in
             switch result {
             case .success(let comments):
                 completion(.success(comments))

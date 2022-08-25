@@ -33,8 +33,7 @@ class AppDIContainer {
     
     func makeLoadUsersUseCase() -> LoadUsersUseCase {
         let service: UserService = UserServiceImpl()
-        let repository: UserRepository = UserRepositoryImpl(service: service)
-        let useCase: LoadUsersUseCase = LoadUsersUseCaseImpl(repository: repository)
+        let useCase: LoadUsersUseCase = LoadUsersUseCaseImpl(service: service)
         return useCase
     }
 }
