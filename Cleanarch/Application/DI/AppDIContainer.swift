@@ -12,12 +12,12 @@ class AppDIContainer {
     
     // MARK: - Network
     lazy var postService: PostService = {
-        let service: PostService = PostServiceImpl()
+        let service: PostService = RemotePostService()
         return service
     }()
     
     lazy var commentService: CommentService = {
-        let service: CommentService = CommentServiceImpl()
+        let service: CommentService = RemoteCommentService()
         return service
     }()
     
@@ -32,7 +32,7 @@ class AppDIContainer {
     }
     
     func makeLoadUsersUseCase() -> LoadUsersUseCase {
-        let service: UserService = UserServiceImpl()
+        let service: UserService = RemoteUserService()
         let useCase: LoadUsersUseCase = LoadUsersUseCaseImpl(service: service)
         return useCase
     }

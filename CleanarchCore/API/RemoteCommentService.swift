@@ -1,5 +1,5 @@
 //
-//  CommentService.swift
+//  RemoteCommentService.swift
 //  Cleanarch
 //
 //  Created by Arifin Firdaus on 12/29/19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CommentServiceImpl: CommentService {
+class RemoteCommentService: CommentService {
     var baseURL = "https://jsonplaceholder.typicode.com"
     
     var stubURL: String = ""

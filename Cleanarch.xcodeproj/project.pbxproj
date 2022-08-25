@@ -20,10 +20,10 @@
 		924FD14F255FE15D005D5126 /* LoadUsersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92476DA7253717DF00F24F7E /* LoadUsersUseCase.swift */; };
 		924FD15F255FE17A005D5126 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F4120223B4C00600069FF0 /* Observable.swift */; };
 		924FD160255FE17A005D5126 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BFE45623B5F07E00ACDF38 /* JSON.swift */; };
-		924FD171255FE184005D5126 /* PostServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F411FF23B4BDFD00069FF0 /* PostServiceImpl.swift */; };
+		924FD171255FE184005D5126 /* RemotePostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F411FF23B4BDFD00069FF0 /* RemotePostService.swift */; };
 		924FD172255FE184005D5126 /* HTTPCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9299FC3B2531CCD300DF849F /* HTTPCode.swift */; };
-		924FD173255FE184005D5126 /* UserServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926463F6253332D3001540A2 /* UserServiceImpl.swift */; };
-		924FD174255FE184005D5126 /* CommentServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B925F023B8D19F006B27DF /* CommentServiceImpl.swift */; };
+		924FD173255FE184005D5126 /* RemoteUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926463F6253332D3001540A2 /* RemoteUserService.swift */; };
+		924FD174255FE184005D5126 /* RemoteCommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B925F023B8D19F006B27DF /* RemoteCommentService.swift */; };
 		926111E623D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926111E523D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift */; };
 		92697820256022D200B1E36E /* DefaultCommentsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9269781F256022D200B1E36E /* DefaultCommentsServiceTests.swift */; };
 		926978252560384E00B1E36E /* comments-response.json in Resources */ = {isa = PBXBuildFile; fileRef = 926978242560384E00B1E36E /* comments-response.json */; };
@@ -74,7 +74,7 @@
 		923CFF8E23B5ADB10015C63B /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		92476DA7253717DF00F24F7E /* LoadUsersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadUsersUseCase.swift; sourceTree = "<group>"; };
 		926111E523D2F6E4006D1FDD /* DefaultPostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPostDetailViewModel.swift; sourceTree = "<group>"; };
-		926463F6253332D3001540A2 /* UserServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceImpl.swift; sourceTree = "<group>"; };
+		926463F6253332D3001540A2 /* RemoteUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteUserService.swift; sourceTree = "<group>"; };
 		9269781F256022D200B1E36E /* DefaultCommentsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCommentsServiceTests.swift; sourceTree = "<group>"; };
 		926978242560384E00B1E36E /* comments-response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "comments-response.json"; sourceTree = "<group>"; };
 		927D65EE23B90770005C939F /* CleanarchUIComponents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CleanarchUIComponents.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CleanarchUIComponents-fvomfypcdcyfwygiqicjmusuyhpe/Build/Products/Debug-iphonesimulator/CleanarchUIComponents.framework"; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 		92B8ADE324551B22004A22E1 /* ViewPostsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPostsUseCase.swift; sourceTree = "<group>"; };
 		92B8ADE524551B32004A22E1 /* ViewPostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPostUseCase.swift; sourceTree = "<group>"; };
 		92B8ADE724551B42004A22E1 /* ViewCommentsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCommentsUseCase.swift; sourceTree = "<group>"; };
-		92B925F023B8D19F006B27DF /* CommentServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentServiceImpl.swift; sourceTree = "<group>"; };
+		92B925F023B8D19F006B27DF /* RemoteCommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCommentService.swift; sourceTree = "<group>"; };
 		92BFE45623B5F07E00ACDF38 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		92C5346223D2EA740001E125 /* UIViewController+Child.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Child.swift"; sourceTree = "<group>"; };
 		92C5346423D2EA970001E125 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 		92F411E623B4BA2000069FF0 /* CleanarchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanarchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92F411EA23B4BA2000069FF0 /* DefaultPostServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPostServiceTests.swift; sourceTree = "<group>"; };
 		92F411EC23B4BA2000069FF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		92F411FF23B4BDFD00069FF0 /* PostServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostServiceImpl.swift; sourceTree = "<group>"; };
+		92F411FF23B4BDFD00069FF0 /* RemotePostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePostService.swift; sourceTree = "<group>"; };
 		92F4120223B4C00600069FF0 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		92FAA6AE23C1C051009D0176 /* CommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
 		92FAA6B023C1C177009D0176 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
@@ -312,9 +312,9 @@
 			isa = PBXGroup;
 			children = (
 				92F4120123B4BFF900069FF0 /* Helpers */,
-				92F411FF23B4BDFD00069FF0 /* PostServiceImpl.swift */,
-				92B925F023B8D19F006B27DF /* CommentServiceImpl.swift */,
-				926463F6253332D3001540A2 /* UserServiceImpl.swift */,
+				92F411FF23B4BDFD00069FF0 /* RemotePostService.swift */,
+				92B925F023B8D19F006B27DF /* RemoteCommentService.swift */,
+				926463F6253332D3001540A2 /* RemoteUserService.swift */,
 			);
 			name = API;
 			path = CleanarchCore/API;
@@ -461,13 +461,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				924FD171255FE184005D5126 /* PostServiceImpl.swift in Sources */,
+				924FD171255FE184005D5126 /* RemotePostService.swift in Sources */,
 				92FAA6B123C1C177009D0176 /* CommentsViewController.swift in Sources */,
 				924FD172255FE184005D5126 /* HTTPCode.swift in Sources */,
 				924FD160255FE17A005D5126 /* JSON.swift in Sources */,
 				92F411D423B4BA1F00069FF0 /* AppDelegate.swift in Sources */,
 				92EB47C923CEBB0B00D6A7EC /* PostModuleDIContainer.swift in Sources */,
-				924FD174255FE184005D5126 /* CommentServiceImpl.swift in Sources */,
+				924FD174255FE184005D5126 /* RemoteCommentService.swift in Sources */,
 				924FD14D255FE15D005D5126 /* ViewPostUseCase.swift in Sources */,
 				9220B6E023B5D6FD00578465 /* PostDetailViewController.swift in Sources */,
 				92F411D623B4BA1F00069FF0 /* SceneDelegate.swift in Sources */,
@@ -475,7 +475,7 @@
 				92C5346323D2EA740001E125 /* UIViewController+Child.swift in Sources */,
 				92B52D1A28B72FC200B18C99 /* UserService.swift in Sources */,
 				92B52D1828B72F9E00B18C99 /* CommentService.swift in Sources */,
-				924FD173255FE184005D5126 /* UserServiceImpl.swift in Sources */,
+				924FD173255FE184005D5126 /* RemoteUserService.swift in Sources */,
 				92FAA6AF23C1C051009D0176 /* CommentsViewModel.swift in Sources */,
 				924FD15F255FE17A005D5126 /* Observable.swift in Sources */,
 				9220B6DE23B5D6F800578465 /* PostsViewController.swift in Sources */,

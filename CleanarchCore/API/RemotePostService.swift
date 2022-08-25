@@ -1,5 +1,5 @@
 //
-//  PostService.swift
+//  RemotePostService.swift
 //  Cleanarch
 //
 //  Created by Arifin Firdaus on 12/26/19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PostServiceImpl: PostService {
+class RemotePostService: PostService {
     
     func fetchPosts(completion: @escaping ((Result<[Post], Error>) -> Void)) {
         let urlString = "https://jsonplaceholder.typicode.com/posts/"

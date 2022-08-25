@@ -40,7 +40,7 @@ final class PostModuleDIContainer {
     // MARK: - PostDetail
     
     private func makePostDetailViewController() -> UIViewController {
-        let service: PostService = PostServiceImpl()
+        let service: PostService = RemotePostService()
         let useCase: ViewPostUseCase = ViewPostUseCaseImpl(service: service)
         let viewModel = DefaultPostDetailViewModel(useCase: useCase)
         let viewController = PostDetailViewController.create(with: viewModel)

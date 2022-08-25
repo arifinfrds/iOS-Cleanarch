@@ -20,7 +20,7 @@ final class CommentModuleDIContainer {
     }
     
     func makeCommentsViewModel() -> CommentsViewModel {
-        let service: CommentService = CommentServiceImpl()
+        let service: CommentService = RemoteCommentService()
         let useCase: ViewCommentsUseCase = ViewCommentsUseCaseImpl(service: service)
         let viewModel = CommentsViewModel(useCase: useCase)
         return viewModel

@@ -1,5 +1,5 @@
 //
-//  UserService.swift
+//  RemoteUserService.swift
 //  CleanarchCore
 //
 //  Created by Arifin Firdaus on 11/10/20.
@@ -14,7 +14,7 @@ enum LoadUserError: Error, Equatable {
     case failToMakeDataOrDecodeUserData
 }
 
-class UserServiceImpl: UserService {
+class RemoteUserService: UserService {
     
     public init() { }
     
